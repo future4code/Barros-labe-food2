@@ -1,6 +1,5 @@
 import { ButtonStyle } from "./styled"
 
-
 export const Button = ( {buttonTitle} ) => {
 
     return (
