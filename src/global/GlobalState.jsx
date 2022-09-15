@@ -1,10 +1,10 @@
-import React, {useState} from "react"
+import React from "react"
 import GlobalContext from "../context/GlobalContext"
 
 const GlobalState = ({children}) => {
-
+    let oi = 'oi'
     return (
-        <GlobalContext.Provider /* value={} */>
+        <GlobalContext.Provider value={oi}>
             {children}
         </GlobalContext.Provider>
     )

@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import AddressPage from "../pages/AddressPage/AddressPage"
+import EditAddressPage from "../pages/EditAddressPage/EditAddressPage"
 import CartPage from "../pages/CartPage/CartPage"
-import EditProfilePage from "../pages/EditProfilePage/EditProfilePage"
+import EditNamePage from "../pages/EditNamePage/EditNamePage"
 import FeedPage from "../pages/FeedPage/FeedPage"
 import LoginPage from "../pages/LoginPage/LoginPage"
-import OrderHistoryPage from "../pages/OrderHistoryPage/OrderHistoryPage"
 import ProfilePage from "../pages/ProfilePage/ProfilePage"
 import RestaurantPage from "../pages/RestaurantPage/RestaurantPage"
 import SearchPage from "../pages/SearchPage/SearchPage"
@@ -15,14 +14,13 @@ const Router = () => {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path={"/endereco"} element= {<AddressPage/>}/>
+                <Route index element= {<LoginPage/>}/>
+                <Route path={"/editar-endereco"} element= {<EditAddressPage/>}/>
                 <Route path={"/carrinho"} element= { <CartPage/> }/>
-                <Route path={"/editar-perfil"} element= {<EditProfilePage/>}/>
+                <Route path={"/editar-nome"} element= {<EditNamePage/>}/>
                 <Route path={"/home"} element= {<FeedPage/>}/>
-                <Route path={"/login"} element= {<LoginPage/>}/>
-                <Route path={"/historico-pedidos"} element= {<OrderHistoryPage/>}/>
                 <Route path={"/meu-perfil"} element= {<ProfilePage/>}/>
-                <Route path={"/restaurant/:restaurantId"} element= {<RestaurantPage/>}/>
+                <Route path={"/restaurante/:restauranteId"} element= {<RestaurantPage/>}/>
                 <Route path={"/busca"} element= {<SearchPage/>}/>
                 <Route path={"/cadastro"} element= {<SignupPage/>}/>
             </Routes>        
