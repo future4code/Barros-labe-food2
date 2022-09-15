@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header `
     justify-content: flex-start;
     align-items: center;
     height: 56px;
+    width: 395px;
     background-color: #fff;
     border-bottom: 1px solid lightgray;
     svg {
@@ -15,7 +16,7 @@ export const HeaderContainer = styled.header `
     }
     p {
         font-weight: 500;
-        margin-top: 8px;
+        margin-top: 6px;
     }
 `
 
