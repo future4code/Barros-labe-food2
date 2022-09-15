@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const InputStyle = styled.div`
-
     display: flex;
     flex-direction: column;
     width: 360px;
@@ -34,4 +33,28 @@ export const InputStyle = styled.div`
         }
     }
 
+`
+
+export const InputPassword = styled(InputStyle)`
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    button {
+        background-color: white;
+        border: none;
+        margin: 0 0 0 -45px;
+        width: 24px;
+        height: 24px;
+
+        img {
+            width: 24px;
+            height: 24px;
+            margin: 5px 0 0 8px;
+            object-fit: contain;
+        }
+    }
+    
 `

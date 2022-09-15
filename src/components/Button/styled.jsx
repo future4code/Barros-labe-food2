@@ -8,6 +8,7 @@ export const ButtonStyle = styled.button`
     border-radius: 2px;
     border: none;
     transition: 0.2s;
+    margin: 8px 16px;
 
     p {
         width: 296px;
