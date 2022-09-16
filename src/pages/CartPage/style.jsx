@@ -1,8 +1,15 @@
 import styled from "styled-components";
 
+export const Container = styled.section `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
 export const Address = styled.div `
     height: 76px;
-    margin: 1px 0 16px;
+    width: 395px;
+    margin-top: 2px;
     padding: 16px;
     background-color: #eee;
     p {
@@ -52,12 +59,13 @@ export const Payment = styled.section `
 `
 
 export const Footer = styled.section `
+    position: fixed;
+    bottom: 0;
     button {
         display: block;
-        margin: 240px auto 0 auto;
+        margin: 0 auto;
         width: 328px;
         height: 42px;
-        padding: 12px 16px;
         border: none;
         border-radius: 2px;
         background-color: rgba(92, 182, 70, 0.5);
@@ -68,9 +76,9 @@ export const Footer = styled.section `
         border-top: 2px solid lightgrey;
         margin-top: 20px;
         svg {
-            width: 150px;
+            width: 132px;
             height: 60px;
-            padding: 15px 46px 11px 47px;
+            padding: 12px 40px;
             :nth-child(1) {
                 color: #c2c1c1;
             }

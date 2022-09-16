@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Header } from "../../components/Header/Header";
-import {Address, Payment, Paragraph, Footer} from './style'
+import {Container, Address, Payment, Paragraph, Footer} from './style'
 import {BsHouseDoor, BsCart3, BsPerson} from 'react-icons/all'
-
+import { CartCard } from "../../components/CartCard/CartCard";
 
 const CartPage = () => {
-    const [emptyCart, setEmptyCart] = useState(true)
+    const [emptyCart, setEmptyCart] = useState(false)
     const [paymentType, setPaymentType] = useState("")
 
     return(
-        <>
+        <Container>
             <Header showArrow={'false'} showTitle={'true'} title={'Meu carrinho'}/>
             <Address>
                 <p>Endereço de entrega</p>
@@ -17,6 +17,8 @@ const CartPage = () => {
             </Address>
 
             {emptyCart && <Paragraph>Carrinho vazio</Paragraph>}
+
+            {!emptyCart && <CartCard/>}
 
             <Payment>
                 <span>Frete R$0,00</span>
@@ -45,7 +47,7 @@ const CartPage = () => {
                     <BsPerson/>
                 </div>
             </Footer>
-        </>
+        </Container>
     )
 }
 
