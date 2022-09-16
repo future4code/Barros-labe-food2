@@ -24,9 +24,7 @@ function CardProductsRestaurantes(data) {
         <img src={imgProduct} alt="Produto" className="ImgProduct" />
       </DivImg>
       <DivDetails>
-        <>
         {addAmount}
-        </>
         <h4 className="TitleProduct">{nameProduct}</h4>
         <DivSpan>
           <span>{ingredients}</span>
