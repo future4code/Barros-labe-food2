@@ -35,28 +35,25 @@ export const DivSpan = styled.div`
 `;
 
 export const DivDetails = styled.div`
+  position: relative;
   width: 90%;
   display: inline;
   flex-direction: column;
   margin-left: 2%;
-  /* justify-content: space-around; */
+
+  .TitleProduct{
+    margin-top: 4%;
+  }
 
   .divButton {
-    position: absolute;
-    /* button {
-      position: absolute;
-
-      font-size: 12px;
-      margin-left: 100%;
-      width: 100%;
-      color: var(--mid-green);
-      border-radius: 8px 0 8px 0;
-      background: transparent;
-    } */
+    position: relative;
+    bottom: 0%;
+    background-color: violet;
   }
 `;
 
 export const PAmount = styled.p`
+  position: absolute;
   text-align: center;
   margin-left: 85%;
   height: 25%;
@@ -68,6 +65,8 @@ export const PAmount = styled.p`
   font-family: Roboto;
 `;
 export const ButtonAdd = styled.button`
+  position: absolute;
+  bottom: 0;
   text-align: center;
   margin-left: 65%;
   height: 28%;
