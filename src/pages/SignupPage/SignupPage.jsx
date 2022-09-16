@@ -14,7 +14,7 @@ const SignupPage = () => {
 
     const [form, onChange] = useForm({
         name: "",
-        password: "",
+        email: "",
         cpf: "",
         password: "",
     })

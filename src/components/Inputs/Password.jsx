@@ -19,7 +19,7 @@ export const Password = ( { label, name, placeholder, value, onChange } ) => {
                     placeholder={placeholder}
                     type={showPassword ? "text" : "password"} 
                 />
-                <button onClick={clickShowPassword}>
+                <button onClick={clickShowPassword} type="button">
                     {showPassword ? <img src={password2} alt="Mostrar senha"/> : <img src={password1} alt="Esconder senha"/>}
                 </button>
             </div>
