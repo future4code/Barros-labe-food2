@@ -8,12 +8,12 @@ export const Container = styled.section `
 
 export const Address = styled.div `
     height: 76px;
-    width: 395px;
+    width: 100vw;
     margin-top: 2px;
-    padding: 16px;
+    padding: 16px 25px;
     background-color: #eee;
     p {
-        color: #b8b8b8;
+        color: var(--greyish);
     }
 `
 
@@ -25,19 +25,22 @@ export const Paragraph = styled.p `
 export const Payment = styled.section `
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin: 0 20px;
     span {
-        margin: 30px 0 0 301px;
+        text-align: right;
+        margin: 5px 20px 0 0;
     }
     section {
         display: flex;
         justify-content: space-between;
-        margin: 5px 16px;
+        margin: 5px 20px;
         p {
             font-size: 18px;
             margin: 10px 0;
             :nth-child(2) {
                 font-weight: bold;
-                color: #5cb646;
+                color: var(--mid-green);
             }
         }
     }
@@ -45,15 +48,30 @@ export const Payment = styled.section `
         display: flex;
         flex-direction: column;
         gap: 8px;
-        margin: 0 16px;
+        margin: 0 25px;
         p {
             margin-top: 15px;
             line-height: 33px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid var(--black);
         }
         div {
             display: flex;
             gap: 10px;
+        }
+    }
+`
+
+export const Restaurant = styled.section `
+    width: 100vw;
+    padding: 16px 20px;
+    p {
+        font-size: 16px;
+        line-height: 25px;
+        :nth-child(1) {
+            color: var(--mid-green);
+        }
+        :nth-child(2), :nth-child(3) {
+            color: var(--greyish);
         }
     }
 `
@@ -68,7 +86,7 @@ export const Footer = styled.section `
         height: 42px;
         border: none;
         border-radius: 2px;
-        background-color: rgba(92, 182, 70, 0.5);
+        background-color: var(--mid-green);
     }
     div {
         display: flex;
