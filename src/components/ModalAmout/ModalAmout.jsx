@@ -2,9 +2,12 @@ import React from "react";
 import { DivContainer, DivModal } from "./styled";
 
 const ModalScreen = (data) => {
-  const handleAddCart = () => {
+  const handleAddCart = (e) => {
+    
+    data.setQuantidade("1")
     data.setVisibleModal(false);
-    return alert("deu cert");
+    data.setVisibleAmout(true)
+    
   };
 
   return (
@@ -15,7 +18,7 @@ const ModalScreen = (data) => {
           <form action="">
             <input type="number" min="0" oninput="this.value = Math.abs(this.value)"/>
           </form>
-          <button onClick={handleAddCart}>ADICIONAR AO CARRINHO</button>
+          <button onClick={()=>{handleAddCart()}}>ADICIONAR AO CARRINHO</button>
         
       </DivContainer>
     </DivModal>

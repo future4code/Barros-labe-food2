@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header `
     justify-content: flex-start;
     align-items: center;
     height: 56px;
-    width: 395px;
+    width: 100vw;
     background-color: #fff;
     border-bottom: 1px solid lightgray;
     svg {
