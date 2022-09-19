@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Header } from "../../components/Header/Header";
-import {Container, Address, Payment, Paragraph, Footer} from './style'
+import {Container, Address, Payment, Restaurant, Paragraph, Footer} from './style'
 import {BsHouseDoor, BsCart3, BsPerson} from 'react-icons/all'
 import { CartCard } from "../../components/CartCard/CartCard";
+
 
 const CartPage = () => {
     const [emptyCart, setEmptyCart] = useState(false)
@@ -18,7 +19,16 @@ const CartPage = () => {
 
             {emptyCart && <Paragraph>Carrinho vazio</Paragraph>}
 
-            {!emptyCart && <CartCard/>}
+            {!emptyCart && (
+                <>
+                    <Restaurant>
+                        <p>Nome do restaurante</p>
+                        <p>Rua Fradique Coutinho, 125 - Vila Madalena</p>
+                        <p>30-45 min</p>
+                    </Restaurant>
+                    <CartCard/>
+                </>
+            )}
 
             <Payment>
                 <span>Frete R$0,00</span>
