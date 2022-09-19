@@ -7,23 +7,40 @@ import {
   SpanDetailsRestaurants,
 } from "./style";
 import imgProduct from "../../images/image.jpg";
-import { PAmount } from "../../components/CardProductsRestaurantes/styled";
+import { ButtonAdd, ButtonRemove, PAmount } from "../../components/CardProductsRestaurantes/styled";
 import { useState } from "react";
 import ModalScreen from "../../components/ModalAmout/ModalAmout";
 
 const RestaurantPage = () => {
   const [visibleModal, setVisibleModal] = useState(false);
+  const [visibleAmout, setVisibleAmout] = useState(false);
+  const [quantidade, setQuantidade] = useState(0);
 
   const handleAdd = (e) => {
     setVisibleModal(true);
-    return <>alert("Add sucesso!");</>;
+    return <>alert("Add sucesso!")</>;
+  };
+  const handleRmove = (e) => {
+    setQuantidade(0)
+    setVisibleAmout(false)
+    return <>alert("Add sucesso!")</>;
   };
 
   return (
     <>
       <Header showArrow={"true"} showTitle={"true"} title={"Restaurante"} />
+      
       <ContainerDetailsRestaurants>
-        {visibleModal ? <ModalScreen visibleModal={visibleModal} setVisibleModal={setVisibleModal}/> : null}
+        {visibleModal ? (
+          <ModalScreen
+            visibleModal={visibleModal}
+            setVisibleModal={setVisibleModal}
+            visibleAmout={visibleAmout}
+            setVisibleAmout={setVisibleAmout}
+            quantidade = {quantidade}
+            setQuantidade={setQuantidade}
+          />
+        ) : null}
         <img className="imageProduct" src={imgProduct} alt="Restaurante" />
         <DivDetailsRestaurants>
           <h4>Bullguer Vila Madalena</h4>
@@ -38,13 +55,15 @@ const RestaurantPage = () => {
           <h5>Principais</h5>
           <CardProductsRestaurantes
             imgProduct={imgProduct}
-            /* addAmount={<PAmount>3</PAmount>} */
+            addAmount={visibleAmout ? <PAmount>2</PAmount> : null}
             nameProduct={"Burguer"}
             ingredients={"pão,ovo,coentro,queijo,presunto"}
             cost={"R$20,00"}
-            titleButton={"adicionar"}
-            handleButton={handleAdd}
-          />
+            button={quantidade>0 ? <ButtonRemove onClick={handleRmove}>remover</ButtonRemove>:
+              <ButtonAdd onClick={handleAdd}>adicinar</ButtonAdd> 
+          
+          }
+            />
           <CardProductsRestaurantes
             imgProduct={imgProduct}
             addAmount={<PAmount>3</PAmount>}
@@ -53,11 +72,12 @@ const RestaurantPage = () => {
             cost={"R$20,00"}
             titleButton={"adicionar"}
             handleButton={handleAdd}
-          />
+            />
 
           <h5>Acompanhamentos</h5>
         </DivDetailsRestaurants>
       </ContainerDetailsRestaurants>
+            
     </>
   );
 };

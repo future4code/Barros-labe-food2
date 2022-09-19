@@ -1,12 +1,12 @@
 import imgProduct from "../../images/image.jpg";
 import {
   ButtonAdd,
+  ButtonRemove,
   ContainerProductsRestaurant,
   DivDetails,
   DivImg,
   DivSpan,
-  PAmount,
-} from "./styled";
+  } from "./styled";
 function CardProductsRestaurantes(data) {
   const {
     imgProduct,
@@ -32,7 +32,7 @@ function CardProductsRestaurantes(data) {
         <div className="divButton">
           <span>{cost}</span>
         </div>
-        <ButtonAdd onClick={handleButton}>{titleButton}</ButtonAdd>
+        {data.button}
       </DivDetails>
     </ContainerProductsRestaurant>
   );

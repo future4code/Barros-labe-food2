@@ -48,7 +48,7 @@ export const DivDetails = styled.div`
   .divButton {
     position: relative;
     bottom: 0%;
-    background-color: violet;
+   
   }
 `;
 
@@ -74,6 +74,20 @@ export const ButtonAdd = styled.button`
   border: 0.3px solid;
   border-radius: 5px 0px 8px 0px;
   color: var(--mid-green);
+  background: transparent;
+  font-family: Roboto;
+  font-size: 12px;
+`;
+export const ButtonRemove = styled.button`
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  margin-left: 65%;
+  height: 28%;
+  width: 35%;
+  border: 0.3px solid;
+  border-radius: 5px 0px 8px 0px;
+  color: red;
   background: transparent;
   font-family: Roboto;
   font-size: 12px;
