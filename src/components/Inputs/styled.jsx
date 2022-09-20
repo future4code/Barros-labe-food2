@@ -14,7 +14,7 @@ export const InputStyle = styled.div`
         padding-left: 4px;
         font-size: 12px;
         letter-spacing: -0.29px;
-        color: var(--greyish);
+        color: ${(props) => props.color};
         z-index: 2;
         background-color: white;
     }
@@ -25,7 +25,7 @@ export const InputStyle = styled.div`
         margin: 8px 0 0;
         padding: 19px 48px 19px 16px;
         border-radius: 2px;
-        border: solid 1px var(--greyish);
+        border: solid 1px ${(props) => props.color};
         color: var(--black);
 
         ::placeholder {
@@ -57,4 +57,11 @@ export const InputPassword = styled(InputStyle)`
         }
     }
     
+`
+
+export const ErrorText = styled.p`
+        margin: 0 32px;
+        letter-spacing: -0.29px;
+        font-size: 12px;
+        color: #e02020;
 `

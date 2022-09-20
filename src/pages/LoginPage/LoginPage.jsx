@@ -11,10 +11,15 @@ import { useNavigate } from "react-router-dom";
 import { goToFeedPage, goToAddressPage } from "../../routes/coordinator";
 import axios from "axios";
 import { BASE_URL } from "../../constants/constants";
+import { validateEmail, validatePassword } from "../../constants/constants";
 
 const LoginPage = () => {
 
     const [loading, setLoading] = useState(true)
+    const [isValid, setIsValid] = useState(true)
+    const [isEmailValid, setIsEmailValid] = useState(true)
+    const [isPasswordValid, setIsPasswordValid] = useState(true)
+
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -31,17 +36,20 @@ const LoginPage = () => {
     const Login = () => {
         axios.post(`${BASE_URL}/login`, form)
         .then((response) => {
+            setIsValid(true)
             localStorage.setItem("token", response.data.token)
             response.data.user.hasAddress ? goToFeedPage(navigate) : goToAddressPage(navigate)
         })
         .catch((error) => {
-            console.log(error)
+            setIsValid(false)
         })
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
-        Login()
+        setIsEmailValid(validateEmail(form.email))
+        setIsPasswordValid(validatePassword(form.password))
+        isEmailValid && isPasswordValid && Login()
     }
 
     return (
@@ -60,11 +68,26 @@ const LoginPage = () => {
                 <TextContainer>
                     <p>Entrar</p>
                 </TextContainer>
+
+                {isValid ? 
+
                 <form onSubmit={onSubmit}>
-                    <Email value={form.email} onChange={onChange} name="email" />
-                    <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres"/>
-                    <Button buttonTitle="Entrar" />
+                <Email value={form.email} onChange={onChange} name="email" color="#B8B8B8" isValid={isEmailValid}/>
+                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid}/>
+                <Button buttonTitle="Entrar" />
                 </form>
+
+                :
+
+                <form onSubmit={onSubmit}>
+                <Email value={form.email} onChange={onChange} name="email" color="#e02020" isValid={isEmailValid}/>
+                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#e02020" isValid={isPasswordValid}/>
+                <p> E-mail e/ou senha incorretos. Tente novamente. </p>
+                <Button buttonTitle="Entrar" />
+                </form>
+                
+                }
+
                 <TextContainer>
                    <Link to="/cadastro"> <p>Não possui cadastro? Clique aqui.</p> </Link>
                 </TextContainer>
