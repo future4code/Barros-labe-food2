@@ -7,10 +7,15 @@ import logoblack from '../../images/logo-black.png';
 import { LoginPageLoading, LoginPageStyle, TextContainer } from "./style";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
+import { useNavigate } from "react-router-dom";
+import { goToFeedPage, goToAddressPage } from "../../routes/coordinator";
+import axios from "axios";
+import { BASE_URL } from "../../constants/constants";
 
 const LoginPage = () => {
 
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
 
     useEffect(() => {
         setTimeout(() => {
@@ -23,8 +28,20 @@ const LoginPage = () => {
         password: ""
     })
 
+    const Login = () => {
+        axios.post(`${BASE_URL}/login`, form)
+        .then((response) => {
+            localStorage.setItem("token", response.data.token)
+            response.data.user.hasAddress ? goToFeedPage(navigate) : goToAddressPage(navigate)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+
     const onSubmit = (e) => {
         e.preventDefault()
+        Login()
     }
 
     return (
@@ -44,8 +61,8 @@ const LoginPage = () => {
                     <p>Entrar</p>
                 </TextContainer>
                 <form onSubmit={onSubmit}>
-                    <Email value={form.email} onChange={onChange} />
-                    <Password value={form.password} onChange={onChange} name="email" label="Senha*" placeholder="Mínimo 6 caracteres"/>
+                    <Email value={form.email} onChange={onChange} name="email" />
+                    <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres"/>
                     <Button buttonTitle="Entrar" />
                 </form>
                 <TextContainer>
