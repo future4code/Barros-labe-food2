@@ -2,16 +2,34 @@ import React from "react";
 import {Header} from '../../components/Header/Header'
 import {ButtonSearch, CardsContainer, FeedPageStyle, FiltersContainer, RestaurantCard} from './style'
 import search from '../../images/search.png'
+import {Loading} from '../../components/Loading/Loading'
 
 const FeedPage = ({dataRestaurants, errorRestaurants, isLoadingRestaurants}) => {
 
     console.log(dataRestaurants)
+
+    const restaurantsList = dataRestaurants && dataRestaurants.restaurants.map((restaurant) =>{
+        return <RestaurantCard key={restaurant.id}>
+                <img src={restaurant.logoUrl} alt="Logo do Restaurante"></img>
+                <div>
+                    <p>{restaurant.name}</p>
+                    <article>
+                        <span>{restaurant.deliveryTime} min</span>
+                        <span>Frete R${restaurant.shipping},00</span>
+                    </article>
+                </div>
+            </RestaurantCard>        
+    })
   
     return(        
         <FeedPageStyle>
+
             <Header showArrow={'false'} showTitle={'true'} title={'FutureEats'}/>
+
             <ButtonSearch><img src={search}/><p>Restaurante</p></ButtonSearch>
+
             <FiltersContainer>
+
                 <nav>
                     <a>Burger</a>
                     <a>Asiática</a>
@@ -23,19 +41,19 @@ const FeedPage = ({dataRestaurants, errorRestaurants, isLoadingRestaurants}) => 
                     <a>Petiscos</a>
                     <a>Mexicana</a>
                 </nav>
-            </FiltersContainer>
+
+            </FiltersContainer>           
+
             <CardsContainer>
-                <RestaurantCard>
-                    <img src="https://i2.wp.com/3talheres.com.br/wp-content/uploads/2019/02/beirute_habibs.jpg?fit=850%2C600&ssl=1"></img>
-                    <div>
-                        <p>Habibs</p>
-                        <article>
-                            <span>60 min</span>
-                            <span>Frete R$6,00</span>
-                        </article>
-                    </div>
-                </RestaurantCard>
-            </CardsContainer>
+
+                {isLoadingRestaurants && <Loading/>}
+
+                {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
+
+                {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}           
+            
+            </CardsContainer> 
+
         </FeedPageStyle>
     )
 }
