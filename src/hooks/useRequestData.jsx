@@ -16,12 +16,11 @@ const useRequestData = (url) => {
         }})
         .then((response)=>{
             setIsLoading(false)
-            console.log(response.data)
             setData(response.data)
         })
         .catch((er)=>{
             setIsLoading(false)
-            setError(er.response.data.message)
+            setError(er.response.data)
         })
     }, [reload])
 

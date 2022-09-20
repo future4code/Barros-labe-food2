@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {Header} from '../../components/Header/Header'
-import {ButtonSearch, CardsContainer, FeedPageStyle, FiltersContainer, RestaurantCard} from './style'
+import {ButtonSearch, FeedPageStyle, FiltersContainer, RestaurantCard} from './style'
 import search from '../../images/search.png'
 import {Loading} from '../../components/Loading/Loading'
+import GlobalContext from '../../context/GlobalContext'
 
-const FeedPage = ({dataRestaurants, errorRestaurants, isLoadingRestaurants}) => {
+const FeedPage = () => {
 
-    console.log(dataRestaurants)
+    const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
+    const [category, setCategory] = useState("Hamburguer")
 
     const restaurantsList = dataRestaurants && dataRestaurants.restaurants.map((restaurant) =>{
+        if(restaurant.category === category){
         return <RestaurantCard key={restaurant.id}>
                 <img src={restaurant.logoUrl} alt="Logo do Restaurante"></img>
                 <div>
@@ -18,7 +21,8 @@ const FeedPage = ({dataRestaurants, errorRestaurants, isLoadingRestaurants}) => 
                         <span>Frete R${restaurant.shipping},00</span>
                     </article>
                 </div>
-            </RestaurantCard>        
+            </RestaurantCard>
+        }
     })
   
     return(        
@@ -30,29 +34,28 @@ const FeedPage = ({dataRestaurants, errorRestaurants, isLoadingRestaurants}) => 
 
             <FiltersContainer>
 
-                <nav>
-                    <a>Burger</a>
-                    <a>Asiática</a>
-                    <a>Árabe</a>
-                    <a>Italiana</a>
-                    <a>Sorvetes</a>
-                    <a>Carnes</a>
-                    <a>Baiana</a>
-                    <a>Petiscos</a>
-                    <a>Mexicana</a>
-                </nav>
+                <select size="9" onChange={(e)=>{setCategory(e.target.value)}}>
+                    <option value="Hamburguer">Burger</option>
+                    <option value="Asiática">Asiática</option>
+                    <option value="Árabe">Árabe</option>
+                    <option value="Italiana">Italiana</option>
+                    <option value="Sorvetes">Sorvetes</option>
+                    <option value="Carnes">Carnes</option>
+                    <option value="Baiana">Baiana</option>
+                    <option value="Petiscos">Petiscos</option>
+                    <option value="Mexicana">Mexicana</option>
+                </select>
 
             </FiltersContainer>           
 
-            <CardsContainer>
-
+            
                 {isLoadingRestaurants && <Loading/>}
 
                 {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
 
                 {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}           
             
-            </CardsContainer> 
+           
 
         </FeedPageStyle>
     )
