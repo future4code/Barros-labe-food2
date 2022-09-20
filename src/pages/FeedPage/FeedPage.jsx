@@ -3,7 +3,10 @@ import {Header} from '../../components/Header/Header'
 import {ButtonSearch, CardsContainer, FeedPageStyle, FiltersContainer, RestaurantCard} from './style'
 import search from '../../images/search.png'
 
-const FeedPage = () => {
+const FeedPage = ({dataRestaurants, errorRestaurants, isLoadingRestaurants}) => {
+
+    console.log(dataRestaurants)
+  
     return(        
         <FeedPageStyle>
             <Header showArrow={'false'} showTitle={'true'} title={'FutureEats'}/>
