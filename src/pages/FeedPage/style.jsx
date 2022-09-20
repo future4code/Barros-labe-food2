@@ -31,46 +31,46 @@ export const ButtonSearch = styled.button`
 `
 
 export const FiltersContainer = styled.section`
-    width: 360px;
-    height: 42px;
-    margin: 8px 0 8px;
-    padding: 12px 0 12px 16px;
 
-    nav{
-       overflow: auto;
-       scroll-margin-top: 50px;   
+    select{
+        display: table-row;
+        width: 360px;
+        height: 42px;
+        margin: 8px 0 0;
+        border: 0;
+        overflow: auto;
+        scroll-margin-top: 50px;   
        
-       ::-webkit-scrollbar{
+        ::-webkit-scrollbar{
             background-color: white;
-       }
+        }
     }
 
-    a{
-        margin-right: 25px;
-        margin-left: 20px;
-        margin-bottom: 10px;
-        cursor: pointer;
+    option{ 
+        display: table-cell;
+        margin-left: 15px;
+        margin-right: 15px;
 
         :hover{
             color: var(--mid-green);
-        }        
+        }      
     }
 `
 
-export const CardsContainer = styled.section`
-
-`
-
-export const RestaurantCard = styled.div`
+export const RestaurantCard = styled.button`
     display: flex;
     flex-direction: column;
+    background-color: white;
     width: 328px;
     height: 188px;
+    margin-top: 8px;
     border-radius: 8px;
     border: solid 1px var(--greyish);
+    text-align: start;
+    white-space: nowrap;
 
     img{
-        width: 328px;
+        width: 326px;
         height: 120px;
         border-radius: 8px;
     }
@@ -93,8 +93,10 @@ export const RestaurantCard = styled.div`
 
             span{
                 margin-left: 17px;
-                margin-right: 17px;
+                margin-right: 140px;
+                margin-bottom: 15px;
             }
         }
     }
+    
 `
