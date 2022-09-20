@@ -1,5 +1,5 @@
 export const goToAddressPage = (navigate) =>{
-    navigate("/endereco")
+    navigate("/editar-endereco")
 }
 
 export const goToCartPage = (navigate) =>{
