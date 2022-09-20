@@ -3,13 +3,14 @@ import { useState } from "react"
 import password1 from '../../images/password1.png';
 import password2 from '../../images/password2.png';
 
-export const Password = ( { label, name, placeholder, value, onChange } ) => {
+export const Password = ( { label, name, placeholder, value, onChange, color, isValid, errorMessage} ) => {
 
     const [showPassword, setShowPassword] = useState(false)
     const clickShowPassword = () => setShowPassword(!showPassword)
 
     return (
-        <InputPassword>
+        <>
+        <InputPassword color={color}>
             <label>{label}</label>
             <div>
                 <input 
@@ -24,5 +25,10 @@ export const Password = ( { label, name, placeholder, value, onChange } ) => {
                 </button>
             </div>
         </InputPassword>
+
+        {isValid ? undefined : 
+            <p>{errorMessage}</p>
+        }
+        </>
     )
 }
