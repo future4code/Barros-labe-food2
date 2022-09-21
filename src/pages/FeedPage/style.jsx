@@ -18,6 +18,7 @@ export const ButtonSearch = styled.button`
     border-radius: 2px;
     border: solid 1px var(--greyish);
     margin-top: 10px;
+    margin-bottom: 15px;
 
     img{
         width: 24px;
@@ -28,46 +29,59 @@ export const ButtonSearch = styled.button`
     p{
         color: var(--greyish);;
     }
-`
 
-export const FiltersContainer = styled.section`
-
-    select{
-        display: table-row;
-        width: 360px;
-        height: 42px;
-        margin: 8px 0 0;
-        border: 0;
-        overflow: auto;
-        scroll-margin-top: 50px;   
-       
-        ::-webkit-scrollbar{
-            background-color: white;
+    :active {
+            color: var(--mid-green);
         }
-    }
-
-    option{ 
-        display: table-cell;
-        margin-left: 15px;
-        margin-right: 15px;
-
         :hover{
             color: var(--mid-green);
-        }      
+        }
+        :focus{
+            color: var(--mid-green);
+        }
+`
+
+export const FiltersContainer = styled.div`
+    display: flex;
+    align-items: center;
+    width: 360px;
+    height: 42px;
+    overflow: auto;    
+       
+    ::-webkit-scrollbar{
+         background-color: white;
+    }
+
+    button{
+        width: 87px;
+        height: 18px;
+        background-color: white;
+        border: 0 solid white;
+        margin: 15px 15px 10px 33px;
+
+        :active {
+            color: var(--mid-green);
+        }
+        :hover{
+            color: var(--mid-green);
+        }
+        :focus{
+            color: var(--mid-green);
+        }
     }
 `
 
-export const RestaurantCard = styled.button`
+export const RestaurantButtonCard = styled.button`
     display: flex;
     flex-direction: column;
     background-color: white;
     width: 328px;
     height: 188px;
-    margin-top: 8px;
     border-radius: 8px;
     border: solid 1px var(--greyish);
     text-align: start;
     white-space: nowrap;
+    margin-bottom: 10px;
 
     img{
         width: 326px;
@@ -97,6 +111,5 @@ export const RestaurantCard = styled.button`
                 margin-bottom: 15px;
             }
         }
-    }
-    
+    }    
 `
