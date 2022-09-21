@@ -1,44 +1,100 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Email } from "../../components/Inputs/Email";
 import { Password } from "../../components/Inputs/Password";
 import { Button } from "../../components/Button/Button";
 import logo from '../../images/logo.png';
 import logoblack from '../../images/logo-black.png';
 import { LoginPageLoading, LoginPageStyle, TextContainer } from "./style";
-import { Link, useNavigate } from "react-router-dom";
-import { goToSignupPage } from "../../routes/coordinator";
+import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
+import { useNavigate } from "react-router-dom";
+import { goToFeedPage, goToAddressPage } from "../../routes/coordinator";
+import axios from "axios";
+import { BASE_URL } from "../../constants/constants";
+import { validateEmail, validatePassword } from "../../constants/constants";
 
 const LoginPage = () => {
+
+    const [loading, setLoading] = useState(true)
+    const [isValid, setIsValid] = useState(true)
+    const [isEmailValid, setIsEmailValid] = useState(true)
+    const [isPasswordValid, setIsPasswordValid] = useState(true)
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000)
+    }, [])
 
     const [form, onChange] = useForm({
         email: "",
         password: ""
     })
 
-    const onSubmit = (e) => {
-        e.preventDefault()
+    const Login = () => {
+        axios.post(`${BASE_URL}/login`, form)
+        .then((response) => {
+            setIsValid(true)
+            localStorage.setItem("token", response.data.token)
+            response.data.user.hasAddress ? goToFeedPage(navigate) : goToAddressPage(navigate)
+        })
+        .catch((error) => {
+            setIsValid(false)
+        })
     }
 
-    return(
-/*         <LoginPageLoading>
-            <img src={logoblack} alt ="Future Eats"/>
-        </LoginPageLoading> */
-        
-        <LoginPageStyle>
-            <img src={logo} alt="Future Eats"/>
-            <TextContainer>
-                <p>Entrar</p>
-            </TextContainer>
-            <form onSubmit={onSubmit}>
-                <Email value={form.email} onChange={onChange}/>
-                <Password value={form.password} onChange={onChange}/>
+    const onSubmit = (e) => {
+        e.preventDefault()
+        setIsEmailValid(validateEmail(form.email))
+        setIsPasswordValid(validatePassword(form.password))
+        isEmailValid && isPasswordValid && Login()
+    }
+
+    return (
+
+        <>
+        {loading ? 
+
+            <LoginPageLoading>
+                <img src={logoblack} alt ="Future Eats"/>
+            </LoginPageLoading>
+
+            :
+
+            <LoginPageStyle>
+                <img src={logo} alt="Future Eats"/>
+                <TextContainer>
+                    <p>Entrar</p>
+                </TextContainer>
+
+                {isValid ? 
+
+                <form onSubmit={onSubmit}>
+                <Email value={form.email} onChange={onChange} name="email" color="#B8B8B8" isValid={isEmailValid}/>
+                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid}/>
                 <Button buttonTitle="Entrar" />
-            </form>
-            <TextContainer>
-               <Link to={goToSignupPage(useNavigate())}> <p>Não possui cadastro? Clique aqui.</p> </Link>
-            </TextContainer>
-        </LoginPageStyle>
+                </form>
+
+                :
+
+                <form onSubmit={onSubmit}>
+                <Email value={form.email} onChange={onChange} name="email" color="#e02020" isValid={isEmailValid}/>
+                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#e02020" isValid={isPasswordValid}/>
+                <p> E-mail e/ou senha incorretos. Tente novamente. </p>
+                <Button buttonTitle="Entrar" />
+                </form>
+                
+                }
+
+                <TextContainer>
+                   <Link to="/cadastro"> <p>Não possui cadastro? Clique aqui.</p> </Link>
+                </TextContainer>
+            </LoginPageStyle>
+        }
+        </>
+
     )
 }
 

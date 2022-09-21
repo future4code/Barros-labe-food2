@@ -1,13 +1,18 @@
 import { InputStyle } from "./styled"
 
-export const Name = ( { value, onChange } ) => {
+export const Name = ( { value, onChange, color, isValid } ) => {
 
     return (
-        <InputStyle>
+        <>
+        <InputStyle color={color}>
         <label>Nome*</label>
-        <input name="name" value={value} onChange={onChange} placeholder="seu nome" type="text" 
-        pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$" required
-        title="Digite o nome com pelo menos 3 carateres"/>
+        <input name="name" value={value} onChange={onChange} placeholder="Nome e sobrenome" type="text" />
         </InputStyle>
+
+        {isValid ? undefined :
+        <p>Nome deve possuir no mínimo 2 caracteres.</p>}
+
+        </>
+        
     )
 }
