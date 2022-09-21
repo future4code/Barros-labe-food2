@@ -16,11 +16,12 @@ const navigate = useNavigate()
         <>
             <Header showArrow={'false'} showTitle={'true'} title={"Meu Perfil"}/>
             <ProfileStyle>
-                <span><img onClick={()=>MyRoutes.goToEditNamePage(navigate)} src={icon_edit} alt="Icone de edição"></img>Bruna Oliveira</span>
+                <img onClick={()=>MyRoutes.goToEditNamePage(navigate)} src={icon_edit} alt="Icone de edição"></img>
+                <span>Bruna Oliveira</span>
                 <span>bruna_o@gmail.com</span>
                 <span>333.3333.333-33</span>
             <AdressStyle>
-                <span><img onClick={()=>MyRoutes.goToEditAddressPage(navigate)} src={icon_edit} alt="Icone de edição"></img>Endereço Cadastrado</span>
+                <span>Endereço Cadastrado<img onClick={()=>MyRoutes.goToEditAddressPage(navigate)} src={icon_edit} alt="Icone de edição"></img></span>
                 <span>Rua Alessandra Vieira, 42 - Santana</span>
             </AdressStyle>
             <StyleHistory>

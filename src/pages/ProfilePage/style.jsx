@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const ProfileStyle = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 360px;
   height: 640px;
 
-span:nth-child(1) {
+  span{
   width: 328px;
   height: 18px;
   margin: 16px 16px 8px;
@@ -20,34 +19,7 @@ span:nth-child(1) {
   letter-spacing: -0.39px;
   color: var(--black);
 }
-  
-span:nth-child(2) {
-  width: 328px;
-  height: 18px;
-  margin: 2px 16px 8px;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  color: var(--black);
-} 
 
-span:nth-child(3) {
-  width: 328px;
-  height: 18px;
-  margin: 8px 16px 16px;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  color: var(--black);
-}
 
 img{
   width: 24px;
@@ -64,8 +36,7 @@ export const AdressStyle = styled.div`
   margin: 16px 0;
   padding: 16px;
   background-color: #eee;
-  
-  
+    
   span:nth-child(1){
   width: 328px;
   height: 18px;
