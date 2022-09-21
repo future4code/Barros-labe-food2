@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const FeedPageStyle = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 0 0 184px;
     justify-content: center;
     align-items: center;
 `
@@ -19,6 +18,7 @@ export const ButtonSearch = styled.button`
     border: solid 1px var(--greyish);
     margin-top: 10px;
     margin-bottom: 15px;
+    font-size: 16px;
 
     img{
         width: 24px;
@@ -27,18 +27,10 @@ export const ButtonSearch = styled.button`
     }
 
     p{
-        color: var(--greyish);;
+        color: var(--greyish);
+        font-size: 16px;
     }
 
-    :active {
-            color: var(--mid-green);
-        }
-        :hover{
-            color: var(--mid-green);
-        }
-        :focus{
-            color: var(--mid-green);
-        }
 `
 
 export const FiltersContainer = styled.div`
@@ -57,7 +49,8 @@ export const FiltersContainer = styled.div`
         height: 18px;
         background-color: white;
         border: 0 solid white;
-        margin: 15px 15px 10px 33px;
+        margin: 15px 10px 10px 33px;
+        font-size: 16px;
 
         :active {
             color: var(--mid-green);
@@ -98,6 +91,7 @@ export const RestaurantButtonCard = styled.button`
             margin-top: 12px;
             margin-bottom: 5px;
             margin-left: 17px;
+            font-size: 16px;
         }
 
         article{
@@ -109,6 +103,7 @@ export const RestaurantButtonCard = styled.button`
                 margin-left: 17px;
                 margin-right: 140px;
                 margin-bottom: 15px;
+                font-size: 16px;
             }
         }
     }    

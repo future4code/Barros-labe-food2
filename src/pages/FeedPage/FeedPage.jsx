@@ -6,6 +6,7 @@ import {Loading} from '../../components/Loading/Loading'
 import GlobalContext from '../../context/GlobalContext'
 import { useNavigate } from "react-router-dom";
 import { goToRestaurantPage, goToSearchPage } from "../../routes/coordinator";
+import { Footer } from "../../components/Footer/Footer"
 
 const FeedPage = () => {
 
@@ -53,7 +54,9 @@ const FeedPage = () => {
 
                 {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
 
-                {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}                   
+                {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}
+
+                <Footer color1={'#5CB646'} color2={'#B8B8B8'} color3={'#B8B8B8'}/>                  
 
         </FeedPageStyle>
     )
