@@ -12,10 +12,9 @@ import { Order } from "../../components/Order/Order";
 const FeedPage = () => {
 
     const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
-    const {showOrder} = useContext(GlobalContext)
+    const {showOrder, setShowOrder} = useContext(GlobalContext)
     const [category, setCategory] = useState("Hamburguer")
     const navigate = useNavigate()
-
 
     const restaurantsList = dataRestaurants && dataRestaurants.restaurants.map((restaurant) =>{
         if(restaurant.category === category){
@@ -59,7 +58,7 @@ const FeedPage = () => {
 
             {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}
 
-            {showOrder && <Order/>}
+            {localStorage.getItem("orderInProgress")==="true" && <Order/>}
 
             <Footer color1={'#5CB646'} color2={'#B8B8B8'} color3={'#B8B8B8'}/>                  
 

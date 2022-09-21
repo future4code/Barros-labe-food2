@@ -6,10 +6,9 @@ import { BASE_URL } from "../constants/constants"
 const GlobalState = ({children}) => {
 
     const [dataRestaurants, errorRestaurants, isLoadingRestaurants, reload, setReload] = useRequestData(`${BASE_URL}/restaurants`)
-    const [showOrder, setShowOrder] = useState(localStorage.getItem("orderInProgress"))
 
     return (
-        <GlobalContext.Provider value={{dataRestaurants, errorRestaurants, isLoadingRestaurants, showOrder, setShowOrder}}>
+        <GlobalContext.Provider value={{dataRestaurants, errorRestaurants, isLoadingRestaurants}}>
             {children}
         </GlobalContext.Provider>
     )

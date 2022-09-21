@@ -14,8 +14,8 @@ const CartPage = () => {
 
     
     const finishOrder = () => {
-        setShowOrder(false)
-        localStorage.setItem("orderInProgress", showOrder)
+        localStorage.setItem("orderInProgress", "false")
+        location.reload()
     }
 
     const handleOrder = () => {
@@ -33,8 +33,7 @@ const CartPage = () => {
         }*/
 
         //axios.post(url, body, headers)
-        setShowOrder(true)
-        localStorage.setItem("orderInProgress", showOrder)
+        localStorage.setItem("orderInProgress", "true")
         setTimeout(() => finishOrder(), 10000)
     }
 
