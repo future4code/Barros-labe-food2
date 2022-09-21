@@ -60,26 +60,26 @@ const EditAddressPage = () => {
             {isValid ?
 
                 <form onSubmit={onSubmit}>
-                <Street name="street" value={form.street} onChange={onChange} color="#B8B8B8" isValid={isStreetValid}/>
-                <Number name="number" value={form.number} onChange={onChange} color="#B8B8B8" isValid={isNumberValid}/>
-                <Complement name="complement" value={form.complement} onChange={onChange} color="#B8B8B8" isValid={isComplementValid}/>
-                <District name="district" value={form.district} onChange={onChange} color="#B8B8B8" isValid={isDistrictValid}/>
-                <City name="city" value={form.city} onChange={onChange} color="#B8B8B8" isValid={isCityValid}/>
-                <State name="state" value={form.state} onChange={onChange} color="#B8B8B8" isValid={isStateValid}/>
-                <Button type="submit" buttonTitle="Salvar"/>
+                    <Street name="street" value={form.street} onChange={onChange} color="#B8B8B8" isValid={isStreetValid}/>
+                    <Number name="number" value={form.number} onChange={onChange} color="#B8B8B8" isValid={isNumberValid}/>
+                    <Complement name="complement" value={form.complement} onChange={onChange} color="#B8B8B8" isValid={isComplementValid}/>
+                    <District name="district" value={form.district} onChange={onChange} color="#B8B8B8" isValid={isDistrictValid}/>
+                    <City name="city" value={form.city} onChange={onChange} color="#B8B8B8" isValid={isCityValid}/>
+                    <State name="state" value={form.state} onChange={onChange} color="#B8B8B8" isValid={isStateValid}/>
+                    <Button type="submit" color={'#5cb646'} buttonTitle="Salvar"/>
                 </form>
                 
                 : 
                 
                 <form onSubmit={onSubmit}>
-                <Street name="street" value={form.street} onChange={onChange} color="#e02020" isValid={isStreetValid}/>
-                <Number name="number" value={form.number} onChange={onChange} color="#e02020" isValid={isNumberValid}/>
-                <Complement name="complement" value={form.complement} onChange={onChange} color="#e02020"isValid={isComplementValid}/>
-                <District name="district" value={form.district} onChange={onChange} color="#e02020" isValid={isDistrictValid}/>
-                <City name="city" value={form.city} onChange={onChange} color="#e02020" isValid={isCityValid}/>
-                <State name="state" value={form.state} onChange={onChange} color="#e02020" isValid={isStateValid}/>
-                <p>{errorText}.</p>
-                <Button type="submit" buttonTitle="Salvar"/>
+                    <Street name="street" value={form.street} onChange={onChange} color="#e02020" isValid={isStreetValid}/>
+                    <Number name="number" value={form.number} onChange={onChange} color="#e02020" isValid={isNumberValid}/>
+                    <Complement name="complement" value={form.complement} onChange={onChange} color="#e02020"isValid={isComplementValid}/>
+                    <District name="district" value={form.district} onChange={onChange} color="#e02020" isValid={isDistrictValid}/>
+                    <City name="city" value={form.city} onChange={onChange} color="#e02020" isValid={isCityValid}/>
+                    <State name="state" value={form.state} onChange={onChange} color="#e02020" isValid={isStateValid}/>
+                    <p>{errorText}.</p>
+                    <Button type="submit" color={'#5cb646'} buttonTitle="Salvar"/>
                 </form>}
 
 

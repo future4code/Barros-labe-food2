@@ -69,24 +69,24 @@ const SignupPage = () => {
             {isValid ?
 
                 <form onSubmit={onSubmit}>
-                <Name name="name" value={form.name} onChange={onChange} color="#B8B8B8" isValid={isNameValid}/>
-                <Email name="email" value={form.email} onChange={onChange} color="#B8B8B8" isValid={isEmailValid}/>
-                <CPF name="cpf" value={form.cpf} onChange={onChange} color="#B8B8B8" isValid={isCPFValid}/>
-                <Password name="password" value={form.password} onChange={onChange} label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres"/>
-                <Password name="password-check" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value)}}label="Confirmar*" placeholder="Confirme a senha anterior" color="#B8B8B8" isValid={isConfirmPasswordValid} errorMessage="Deve ser a mesma que a anterior."/>
-                <Button type="submit" buttonTitle="Criar"/>
+                    <Name name="name" value={form.name} onChange={onChange} color="#B8B8B8" isValid={isNameValid}/>
+                    <Email name="email" value={form.email} onChange={onChange} color="#B8B8B8" isValid={isEmailValid}/>
+                    <CPF name="cpf" value={form.cpf} onChange={onChange} color="#B8B8B8" isValid={isCPFValid}/>
+                    <Password name="password" value={form.password} onChange={onChange} label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres"/>
+                    <Password name="password-check" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value)}}label="Confirmar*" placeholder="Confirme a senha anterior" color="#B8B8B8" isValid={isConfirmPasswordValid} errorMessage="Deve ser a mesma que a anterior."/>
+                    <Button type="submit" color={'#5cb646'} buttonTitle="Criar"/>
                 </form>
                 
                 : 
                 
                 <form onSubmit={onSubmit}>
-                <Name name="name" value={form.name} onChange={onChange} color="#e02020" isValid={isNameValid}/>
-                <Email name="email" value={form.email} onChange={onChange} color="#e02020" isValid={isEmailValid}/>
-                <CPF name="cpf" value={form.cpf} onChange={onChange} color="#e02020" isValid={isCPFValid}/>
-                <Password name="password" value={form.password} onChange={onChange} label="Senha*" placeholder="Mínimo 6 caracteres" color="#e02020" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres"/>
-                <Password name="password-check" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value)}} label="Confirmar*" placeholder="Confirme a senha anterior" color="#e02020" isValid={isConfirmPasswordValid} errorMessage="Deve ser a mesma que a anterior."/>
-                {isEmailValid && isPasswordValid && isCPFValid && isNameValid && isConfirmPasswordValid ? <p>{errorText}.</p> : undefined}
-                <Button type="submit" buttonTitle="Criar"/>
+                    <Name name="name" value={form.name} onChange={onChange} color="#e02020" isValid={isNameValid}/>
+                    <Email name="email" value={form.email} onChange={onChange} color="#e02020" isValid={isEmailValid}/>
+                    <CPF name="cpf" value={form.cpf} onChange={onChange} color="#e02020" isValid={isCPFValid}/>
+                    <Password name="password" value={form.password} onChange={onChange} label="Senha*" placeholder="Mínimo 6 caracteres" color="#e02020" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres"/>
+                    <Password name="password-check" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value)}} label="Confirmar*" placeholder="Confirme a senha anterior" color="#e02020" isValid={isConfirmPasswordValid} errorMessage="Deve ser a mesma que a anterior."/>
+                    {isEmailValid && isPasswordValid && isCPFValid && isNameValid && isConfirmPasswordValid ? <p>{errorText}.</p> : undefined}
+                    <Button type="submit" color={'#5cb646'} buttonTitle="Criar"/>
                 </form>}
 
 
