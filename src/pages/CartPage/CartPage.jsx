@@ -1,13 +1,31 @@
 import React, { useState } from "react";
 import { Header } from "../../components/Header/Header";
-import {Container, Address, Payment, Restaurant, Paragraph, Footer} from './style'
-import {BsHouseDoor, BsCart3, BsPerson} from 'react-icons/all'
+import { Footer } from "../../components/Footer/Footer";
+import { Button } from "../../components/Button/Button";
+import {Container, Address, Payment, Restaurant, Paragraph, ButtonSection} from './style'
 import { CartCard } from "../../components/CartCard/CartCard";
 
 
 const CartPage = () => {
     const [emptyCart, setEmptyCart] = useState(false)
     const [paymentType, setPaymentType] = useState("")
+
+    const handleOrder = () => {
+        // https://us-central1-missao-newton.cloudfunctions.net/{{appName}}/restaurants/:restaurantId/order
+        //headers: auth token
+        /*body: {
+            "products": [{
+                "id": "CnKdjU6CyKakQDGHzNln",
+                "quantity": 10
+            }, {
+                "quantity": 1,
+                "id": "KJqMl2DxeShkSBevKVre"
+            }],
+            "paymentMethod": "creditcard"
+        }*/
+
+        //axios.post(url, body, headers)
+    }
 
     return(
         <Container>
@@ -49,14 +67,14 @@ const CartPage = () => {
                 </form>
             </Payment>
 
-            <Footer>
-                <button>Confirmar</button>
-                <div>
-                    <BsHouseDoor/>
-                    <BsCart3/>
-                    <BsPerson/>
-                </div>
-            </Footer>
+            <ButtonSection>
+                {emptyCart?
+                <Button color={'rgba(92, 182, 70, 0.5)'} buttonTitle={'Confirmar'}>Confirmar</Button>
+                : 
+                <Button color={'#5CB646'} buttonTitle={'Confirmar'} onClick={handleOrder}>Confirmar</Button>}
+            </ButtonSection>
+
+            <Footer color1={'#B8B8B8'} color2={'#5CB646'} color3={'#B8B8B8'}/>
         </Container>
     )
 }

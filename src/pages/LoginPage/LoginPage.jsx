@@ -72,18 +72,18 @@ const LoginPage = () => {
                 {isValid ? 
 
                 <form onSubmit={onSubmit}>
-                <Email value={form.email} onChange={onChange} name="email" color="#B8B8B8" isValid={isEmailValid}/>
-                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres."/>
-                <Button buttonTitle="Entrar" />
+                    <Email value={form.email} onChange={onChange} name="email" color="#B8B8B8" isValid={isEmailValid}/>
+                    <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres."/>
+                    <Button color={'#5cb646'} buttonTitle="Entrar" />
                 </form>
 
                 :
 
                 <form onSubmit={onSubmit}>
-                <Email value={form.email} onChange={onChange} name="email" color="#e02020" isValid={isEmailValid}/>
-                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#e02020" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres."/>
-                {isEmailValid && isPasswordValid ? <p> E-mail e/ou senha incorretos. Tente novamente. </p> : undefined}
-                <Button buttonTitle="Entrar" />
+                    <Email value={form.email} onChange={onChange} name="email" color="#e02020" isValid={isEmailValid}/>
+                    <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#e02020" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres."/>
+                    {isEmailValid && isPasswordValid ? <p> E-mail e/ou senha incorretos. Tente novamente. </p> : undefined}
+                    <Button color={'#5cb646'} buttonTitle="Entrar" />
                 </form>
                 
                 }
