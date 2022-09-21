@@ -1,9 +1,9 @@
 import { ButtonStyle } from "./styled"
 
-export const Button = ( {buttonTitle} ) => {
+export const Button = ( {color, buttonTitle} ) => {
 
     return (
-        <ButtonStyle><p>{buttonTitle}</p></ButtonStyle>
+        <ButtonStyle color={color}><p>{buttonTitle}</p></ButtonStyle>
     )
 
 }

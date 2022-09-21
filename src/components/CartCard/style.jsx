@@ -5,7 +5,7 @@ export const Container = styled.section `
     grid-template-columns: 25% 75%;
     border: 1px solid var(--greyish);
     border-radius: 8px;
-    width: 355px;
+    width: 90vw;
     margin-bottom: 15px;
     img {
         width: 100%;

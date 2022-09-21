@@ -1,18 +1,17 @@
-import iconAvatar from "../../images/avatar.png"
-import iconCart from "../../images/cart.png"
-import iconHome from "../../images/homepage.png"
 import * as MyRoutes from "../../routes/coordinator"
 import { useNavigate } from "react-router-dom"
+import {BsHouseDoor, BsCart3, BsPerson} from 'react-icons/all'
+import {StyleFooter} from './style'
 
-export function Footer () {
+export function Footer (props) {
 
     const navigate = useNavigate()
 
     return(
-        <div>
-            <img src={iconHome} onClick={()=>MyRoutes.goToFeedPage(navigate)}></img>
-            <img src={iconCart} onClick={()=>MyRoutes.goToCartPage(navigate)}></img>
-            <img src={iconAvatar}></img>
-        </div>
+        <StyleFooter color1={props.color1} color2={props.color2} color3={props.color3}>
+            <BsHouseDoor onClick={()=>MyRoutes.goToFeedPage(navigate)}/>
+            <BsCart3 onClick={()=>MyRoutes.goToCartPage(navigate)}/>
+            <BsPerson onClick={()=>MyRoutes.goToProfilePage(navigate)}/>
+        </StyleFooter>
     )
 }
