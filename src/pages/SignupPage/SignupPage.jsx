@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Header} from '../../components/Header/Header'
 import { Email } from "../../components/Inputs/Email";
 import { Name } from "../../components/Inputs/Name";
@@ -25,7 +25,7 @@ const SignupPage = () => {
         password: "",
     })
 
-    const [confirmPassword, setConfirmPassword] = useState(undefined)
+    const [confirmPassword, setConfirmPassword] = useState("")
     const [isValid, setIsValid] = useState(true)
     const [isEmailValid, setIsEmailValid] = useState(true)
     const [isPasswordValid, setIsPasswordValid] = useState(true)
@@ -45,6 +45,18 @@ const SignupPage = () => {
             setIsValid(false)
         })
     }
+    
+    const testPassword = () => {
+        if(form.password === confirmPassword) {
+            setIsConfirmPasswordValid(true)
+        } else {
+            setIsConfirmPasswordValid(false)
+        }
+    }
+
+    useEffect(() => {
+        testPassword()
+    }, [form.password])
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -52,11 +64,9 @@ const SignupPage = () => {
         setIsPasswordValid(validatePassword(form.password))
         setIsCPFValid(validateCPF(form.cpf))
         setIsNameValid(validateName(form.name))
-        form.password === confirmPassword ? setIsConfirmPasswordValid(true) : setIsConfirmPasswordValid(false)
-        if (isEmailValid && isPasswordValid && isCPFValid && isNameValid && isConfirmPasswordValid) {
-            SignUp()
-        }
+        isEmailValid && isPasswordValid && isCPFValid && isNameValid && isConfirmPasswordValid && SignUp()  
     }
+    
     return(
         <>
         <Header showArrow={'true'} showTitle={'false'} title={'Cadastro'}/>
