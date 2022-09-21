@@ -12,5 +12,6 @@ export const CPF = ( { value, onChange, color, isValid } ) => {
         {isValid ? undefined :
         <p>CPF em formato inválido.</p>}
         </>
+
     )
 }

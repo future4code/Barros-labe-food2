@@ -13,5 +13,6 @@ export const Name = ( { value, onChange, color, isValid } ) => {
         <p>Nome deve possuir no mínimo 2 caracteres.</p>}
 
         </>
+        
     )
 }
