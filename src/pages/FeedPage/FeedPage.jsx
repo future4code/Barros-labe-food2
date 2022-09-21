@@ -1,18 +1,22 @@
 import React, { useContext, useState } from "react";
 import {Header} from '../../components/Header/Header'
-import {ButtonSearch, FeedPageStyle, FiltersContainer, RestaurantCard} from './style'
+import {ButtonSearch, FeedPageStyle, FiltersContainer, RestaurantButtonCard} from './style'
 import search from '../../images/search.png'
 import {Loading} from '../../components/Loading/Loading'
 import GlobalContext from '../../context/GlobalContext'
+import { useNavigate } from "react-router-dom";
+import { goToRestaurantPage, goToSearchPage } from "../../routes/coordinator";
+import { Footer } from "../../components/Footer/Footer"
 
 const FeedPage = () => {
 
     const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
     const [category, setCategory] = useState("Hamburguer")
+    const navigate = useNavigate()
 
     const restaurantsList = dataRestaurants && dataRestaurants.restaurants.map((restaurant) =>{
         if(restaurant.category === category){
-        return <RestaurantCard key={restaurant.id}>
+        return <RestaurantButtonCard onClick={()=>{goToRestaurantPage(navigate, restaurant.id)}} key={restaurant.id}>
                 <img src={restaurant.logoUrl} alt="Logo do Restaurante"></img>
                 <div>
                     <p>{restaurant.name}</p>
@@ -21,8 +25,8 @@ const FeedPage = () => {
                         <span>Frete R${restaurant.shipping},00</span>
                     </article>
                 </div>
-            </RestaurantCard>
-        }
+            </RestaurantButtonCard>
+        } 
     })
   
     return(        
@@ -30,32 +34,29 @@ const FeedPage = () => {
 
             <Header showArrow={'false'} showTitle={'true'} title={'FutureEats'}/>
 
-            <ButtonSearch><img src={search}/><p>Restaurante</p></ButtonSearch>
+            <ButtonSearch onClick={()=>{goToSearchPage(navigate)}}><img src={search}/><p>Restaurante</p></ButtonSearch>
 
-            <FiltersContainer>
+                <FiltersContainer>
+                    
+                    <button onClick={()=>{setCategory("Hamburguer")}}>Burger</button>
+                    <button onClick={()=>{setCategory("Asiática")}}>Asiática</button>
+                    <button onClick={()=>{setCategory("Árabe")}}>Árabe</button>
+                    <button onClick={()=>{setCategory("Italiana")}}>Italiana</button>
+                    <button onClick={()=>{setCategory("Sorvetes")}}>Sorvetes</button>
+                    <button onClick={()=>{setCategory("Carnes")}}>Carnes</button>
+                    <button onClick={()=>{setCategory("Baiana")}}>Baiana</button>
+                    <button onClick={()=>{setCategory("Petiscos")}}>Petiscos</button>
+                    <button onClick={()=>{setCategory("Mexicana")}}>Mexicana</button>               
 
-                <select size="9" onChange={(e)=>{setCategory(e.target.value)}}>
-                    <option value="Hamburguer">Burger</option>
-                    <option value="Asiática">Asiática</option>
-                    <option value="Árabe">Árabe</option>
-                    <option value="Italiana">Italiana</option>
-                    <option value="Sorvetes">Sorvetes</option>
-                    <option value="Carnes">Carnes</option>
-                    <option value="Baiana">Baiana</option>
-                    <option value="Petiscos">Petiscos</option>
-                    <option value="Mexicana">Mexicana</option>
-                </select>
-
-            </FiltersContainer>           
-
+                </FiltersContainer>           
             
                 {isLoadingRestaurants && <Loading/>}
 
                 {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
 
-                {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}           
-            
-           
+                {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}
+
+                <Footer color1={'#5CB646'} color2={'#B8B8B8'} color3={'#B8B8B8'}/>                  
 
         </FeedPageStyle>
     )
