@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import { Button } from "../../components/Button/Button";
 import {Container, Address, Payment, Restaurant, Paragraph, ButtonSection} from './style'
 import { CartCard } from "../../components/CartCard/CartCard";
+import GlobalContext from "../../context/GlobalContext";
 
 
 const CartPage = () => {
     const [emptyCart, setEmptyCart] = useState(false)
     const [paymentType, setPaymentType] = useState("")
+    const {showOrder, setShowOrder} = useContext(GlobalContext)
+
+    
+    const finishOrder = () => {
+        setShowOrder(false)
+        localStorage.setItem("orderInProgress", showOrder)
+    }
 
     const handleOrder = () => {
         // https://us-central1-missao-newton.cloudfunctions.net/{{appName}}/restaurants/:restaurantId/order
@@ -25,6 +33,9 @@ const CartPage = () => {
         }*/
 
         //axios.post(url, body, headers)
+        setShowOrder(true)
+        localStorage.setItem("orderInProgress", showOrder)
+        setTimeout(() => finishOrder(), 10000)
     }
 
     return(
@@ -69,9 +80,12 @@ const CartPage = () => {
 
             <ButtonSection>
                 {emptyCart?
-                <Button color={'rgba(92, 182, 70, 0.5)'} buttonTitle={'Confirmar'}>Confirmar</Button>
-                : 
-                <Button color={'#5CB646'} buttonTitle={'Confirmar'} onClick={handleOrder}>Confirmar</Button>}
+                <Button color={'rgba(92, 182, 70, 0.5)'} buttonTitle={'Confirmar'}/>
+                :
+                <div onClick={handleOrder}>
+                    <Button color={'#5CB646'} buttonTitle={'Confirmar'}/>
+                </div>
+                }
             </ButtonSection>
 
             <Footer color1={'#B8B8B8'} color2={'#5CB646'} color3={'#B8B8B8'}/>
