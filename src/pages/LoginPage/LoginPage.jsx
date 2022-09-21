@@ -8,7 +8,7 @@ import { LoginPageLoading, LoginPageStyle, TextContainer } from "./style";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { goToFeedPage, goToAddressPage } from "../../routes/coordinator";
+import { goToFeedPage, goToEditAddressPage } from "../../routes/coordinator";
 import axios from "axios";
 import { BASE_URL } from "../../constants/constants";
 import { validateEmail, validatePassword } from "../../constants/constants";
@@ -38,7 +38,7 @@ const LoginPage = () => {
         .then((response) => {
             setIsValid(true)
             localStorage.setItem("token", response.data.token)
-            response.data.user.hasAddress ? goToFeedPage(navigate) : goToAddressPage(navigate)
+            response.data.user.hasAddress ? goToFeedPage(navigate) : goToEditAddressPage(navigate)
         })
         .catch((error) => {
             setIsValid(false)
@@ -73,7 +73,7 @@ const LoginPage = () => {
 
                 <form onSubmit={onSubmit}>
                 <Email value={form.email} onChange={onChange} name="email" color="#B8B8B8" isValid={isEmailValid}/>
-                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid}/>
+                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres."/>
                 <Button buttonTitle="Entrar" />
                 </form>
 
@@ -81,8 +81,8 @@ const LoginPage = () => {
 
                 <form onSubmit={onSubmit}>
                 <Email value={form.email} onChange={onChange} name="email" color="#e02020" isValid={isEmailValid}/>
-                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#e02020" isValid={isPasswordValid}/>
-                <p> E-mail e/ou senha incorretos. Tente novamente. </p>
+                <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#e02020" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres."/>
+                {isEmailValid && isPasswordValid ? <p> E-mail e/ou senha incorretos. Tente novamente. </p> : undefined}
                 <Button buttonTitle="Entrar" />
                 </form>
                 
