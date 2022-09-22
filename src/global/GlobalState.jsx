@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import GlobalContext from "../context/GlobalContext"
 import useRequestData from "../hooks/useRequestData"
 import { BASE_URL } from "../constants/constants"
