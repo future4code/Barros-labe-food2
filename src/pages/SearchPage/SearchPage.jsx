@@ -1,13 +1,42 @@
 import React from "react";
 import { Header } from "../../components/Header/Header";
+import { SearchDiv, SearchPageStyle } from "./style"
+import search from '../../images/search.png'
+import { useContext } from "react";
+import GlobalContext from '../../context/GlobalContext'
+import { useForm } from "../../hooks/useForm"
+import RestaurantButtonCard from "../../components/RestaurantButtonCard/RestaurantButtonCard";
+import { Loading } from "../../components/Loading/Loading";
 
 
 const SearchPage = () => {
-    return(
-        <>
+
+    const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
+    const [form, onChange] = useForm({restaurant: ""})
+
+    const filteredRestaurants = dataRestaurants && dataRestaurants.restaurants.map((restaurantSearch)=>{
+        if(restaurantSearch.name.toLowerCase().includes(form.restaurant.toLowerCase())){
+            return <RestaurantButtonCard restaurant={restaurantSearch} key={restaurantSearch.id}/>
+        }
+    })   
+
+    return (
+        <SearchPageStyle>
+
             <Header showArrow={'true'} showTitle={'true'} title={'Busca'}/>
-            <h1>Busca</h1>
-        </>
+
+            <SearchDiv> 
+                <img src={search}/> 
+                <input type="text" name="restaurant" value={form.restaurant} onChange={onChange} placeholder="Restaurante"/> 
+            </SearchDiv>            
+
+            {isLoadingRestaurants && <Loading/>}
+
+            {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
+
+            {!isLoadingRestaurants&&dataRestaurants&&form.restaurant === "" ? <p>Busque por nome de restaurante</p> : filteredRestaurants}
+
+        </SearchPageStyle>
     )
 }
 
