@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import {Header} from '../../components/Header/Header'
-import {ButtonSearch, FeedPageStyle, FiltersContainer} from './style'
+import {ButtonSearch, FeedPageStyle, FiltersContainer, CardsContainer} from './style'
 import search from '../../images/search.png'
 import {Loading} from '../../components/Loading/Loading'
 import GlobalContext from '../../context/GlobalContext'
@@ -42,15 +42,19 @@ const FeedPage = () => {
                 <button onClick={()=>{setCategory("Petiscos")}}>Petiscos</button>
                 <button onClick={()=>{setCategory("Mexicana")}}>Mexicana</button>               
 
-            </FiltersContainer>           
-        
-            {isLoadingRestaurants && <Loading/>}
+            </FiltersContainer>   
 
-            {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
+            <CardsContainer>
+                
+                {isLoadingRestaurants && <Loading/>}
 
-            {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}
+                {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
 
-            {localStorage.getItem("orderInProgress")==="true" && <Order/>}
+                {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}
+
+                {localStorage.getItem("orderInProgress")==="true" && <Order/>}
+                
+            </CardsContainer>               
 
             <Footer color1={'#5CB646'} color2={'#B8B8B8'} color3={'#B8B8B8'}/>                  
 
