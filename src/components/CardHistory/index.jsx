@@ -8,7 +8,7 @@ export function CardHistory() {
 
      const ListHistory = data && data.order.map((item, index) => {
 
-      if (ListHistory="") {
+      if (ListHistory==="") {
         return "Você não realizou nenhum pedido"
       } else {      
         return (

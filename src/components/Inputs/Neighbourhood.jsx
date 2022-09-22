@@ -6,7 +6,7 @@ export const Neighbourhood = ( { value, onChange, color } ) => {
         <InputStyle color={color}>
         <label>Bairro*</label>
         <input name="neighbourhood" value={value} onChange={onChange} placeholder="Bairro" type="text" 
-         required
+        required
         title="Digite o nome com pelo menos 3 carateres"/>
         </InputStyle>
     )

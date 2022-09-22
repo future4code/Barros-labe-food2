@@ -10,8 +10,10 @@ import { AddressPageStyle } from "./style";
 import { Button } from "../../components/Button/Button";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
-import { BASE_URL } from "../../constants/constants";
+import { BASE_URL, token } from "../../constants/constants";
 import { useNavigate } from "react-router-dom";
+import { validateStreet, validateNumber, validateComplement, 
+        validateNeighbourhood, validateCity, validateState } from "../../constants/constants";
 
 const EditAddressPage = () => {
 
@@ -50,6 +52,7 @@ const EditAddressPage = () => {
         setIsCityValid(validateCity(form.city))
         setIsStateValid(validateState(form.state))
         setIsComplementValid(validateComplement(form.complement))
+        localStorage.setItem("token", token)  //trocar o token armazenado
     }
     return(
         <>

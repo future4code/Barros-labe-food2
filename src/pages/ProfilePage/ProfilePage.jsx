@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Header } from "../../components/Header/Header";
 import icon_edit from "../../images/edit.png"
 import { ProfileStyle, AdressStyle, StyleHistory } from "./style";
@@ -15,7 +15,9 @@ const ProfilePage = () => {
 
     const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`)
 
-    const Profile = data && data.map((item, id) => {
+    const [emptyHistory, setEmptyHistory] = useState(false)
+
+    const Profile = data && data.user.map((item, id) => {
         return (
             <ProfileStyle key={id}>
                 <span>{item.name}</span>
@@ -24,15 +26,17 @@ const ProfilePage = () => {
             </ProfileStyle>
 
         )
-        console.log(Profile)
+       
     })
-    const Address = data && data.map((item, id) => {
+    //console.log(Profile)
+
+    const Address = data && data.user.map((item, id) => {
         return (
             <AdressStyle key={index}>
                 <span>{item.address}</span>
             </AdressStyle>
         )
-        console.log(Profile)
+       // console.log(Profile)
     })
 
     return (
@@ -53,7 +57,11 @@ const ProfilePage = () => {
             </>
             <StyleHistory>
             <span>Histórico de pedidos</span>
-                <CardHistory/>
+                {emptyHistory && <p>Carrinho vazio</p>}
+
+                {!emptyHistory && (
+                    <CardHistory/>
+                )}
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>
         </>
