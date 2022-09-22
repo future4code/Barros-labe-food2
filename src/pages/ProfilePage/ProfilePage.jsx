@@ -4,7 +4,6 @@ import icon_edit from "../../images/edit.png"
 import { ProfileStyle, AdressStyle, StyleHistory } from "./style";
 import { CardHistory } from "../../components/CardHistory";
 import { Footer } from "../../components/Footer/Footer";
-import { StyleFooter } from "../../components/Footer/style";
 import * as MyRoutes from "../../routes/coordinator"
 import { useNavigate } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
@@ -53,12 +52,15 @@ const ProfilePage = () => {
                 {!isLoading && !data && error}
             </>
             <StyleHistory>
-                <span>Histórico de pedidos</span>
-                <CardHistory />
+            <span>Histórico de pedidos</span>
+                <CardHistory/>
+                <CardHistory/>
+                <CardHistory/>
+                <CardHistory/>
             </StyleHistory>
-            <StyleFooter>
-                <Footer />
-            </StyleFooter>
+             
+            
+            <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>
         </>
     )
 }
