@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import {Header} from '../../components/Header/Header'
-import {ButtonSearch, FeedPageStyle, FiltersContainer, RestaurantButtonCard} from './style'
+import {ButtonSearch, FeedPageStyle, FiltersContainer} from './style'
 import search from '../../images/search.png'
 import {Loading} from '../../components/Loading/Loading'
 import GlobalContext from '../../context/GlobalContext'
+import { goToSearchPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
-import { goToRestaurantPage, goToSearchPage } from "../../routes/coordinator";
 import { Footer } from "../../components/Footer/Footer"
+import RestaurantButtonCard from "../../components/RestaurantButtonCard/RestaurantButtonCard";
 import { Order } from "../../components/Order/Order";
 
 const FeedPage = () => {
@@ -14,21 +15,12 @@ const FeedPage = () => {
     const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
     const {showOrder, setShowOrder} = useContext(GlobalContext)
     const [category, setCategory] = useState("Hamburguer")
-    const navigate = useNavigate()
+    const navigate = useNavigate()    
 
     const restaurantsList = dataRestaurants && dataRestaurants.restaurants.map((restaurant) =>{
         if(restaurant.category === category){
-        return <RestaurantButtonCard onClick={()=>{goToRestaurantPage(navigate, restaurant.id)}} key={restaurant.id}>
-                <img src={restaurant.logoUrl} alt="Logo do Restaurante"></img>
-                <div>
-                    <p>{restaurant.name}</p>
-                    <article>
-                        <span>{restaurant.deliveryTime} min</span>
-                        <span>Frete R${restaurant.shipping},00</span>
-                    </article>
-                </div>
-            </RestaurantButtonCard>
-        } 
+        return <RestaurantButtonCard restaurant={restaurant} key={restaurant.id}/>            
+        }
     })
     
     return(
