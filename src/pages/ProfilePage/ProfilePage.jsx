@@ -13,7 +13,7 @@ const ProfilePage = () => {
 
     const navigate = useNavigate()
 
-    const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/orders/history`)
+    const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`)
 
     const Profile = data && data.map((item, id) => {
         return (
@@ -24,7 +24,7 @@ const ProfilePage = () => {
             </ProfileStyle>
 
         )
-       // console.log(Profile)
+        console.log(Profile)
     })
     const Address = data && data.map((item, id) => {
         return (
@@ -32,7 +32,7 @@ const ProfilePage = () => {
                 <span>{item.address}</span>
             </AdressStyle>
         )
-      //  console.log(Profile)
+        console.log(Profile)
     })
 
     return (
@@ -54,12 +54,7 @@ const ProfilePage = () => {
             <StyleHistory>
             <span>Histórico de pedidos</span>
                 <CardHistory/>
-                <CardHistory/>
-                <CardHistory/>
-                <CardHistory/>
             </StyleHistory>
-             
-            
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>
         </>
     )

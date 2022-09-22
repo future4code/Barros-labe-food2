@@ -6,7 +6,7 @@ export const State = ( { value, onChange, color } ) => {
         <InputStyle color={color}>
         <label>Estado*</label>
         <input name="state" value={value} onChange={onChange} placeholder="Estado" type="text" 
-        pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$" required
+        required
         title="Digite o nome com pelo menos 3 carateres"/>
         </InputStyle>
     )
