@@ -38,7 +38,7 @@ const ProfilePage = () => {
       
         return (
             <AdressStyle key={index}>
-                <span>{address}</span>
+                <span>{item.address}</span>
             </AdressStyle>
         )
     })
