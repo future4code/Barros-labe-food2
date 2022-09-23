@@ -3,13 +3,10 @@ import styled from "styled-components";
 export const ProfileStyle = styled.div`
   display: flex;
   flex-direction: column;
-  width: 360px;
-  height: 640px;
-
-  span{
+  
+span{
   width: 328px;
   height: 18px;
-  margin: 16px 16px 8px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -18,8 +15,17 @@ export const ProfileStyle = styled.div`
   line-height: normal;
   letter-spacing: -0.39px;
   color: var(--black);
-}
 
+  :nth-child(2){
+    margin: 16px 16px 8px;
+  }
+  :nth-child(3){
+    margin: 2px 16px 8px;
+  }
+  :nth-child(4){
+    margin: 8px 16px 16px;
+  }
+}
 
 img{
   width: 24px;
@@ -50,20 +56,7 @@ export const AdressStyle = styled.div`
   letter-spacing: -0.39px;
   color: var(--greyish);
   }
-span:nth-child(2) {
-  width: 328px;
-  height: 18px;
-  margin: 8px 0 0;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  color: var(--black);
-  
-}
+ 
 img{
   width: 24px;
   height: 24px;
@@ -72,12 +65,13 @@ img{
 }
 `
 export const StyleHistory = styled.div`
-  width: 360px;
-  height: 110px;
-  margin: 8px 0 0;
-  padding: 0 16px;
-   
-  span{
+  width: 328px;
+  height: 18px;
+  padding: 0 16px; 
+  width: 328px;
+  height: 1px;
+
+span{
   width: 328px;
   height: 18px;
   font-family: Roboto;
@@ -89,10 +83,5 @@ export const StyleHistory = styled.div`
   letter-spacing: -0.39px;
   color: var(--black);
   border-bottom: solid 1px var(--black);
-  width: 328px;
 }
-
-
-
-
 `

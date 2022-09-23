@@ -30,7 +30,7 @@ const EditNamePage = () => {
     const [errorText, setErrorText] = useState(undefined)
 
     const EditProfile = () => {
-        axios.post(`${BASE_URL}/signup`, form)
+        axios.put(`${BASE_URL}/profile`, form)
         .then((response) => {
             localStorage.setItem("token", response.token)
             MyRoutes.goToProfilePage(navigate)
