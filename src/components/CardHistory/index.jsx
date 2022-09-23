@@ -5,29 +5,24 @@ import { useState } from "react"
 
 export function CardHistory() {
     
-    const [data, error, isLoading, reload ] = useRequestData(`${BASE_URL}/orders/history`)   
+    const [data, error, isLoading] = useRequestData(`${BASE_URL}/orders/history`)
 
-    const [emptyHistory, setEmptyHistory] = useState(false)
+    const ListHistory = data && data.orders.map((item, index) => {
 
-    const ListHistory = data && data.order.map((item, index) => {
-
-        {emptyHistory && <p>Você não realizou nenhum pedido</p>}
-
-        {!emptyHistory && (
+      return (
             <StyleCardHistory key={index}>
               <p>{item.restaurantName}</p>
               <p>{item.createdAt}</p>
               <p>{item.totalPrice}</p>
-            </StyleCardHistory>
-          )
-        }
+            </StyleCardHistory> )
       })
 
   return (
     <>
         {isLoading && "Carregando..."}
-        {!isLoading && data && ListHistory}
-        {!isLoading && !data && error}
+        {!isLoading && data && data.orders.length > 0 && ListHistory}
+        {!isLoading && data && data.orders.length === 0 && <p>Você ainda não realizou nenhum pedido.</p>}
+        {!isLoading && error && <p>Erro</p>}
     </>
      
   )

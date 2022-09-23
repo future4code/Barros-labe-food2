@@ -7,10 +7,10 @@ import { EditNameStyle } from "./style";
 import { Button } from "../../components/Button/Button";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
-import { BASE_URL } from "../../constants/constants";
+import { BASE_URL, token } from "../../constants/constants";
 import * as MyRoutes from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
-// import { validateCPF, validateEmail, validateName } from "../../constants/constants";
+import { validateCPF, validateEmail, validateName } from "../../constants/constants";
 
 const EditNamePage = () => {
 
@@ -19,8 +19,7 @@ const EditNamePage = () => {
     const [form, onChange] = useForm({
         name: "",
         email: "",
-        cpf: "",
-        password: "",
+        cpf: ""
     })
 
     const [isValid, setIsValid] = useState(true)
@@ -30,7 +29,11 @@ const EditNamePage = () => {
     const [errorText, setErrorText] = useState(undefined)
 
     const EditProfile = () => {
-        axios.put(`${BASE_URL}/profile`, form)
+        axios.put(`${BASE_URL}/profile`, form, {
+            headers: {
+                auth: token
+            }
+        })
         .then((response) => {
             localStorage.setItem("token", response.token)
             MyRoutes.goToProfilePage(navigate)
@@ -46,7 +49,7 @@ const EditNamePage = () => {
         setIsEmailValid(validateEmail(form.email))
         setIsCPFValid(validateCPF(form.cpf))
         setIsNameValid(validateName(form.name))
-        isEmailValid && isCPFValid && isNameValid  && EditProfile()
+        isEmailValid && isCPFValid && isNameValid && EditProfile()
     }
     return(
         <>
@@ -58,7 +61,7 @@ const EditNamePage = () => {
                 <Name name="name" value={form.name} onChange={onChange} color="#B8B8B8" isValid={isNameValid}/>
                 <Email name="email" value={form.email} onChange={onChange} color="#B8B8B8" isValid={isEmailValid}/>
                 <CPF name="cpf" value={form.cpf} onChange={onChange} color="#B8B8B8" isValid={isCPFValid}/>
-                <Button type="submit" buttonTitle="SALVAR"/>
+                <Button type="submit" color="#5CB646" buttonTitle="SALVAR"/>
                 </form>
                 
                 : 
@@ -67,8 +70,8 @@ const EditNamePage = () => {
                 <Name name="name" value={form.name} onChange={onChange} color="#e02020" isValid={isNameValid}/>
                 <Email name="email" value={form.email} onChange={onChange} color="#e02020" isValid={isEmailValid}/>
                 <CPF name="cpf" value={form.cpf} onChange={onChange} color="#e02020" isValid={isCPFValid}/>
-                <p>{errorText}.</p>
-                <Button type="submit" buttonTitle="SALVAR"/>
+                {isEmailValid && isCPFValid && isNameValid ? <p>{errorText}.</p> : undefined}
+                <Button type="submit" color="#5CB646" buttonTitle="SALVAR"/>
                 </form>}
         </EditNameStyle>
         </>

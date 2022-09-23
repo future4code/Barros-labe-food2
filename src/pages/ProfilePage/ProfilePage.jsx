@@ -15,33 +15,17 @@ const ProfilePage = () => {
 
     const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`)
 
-    const Profile = data && data.user.map((item, id) => {
-
-    // const Profile = () => {                              TENTATIVA DE DESESTRUTURAR OBJETO
-    //         const  {name, email, cpf} = data.user
-
-        return (
-            <ProfileStyle key={id}>
-                <span>{name}</span>
-                <span>{email}</span>
-                <span>{cpf}</span>
+    const Profile = data &&
+            <ProfileStyle>
+                <span>{data.user.name}</span>
+                <span>{data.user.email}</span>
+                <span>{data.user.cpf}</span>
             </ProfileStyle>
 
-        )
-       
-    })   
-
-     const Address = data && data.map((item, id) => {
-      
-        // const Address = () => {   
-        //     const  {address} = data.user          TENTATIVA DE DESESTRUTURAR OBJETO
-      
-        return (
-            <AdressStyle key={index}>
-                <span>{item.address}</span>
+     const Address = data &&
+            <AdressStyle>
+                <span>{data.user.address}</span>
             </AdressStyle>
-        )
-    })
     
     
     return (
@@ -60,11 +44,12 @@ const ProfilePage = () => {
                 {!isLoading && data && Address}
                 {!isLoading && !data && error}
             </>
+
             <StyleHistory>
             <span>Histórico de pedidos</span>
                 <CardHistory/>
             </StyleHistory>
-            <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>
+            <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>  
         </>
     )
 }
