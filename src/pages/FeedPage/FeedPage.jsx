@@ -15,6 +15,7 @@ const FeedPage = () => {
     const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
     const {showOrder, setShowOrder} = useContext(GlobalContext)
     const [category, setCategory] = useState("")
+
     const navigate = useNavigate()    
 
     const restaurantsList = dataRestaurants && dataRestaurants.restaurants.map((restaurant) =>{
