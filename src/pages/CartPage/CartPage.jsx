@@ -1,13 +1,41 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Header } from "../../components/Header/Header";
-import {Container, Address, Payment, Restaurant, Paragraph, Footer} from './style'
-import {BsHouseDoor, BsCart3, BsPerson} from 'react-icons/all'
+import { Footer } from "../../components/Footer/Footer";
+import { Button } from "../../components/Button/Button";
+import {Container, Address, Payment, Restaurant, Paragraph, ButtonSection} from './style'
 import { CartCard } from "../../components/CartCard/CartCard";
+import GlobalContext from "../../context/GlobalContext";
 
 
 const CartPage = () => {
     const [emptyCart, setEmptyCart] = useState(false)
     const [paymentType, setPaymentType] = useState("")
+    const {showOrder, setShowOrder} = useContext(GlobalContext)
+
+    
+    const finishOrder = () => {
+        localStorage.setItem("orderInProgress", "false")
+        location.reload()
+    }
+
+    const handleOrder = () => {
+        // https://us-central1-missao-newton.cloudfunctions.net/{{appName}}/restaurants/:restaurantId/order
+        //headers: auth token
+        /*body: {
+            "products": [{
+                "id": "CnKdjU6CyKakQDGHzNln",
+                "quantity": 10
+            }, {
+                "quantity": 1,
+                "id": "KJqMl2DxeShkSBevKVre"
+            }],
+            "paymentMethod": "creditcard"
+        }*/
+
+        //axios.post(url, body, headers)
+        localStorage.setItem("orderInProgress", "true")
+        setTimeout(() => finishOrder(), 10000)
+    }
 
     return(
         <Container>
@@ -49,14 +77,17 @@ const CartPage = () => {
                 </form>
             </Payment>
 
-            <Footer>
-                <button>Confirmar</button>
-                <div>
-                    <BsHouseDoor/>
-                    <BsCart3/>
-                    <BsPerson/>
+            <ButtonSection>
+                {emptyCart?
+                <Button color={'rgba(92, 182, 70, 0.5)'} buttonTitle={'Confirmar'}/>
+                :
+                <div onClick={handleOrder}>
+                    <Button color={'#5CB646'} buttonTitle={'Confirmar'}/>
                 </div>
-            </Footer>
+                }
+            </ButtonSection>
+
+            <Footer color1={'#B8B8B8'} color2={'#5CB646'} color3={'#B8B8B8'}/>
         </Container>
     )
 }

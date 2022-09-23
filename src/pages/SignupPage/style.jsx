@@ -13,6 +13,13 @@ export const SignupPageStyle = styled.div`
         margin: 14px 0 16px;
         object-fit: contain;
     }
+
+    form > p {
+        margin: 0 32px;
+        letter-spacing: -0.29px;
+        font-size: 12px;
+        color: #e02020;
+    }
 `
 
 export const TextContainer = styled.div`

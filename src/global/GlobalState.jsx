@@ -1,10 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import GlobalContext from "../context/GlobalContext"
+import useRequestData from "../hooks/useRequestData"
+import { BASE_URL } from "../constants/constants"
 
 const GlobalState = ({children}) => {
-    let oi = 'oi'
+
+    const [dataRestaurants, errorRestaurants, isLoadingRestaurants, reload, setReload] = useRequestData(`${BASE_URL}/restaurants`)
+    const [productCart, setProductCart]=useState([]);
     return (
-        <GlobalContext.Provider value={oi}>
+        <GlobalContext.Provider value={{dataRestaurants, errorRestaurants, isLoadingRestaurants}}>
             {children}
         </GlobalContext.Provider>
     )

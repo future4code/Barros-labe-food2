@@ -1,25 +1,17 @@
-export const goToAddressPage = (navigate) =>{
-    navigate("/endereco")
-}
-
-export const goToCartPage = (navigate) =>{
-    navigate("/carrinho")
-}
-
-export const goToEditProfilePage = (navigate) =>{
-    navigate("/editar-perfil")
-}
-
-export const goToFeedPage = (navigate) =>{
-    navigate("/home")
-}
-
 export const goToLoginPage = (navigate) =>{
     navigate("/login")
 }
 
-export const goToOrderHistoryPage = (navigate) =>{
-    navigate("/historico-pedidos")
+export const goToEditAddressPage = (navigate) =>{
+    navigate("/editar-endereco")
+}
+
+export const goToEditNamePage = (navigate) =>{
+    navigate("/editar-nome")
+}
+
+export const goToFeedPage = (navigate) =>{
+    navigate("/home")
 }
 
 export const goToProfilePage = (navigate) =>{
@@ -37,4 +29,14 @@ export const goToSearchPage = (navigate) =>{
 export const goToSignupPage = (navigate) =>{
     navigate("/cadastro")
 }
+
+export const goToCartPage = (navigate) =>{
+    navigate("/carrinho")
+}
+
+
+
+
+
+
 

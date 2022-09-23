@@ -1,38 +1,59 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {Header} from '../../components/Header/Header'
-import {ButtonSearch, CardsContainer, FeedPageStyle, FiltersContainer, RestaurantCard} from './style'
+import {ButtonSearch, FeedPageStyle, FiltersContainer} from './style'
 import search from '../../images/search.png'
+import {Loading} from '../../components/Loading/Loading'
+import GlobalContext from '../../context/GlobalContext'
+import { goToSearchPage } from "../../routes/coordinator";
+import { useNavigate } from "react-router-dom";
+import { Footer } from "../../components/Footer/Footer"
+import RestaurantButtonCard from "../../components/RestaurantButtonCard/RestaurantButtonCard";
+import { Order } from "../../components/Order/Order";
 
 const FeedPage = () => {
-    return(        
+
+    const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
+    const {showOrder, setShowOrder} = useContext(GlobalContext)
+    const [category, setCategory] = useState("Hamburguer")
+    const navigate = useNavigate()    
+
+    const restaurantsList = dataRestaurants && dataRestaurants.restaurants.map((restaurant) =>{
+        if(restaurant.category === category){
+        return <RestaurantButtonCard restaurant={restaurant} key={restaurant.id}/>            
+        }
+    })
+    
+    return(
         <FeedPageStyle>
+
             <Header showArrow={'false'} showTitle={'true'} title={'FutureEats'}/>
-            <ButtonSearch><img src={search}/><p>Restaurante</p></ButtonSearch>
+
+            <ButtonSearch onClick={()=>{goToSearchPage(navigate)}}><img src={search}/><p>Restaurante</p></ButtonSearch>
+
             <FiltersContainer>
-                <nav>
-                    <a>Burger</a>
-                    <a>Asiática</a>
-                    <a>Árabe</a>
-                    <a>Italiana</a>
-                    <a>Sorvetes</a>
-                    <a>Carnes</a>
-                    <a>Baiana</a>
-                    <a>Petiscos</a>
-                    <a>Mexicana</a>
-                </nav>
-            </FiltersContainer>
-            <CardsContainer>
-                <RestaurantCard>
-                    <img src="https://i2.wp.com/3talheres.com.br/wp-content/uploads/2019/02/beirute_habibs.jpg?fit=850%2C600&ssl=1"></img>
-                    <div>
-                        <p>Habibs</p>
-                        <article>
-                            <span>60 min</span>
-                            <span>Frete R$6,00</span>
-                        </article>
-                    </div>
-                </RestaurantCard>
-            </CardsContainer>
+                
+                <button onClick={()=>{setCategory("Hamburguer")}}>Burger</button>
+                <button onClick={()=>{setCategory("Asiática")}}>Asiática</button>
+                <button onClick={()=>{setCategory("Árabe")}}>Árabe</button>
+                <button onClick={()=>{setCategory("Italiana")}}>Italiana</button>
+                <button onClick={()=>{setCategory("Sorvetes")}}>Sorvetes</button>
+                <button onClick={()=>{setCategory("Carnes")}}>Carnes</button>
+                <button onClick={()=>{setCategory("Baiana")}}>Baiana</button>
+                <button onClick={()=>{setCategory("Petiscos")}}>Petiscos</button>
+                <button onClick={()=>{setCategory("Mexicana")}}>Mexicana</button>               
+
+            </FiltersContainer>           
+        
+            {isLoadingRestaurants && <Loading/>}
+
+            {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
+
+            {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}
+
+            {localStorage.getItem("orderInProgress")==="true" && <Order/>}
+
+            <Footer color1={'#5CB646'} color2={'#B8B8B8'} color3={'#B8B8B8'}/>                  
+
         </FeedPageStyle>
     )
 }

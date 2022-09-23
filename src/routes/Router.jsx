@@ -16,13 +16,13 @@ const Router = () => {
             <Routes>
                 <Route index element= {<LoginPage/>}/>
                 <Route path={"/editar-endereco"} element= {<EditAddressPage/>}/>
-                <Route path={"/carrinho"} element= { <CartPage/> }/>
                 <Route path={"/editar-nome"} element= {<EditNamePage/>}/>
                 <Route path={"/home"} element= {<FeedPage/>}/>
                 <Route path={"/meu-perfil"} element= {<ProfilePage/>}/>
                 <Route path={"/restaurante/:restauranteId"} element= {<RestaurantPage/>}/>
                 <Route path={"/busca"} element= {<SearchPage/>}/>
                 <Route path={"/cadastro"} element= {<SignupPage/>}/>
+                <Route path={"/carrinho"} element= { <CartPage/> }/>
             </Routes>        
         </BrowserRouter>
     )

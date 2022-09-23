@@ -7,10 +7,20 @@ import logoblack from '../../images/logo-black.png';
 import { LoginPageLoading, LoginPageStyle, TextContainer } from "./style";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
+import { useNavigate } from "react-router-dom";
+import { goToFeedPage, goToEditAddressPage } from "../../routes/coordinator";
+import axios from "axios";
+import { BASE_URL } from "../../constants/constants";
+import { validateEmail, validatePassword } from "../../constants/constants";
 
 const LoginPage = () => {
 
     const [loading, setLoading] = useState(true)
+    const [isValid, setIsValid] = useState(true)
+    const [isEmailValid, setIsEmailValid] = useState(true)
+    const [isPasswordValid, setIsPasswordValid] = useState(true)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         setTimeout(() => {
@@ -23,8 +33,23 @@ const LoginPage = () => {
         password: ""
     })
 
+    const Login = () => {
+        axios.post(`${BASE_URL}/login`, form)
+        .then((response) => {
+            setIsValid(true)
+            localStorage.setItem("token", response.data.token)
+            response.data.user.hasAddress ? goToFeedPage(navigate) : goToEditAddressPage(navigate)
+        })
+        .catch((error) => {
+            setIsValid(false)
+        })
+    }
+
     const onSubmit = (e) => {
         e.preventDefault()
+        setIsEmailValid(validateEmail(form.email))
+        setIsPasswordValid(validatePassword(form.password))
+        isEmailValid && isPasswordValid && Login()
     }
 
     return (
@@ -43,11 +68,26 @@ const LoginPage = () => {
                 <TextContainer>
                     <p>Entrar</p>
                 </TextContainer>
+
+                {isValid ? 
+
                 <form onSubmit={onSubmit}>
-                    <Email value={form.email} onChange={onChange} />
-                    <Password value={form.password} onChange={onChange} name="email" label="Senha*" placeholder="Mínimo 6 caracteres"/>
-                    <Button buttonTitle="Entrar" />
+                    <Email value={form.email} onChange={onChange} name="email" color="#B8B8B8" isValid={isEmailValid}/>
+                    <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres."/>
+                    <Button color={'#5cb646'} buttonTitle="Entrar" />
                 </form>
+
+                :
+
+                <form onSubmit={onSubmit}>
+                    <Email value={form.email} onChange={onChange} name="email" color="#e02020" isValid={isEmailValid}/>
+                    <Password value={form.password} onChange={onChange} name="password" label="Senha*" placeholder="Mínimo 6 caracteres" color="#e02020" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres."/>
+                    {isEmailValid && isPasswordValid ? <p> E-mail e/ou senha incorretos. Tente novamente. </p> : undefined}
+                    <Button color={'#5cb646'} buttonTitle="Entrar" />
+                </form>
+                
+                }
+
                 <TextContainer>
                    <Link to="/cadastro"> <p>Não possui cadastro? Clique aqui.</p> </Link>
                 </TextContainer>

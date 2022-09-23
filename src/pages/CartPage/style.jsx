@@ -76,36 +76,7 @@ export const Restaurant = styled.section `
     }
 `
 
-export const Footer = styled.section `
-    position: fixed;
-    bottom: 0;
-    button {
-        display: block;
-        margin: 0 auto;
-        width: 328px;
-        height: 42px;
-        border: none;
-        border-radius: 2px;
-        background-color: var(--mid-green);
-    }
-    div {
-        display: flex;
-        justify-content: center;
-        border-top: 2px solid lightgrey;
-        margin-top: 20px;
-        svg {
-            width: 132px;
-            height: 60px;
-            padding: 12px 40px;
-            :nth-child(1) {
-                color: #c2c1c1;
-            }
-            :nth-child(2) {
-                color: rgb(92, 182, 70);
-            }
-            :nth-child(3) {
-                color: #c2c1c1;
-            }
-        }
-    }
+export const ButtonSection = styled.div `
+    position: absolute;
+    bottom: 65px;
 `
