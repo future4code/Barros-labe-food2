@@ -31,6 +31,11 @@ export const SearchDiv = styled.div`
         font-size: 16px;
         height: 51px;
         width: 400px;
+
+        :focus{
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }
     }
 `
 
