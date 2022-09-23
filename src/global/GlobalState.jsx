@@ -7,6 +7,7 @@ const GlobalState = ({children}) => {
 
     const [dataRestaurants, errorRestaurants, isLoadingRestaurants, reload, setReload] = useRequestData(`${BASE_URL}/restaurants`)
     const [productCart, setProductCart]=useState([]);
+
     return (
         <GlobalContext.Provider value={{dataRestaurants, errorRestaurants, isLoadingRestaurants}}>
             {children}

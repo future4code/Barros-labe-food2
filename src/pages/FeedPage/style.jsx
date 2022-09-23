@@ -7,6 +7,15 @@ export const FeedPageStyle = styled.div`
     align-items: center;
 `
 
+export const CardsContainer = styled.main`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 60px;
+`
+
 export const ButtonSearch = styled.button`
     display: flex;
     align-items: center;

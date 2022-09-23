@@ -42,6 +42,7 @@ const FeedPage = () => {
                 <button onClick={()=>{setCategory("Petiscos")}}>Petiscos</button>
                 <button onClick={()=>{setCategory("Mexicana")}}>Mexicana</button>               
 
+
             </FiltersContainer>           
         
             {isLoadingRestaurants && <Loading/>}
@@ -51,6 +52,7 @@ const FeedPage = () => {
             {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}
 
             {localStorage.getItem("orderInProgress")==="true" && <Order/>}
+
 
             <Footer color1={'#5CB646'} color2={'#B8B8B8'} color3={'#B8B8B8'}/>                  
 
