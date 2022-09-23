@@ -14,28 +14,38 @@ import { BASE_URL, token } from "../../constants/constants";
 import { useNavigate } from "react-router-dom";
 import { validateStreet, validateNumber, validateComplement, 
         validateNeighbourhood, validateCity, validateState } from "../../constants/constants";
+import { goToProfilePage } from "../../routes/coordinator";
 
 const EditAddressPage = () => {
 
     const navigate = useNavigate()
 
     const [form, onChange] = useForm({
-        street: "", number: "",
-        complement: "",  district: "",
-        city: "", state: "",
+        street: "", 
+        number: "", 
+        neighbourhood: "",
+        city: "", 
+        state: "",
+        complement: ""
     })
 
     const [isValid, setIsValid] = useState(true)
-    const [isStreetValid, setIsStreetValid, isNumberValid, setIsNumberValid,
-           isComplementValid, setIsComplementValid, isNeighbourhoodValid, setIsNeighbourhoodValid,
-           isCityValid, setIsCityValid, isStateValid, setIsStateValid  ] = useState(true)
+    const [isStreetValid, setIsStreetValid] = useState(true)
+    const [isNumberValid, setIsNumberValid] = useState(true)
+    const [isComplementValid, setIsComplementValid] = useState(true)
+    const [isNeighbourhoodValid, setIsNeighbourhoodValid] = useState(true)
+    const [isCityValid, setIsCityValid] = useState(true)
+    const [isStateValid, setIsStateValid] = useState(true)
     
     const [errorText, setErrorText] = useState(undefined)
 
     const EditAddress = () => {
-        axios.put(`${BASE_URL}/address`, form)
+        axios.put(`${BASE_URL}/address`, form, { headers: {
+            "auth": token
+        }})
         .then((response) => {
-            localStorage.setItem("token", response.token)
+            setIsValid(true)
+            localStorage.setItem("token", response.data.token)
             goToProfilePage(navigate)
         })
         .catch((error) => {
@@ -52,12 +62,14 @@ const EditAddressPage = () => {
         setIsCityValid(validateCity(form.city))
         setIsStateValid(validateState(form.state))
         setIsComplementValid(validateComplement(form.complement))
-        localStorage.setItem("token", token)  //trocar o token armazenado
+        isStateValid && isNumberValid && isComplementValid && isNeighbourhoodValid && isCityValid && isStateValid && EditAddress()
     }
+
     return(
         <>
         <Header showArrow={'true'} showTitle={'true'} title={'Endereço'}/>
         <AddressPageStyle>
+
             {isValid ?
 
                 <form onSubmit={onSubmit}>
@@ -67,7 +79,7 @@ const EditAddressPage = () => {
                 <Neighbourhood name="neighbourhood" value={form.neighbourhood} onChange={onChange} color="#B8B8B8" isValid={isNeighbourhoodValid}/>
                 <City name="city" value={form.city} onChange={onChange} color="#B8B8B8" isValid={isCityValid}/>
                 <State name="state" value={form.state} onChange={onChange} color="#B8B8B8" isValid={isStateValid}/>
-                <Button type="submit" buttonTitle="Salvar"/>
+                <Button type="submit" color="#5CB646"  buttonTitle="Salvar"/>
                 </form>
                 
                 : 
@@ -80,7 +92,7 @@ const EditAddressPage = () => {
                 <City name="city" value={form.city} onChange={onChange} color="#e02020" isValid={isCityValid}/>
                 <State name="state" value={form.state} onChange={onChange} color="#e02020" isValid={isStateValid}/>
                 <p>{errorText}.</p>
-                <Button type="submit" buttonTitle="Salvar"/>
+                <Button type="submit" color="#5CB646" buttonTitle="Salvar"/>
                 </form>}
         </AddressPageStyle>
         </>
