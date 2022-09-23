@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import {Header} from '../../components/Header/Header'
 import {ButtonSearch, FeedPageStyle, FiltersContainer, CardsContainer} from './style'
->>>>>>> ea3ffe7a2f2be707948029e837c0962eac56304e
 import search from '../../images/search.png'
 import {Loading} from '../../components/Loading/Loading'
 import GlobalContext from '../../context/GlobalContext'
