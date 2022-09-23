@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const DivModal = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
+ width: 100vw;
+  /* height: 100vh; */
+  position: absolute; 
+  padding: 30%;
+  /* top: 0; */
   left: 0;
   z-index: 20000;
   background-color: rgba(0, 0, 0, 0.5);
@@ -41,10 +42,11 @@ export const DivContainer = styled.div`
     background-color: transparent;
   }
 
-  input {
-    text-align: center;
-    margin-top: 20%;
-    font-size: 20px;
+  select {
+    
+    margin-top: 10%; 
+    font-size: 16px;
+    width: 70vw;
     height: 8vh;
     border-radius: 5px;
   }
