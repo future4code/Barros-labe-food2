@@ -22,7 +22,7 @@ export function CardHistory() {
           )
         }
       })
-console.log(`resultado ${[ListHistory]}`)
+
   return (
     <>
         {isLoading && "Carregando..."}

@@ -26,16 +26,16 @@ const ProfilePage = () => {
         )
        
     })
-    //console.log(Profile)
+   
 
-    const Address = data && data.user.map((item, id) => {
+    const Address = data && data.map((item, id) => {
         return (
             <AdressStyle key={index}>
                 <span>{item.address}</span>
             </AdressStyle>
         )
     })
-    console.log(`Endereço ${[Address]}`)
+    
     
     return (
         <>
