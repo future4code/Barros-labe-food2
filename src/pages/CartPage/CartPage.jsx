@@ -8,10 +8,9 @@ import GlobalContext from "../../context/GlobalContext";
 
 
 const CartPage = () => {
-    const [emptyCart, setEmptyCart] = useState(false)
     const [paymentType, setPaymentType] = useState("")
     const {showOrder, setShowOrder} = useContext(GlobalContext)
-
+    const [confirmButton, setConfirmButton] = useState(true)
     
     const finishOrder = () => {
         localStorage.setItem("orderInProgress", "false")
@@ -34,9 +33,10 @@ const CartPage = () => {
 
         //axios.post(url, body, headers)
         localStorage.setItem("orderInProgress", "true")
+        localStorage.removeItem("ProductCart")
         setTimeout(() => finishOrder(), 10000)
     }
-
+    console.log(JSON.parse(localStorage.getItem("ProductCart")))
     return(
         <Container>
             <Header showArrow={'false'} showTitle={'true'} title={'Meu carrinho'}/>
@@ -45,9 +45,9 @@ const CartPage = () => {
                 <p></p>
             </Address>
 
-            {emptyCart && <Paragraph>Carrinho vazio</Paragraph>}
+            {JSON.parse(localStorage.getItem("ProductCart")).length === 0 && <Paragraph>Carrinho vazio</Paragraph>}
 
-            {!emptyCart && (
+            {JSON.parse(localStorage.getItem("ProductCart")).length > 0 && (
                 <>
                     <Restaurant>
                         <p>Nome do restaurante</p>
@@ -78,13 +78,14 @@ const CartPage = () => {
             </Payment>
 
             <ButtonSection>
-                {emptyCart?
+                {JSON.parse(localStorage.getItem("ProductCart")).length === 0?
                 <Button color={'rgba(92, 182, 70, 0.5)'} buttonTitle={'Confirmar'}/>
                 :
                 <div onClick={handleOrder}>
                     <Button color={'#5CB646'} buttonTitle={'Confirmar'}/>
                 </div>
                 }
+
             </ButtonSection>
 
             <Footer color1={'#B8B8B8'} color2={'#5CB646'} color3={'#B8B8B8'}/>
