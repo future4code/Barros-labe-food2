@@ -17,6 +17,7 @@ const ProfilePage = () => {
 
     const Profile = data &&
             <ProfileStyle>
+                <img onClick={() => MyRoutes.goToEditNamePage(navigate)} src={icon_edit} alt="Icone de edição"></img>
                 <span>{data.user.name}</span>
                 <span>{data.user.email}</span>
                 <span>{data.user.cpf}</span>
@@ -24,29 +25,28 @@ const ProfilePage = () => {
 
      const Address = data &&
             <AdressStyle>
+                <img onClick={() => MyRoutes.goToEditAddressPage(navigate)} src={icon_edit} alt="Icone de edição"></img>
+                <span>Endereço cadastrado</span>
                 <span>{data.user.address}</span>
             </AdressStyle>
     
     
     return (
         <>
-            <Header showArrow={'false'} showTitle={'true'} title={"Meu Perfil"} />
+            <Header showArrow={'false'} showTitle={'true'} title={"Meu perfil"} />
             <>
-                <img onClick={() => MyRoutes.goToEditNamePage(navigate)} src={icon_edit} alt="Icone de edição"></img>
                 {isLoading && "Carregando..."}
                 {!isLoading && data && Profile}
                 {!isLoading && !data && error}
             </>
             <>
-                <span>Endereço Cadastrado</span>
-                <img onClick={() => MyRoutes.goToEditAddressPage(navigate)} src={icon_edit} alt="Icone de edição"></img>
                 {isLoading && "Carregando..."}
                 {!isLoading && data && Address}
                 {!isLoading && !data && error}
             </>
 
             <StyleHistory>
-            <span>Histórico de pedidos</span>
+            <h4>Histórico de pedidos</h4>
                 <CardHistory/>
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>  

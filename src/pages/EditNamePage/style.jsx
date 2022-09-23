@@ -4,7 +4,6 @@ export const EditNameStyle = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0 0 12px;
-    align-items: center;
     justify-content: center;
     img {
         width: 104px;

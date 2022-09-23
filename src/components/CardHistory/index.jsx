@@ -21,7 +21,7 @@ export function CardHistory() {
     <>
         {isLoading && "Carregando..."}
         {!isLoading && data && data.orders.length > 0 && ListHistory}
-        {!isLoading && data && data.orders.length === 0 && <p>Você ainda não realizou nenhum pedido.</p>}
+        {!isLoading && data && data.orders.length === 0 && <p>Você não realizou nenhum pedido.</p>}
         {!isLoading && error && <p>Erro</p>}
     </>
      
