@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import React, { useContext, useEffect, useState } from "react";
-import {Header} from '../../components/Header/Header'
-import {ButtonSearch, FeedPageStyle, FiltersContainer} from './style'
-=======
 import React, { useContext, useState } from "react";
 import {Header} from '../../components/Header/Header'
 import {ButtonSearch, FeedPageStyle, FiltersContainer, CardsContainer} from './style'
@@ -20,21 +15,15 @@ const FeedPage = () => {
 
     const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
     const {showOrder, setShowOrder} = useContext(GlobalContext)
-<<<<<<< HEAD
-    const [category, setCategory] = useState("Hamburguer")
-=======
     const [category, setCategory] = useState("")
->>>>>>> ea3ffe7a2f2be707948029e837c0962eac56304e
+
     const navigate = useNavigate()    
 
     const restaurantsList = dataRestaurants && dataRestaurants.restaurants.map((restaurant) =>{
         if(restaurant.category === category){
         return <RestaurantButtonCard restaurant={restaurant} key={restaurant.id}/>            
-<<<<<<< HEAD
-=======
         } else if(category === ""){
             return <RestaurantButtonCard restaurant={restaurant} key={restaurant.id}/>   
->>>>>>> ea3ffe7a2f2be707948029e837c0962eac56304e
         }
     })
     
