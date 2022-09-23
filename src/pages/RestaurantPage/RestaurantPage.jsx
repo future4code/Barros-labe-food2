@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Header } from "../../components/Header/Header";
 import CardProductsRestaurantes from "../../components/CardProductsRestaurantes/CardProductsRestaurantes";
 import {
@@ -6,78 +6,82 @@ import {
   DivDetailsRestaurants,
   SpanDetailsRestaurants,
 } from "./style";
-import imgProduct from "../../images/image.jpg";
-import { ButtonAdd, ButtonRemove, PAmount } from "../../components/CardProductsRestaurantes/styled";
 import { useState } from "react";
-import ModalScreen from "../../components/ModalAmout/ModalAmout";
+import { BASE_URL } from "../../constants/constants";
+import useRequestData from "../../hooks/useRequestData";
+
+import { useParams } from "react-router-dom";
+import { Loading } from "../../components/Loading/Loading";
 
 const RestaurantPage = () => {
-  const [visibleModal, setVisibleModal] = useState(false);
-  const [visibleAmout, setVisibleAmout] = useState(false);
-  const [quantidade, setQuantidade] = useState(0);
+  const {id} = useParams(); 
+  console.log(id); 
+  const [arrayProducts, setArrayProducts] = useState([]);
+  const [data, error, isLoading, reload, setReload] = useRequestData(
+    `${BASE_URL}/restaurants/1`
+  );
 
-  const handleAdd = (e) => {
-    setVisibleModal(true);
-    return <>alert("Add sucesso!")</>;
+  const handleAddProduct = (product, quantity) => {
+    const newCart = [...arrayProducts];
+    newCart.push({ ...product, quantity: quantity });
+    setArrayProducts(newCart);
+    localStorage.setItem("ProductCart", JSON.stringify(arrayProducts));
   };
-  const handleRmove = (e) => {
-    setQuantidade(0)
-    setVisibleAmout(false)
-    return <>alert("Add sucesso!")</>;
-  };
-
+  
+  console.log(arrayProducts);
+  
+  const handleRemoveProduct = (product) => {
+    const indexProduct = arrayProducts.findIndex(
+      (item) => item.id === product.id
+      );
+      const newCard = [...arrayProducts];
+      newCard.splice(indexProduct, 1);
+      setArrayProducts(newCard);
+    };
+    
   return (
     <>
       <Header showArrow={"true"} showTitle={"true"} title={"Restaurante"} />
-      
-      <ContainerDetailsRestaurants>
-        {visibleModal ? (
-          <ModalScreen
-            visibleModal={visibleModal}
-            setVisibleModal={setVisibleModal}
-            visibleAmout={visibleAmout}
-            setVisibleAmout={setVisibleAmout}
-            quantidade = {quantidade}
-            setQuantidade={setQuantidade}
+      {isLoading && <Loading />} 
+      {data && (
+        <ContainerDetailsRestaurants>
+          <img
+            className="imageProduct"
+            src={data.restaurant.logoUrl}
+            alt="Logo"
           />
-        ) : null}
-        <img className="imageProduct" src={imgProduct} alt="Restaurante" />
-        <DivDetailsRestaurants>
-          <h4>Bullguer Vila Madalena</h4>
-          <SpanDetailsRestaurants>Burger</SpanDetailsRestaurants>
-          <div>
-            <SpanDetailsRestaurants>50-60 min</SpanDetailsRestaurants>
-            <SpanDetailsRestaurants>Frete R$6,00</SpanDetailsRestaurants>
-          </div>
-          <SpanDetailsRestaurants>
-            R. Fradique Coutinho, 1136 - Vila Madalena
-          </SpanDetailsRestaurants>
-          <h5>Principais</h5>
-          <CardProductsRestaurantes
-            imgProduct={imgProduct}
-            addAmount={visibleAmout ? <PAmount>2</PAmount> : null}
-            nameProduct={"Burguer"}
-            ingredients={"pão,ovo,coentro,queijo,presunto"}
-            cost={"R$20,00"}
-            button={quantidade>0 ? <ButtonRemove onClick={handleRmove}>remover</ButtonRemove>:
-              <ButtonAdd onClick={handleAdd}>adicinar</ButtonAdd> 
-          
-          }
-            />
-          <CardProductsRestaurantes
-            imgProduct={imgProduct}
-            addAmount={<PAmount>3</PAmount>}
-            nameProduct={"Burguer"}
-            ingredients={"pão,ovo,coentro,queijo,presunto"}
-            cost={"R$20,00"}
-            titleButton={"adicionar"}
-            handleButton={handleAdd}
-            />
-
-          <h5>Acompanhamentos</h5>
-        </DivDetailsRestaurants>
-      </ContainerDetailsRestaurants>
-            
+          <DivDetailsRestaurants>
+            <h4>{data.restaurant.name}</h4>
+            <SpanDetailsRestaurants>
+              {data.restaurant.category}
+            </SpanDetailsRestaurants>
+            <div>
+              <SpanDetailsRestaurants>
+                {data.restaurant.deliveryTime}min
+              </SpanDetailsRestaurants>
+              <SpanDetailsRestaurants>
+                Frete R${data.restaurant.shipping},00
+              </SpanDetailsRestaurants>
+            </div>
+            <SpanDetailsRestaurants>
+              {data.restaurant.address}
+            </SpanDetailsRestaurants>
+            {data &&
+              data.restaurant.products.map((product) => {
+                return (
+                  <CardProductsRestaurantes
+                    key={product.id}
+                    product={product}
+                    arrayProducts={arrayProducts}
+                    handleAddProduct={handleAddProduct}
+                    handleRemoveProduct = {handleRemoveProduct}
+                  />
+                );
+              })}
+            <h5>Acompanhamentos</h5>
+          </DivDetailsRestaurants>
+        </ContainerDetailsRestaurants>
+      )}
     </>
   );
 };

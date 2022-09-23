@@ -1,4 +1,5 @@
-import imgProduct from "../../images/image.jpg";
+import { useEffect, useState } from "react";
+import ModalScreen from "../ModalAmout/ModalAmout";
 import {
   ButtonAdd,
   ButtonRemove,
@@ -6,35 +7,71 @@ import {
   DivDetails,
   DivImg,
   DivSpan,
+  PAmount,
   } from "./styled";
-function CardProductsRestaurantes(data) {
-  const {
-    imgProduct,
-    addAmount,
-    nameProduct,
-    ingredients,
-    cost,
-    titleButton,
-    handleButton,
-  } = data;
 
+
+function CardProductsRestaurantes({product, handleAddProduct,handleRemoveProduct,arrayProducts}) {
+   const {
+    photoUrl,
+    name,
+    description,
+    price,
+  } = product;
+  const [visibleModal,setVisibleModal]=useState(false);
+  const [quantity,setQuantity]=useState();
+  
+  const handleAdd = (product) => {
+    setVisibleModal(true);
+    };
+  const handleRemove = (product) => {
+    setVisibleModal(false);
+    handleRemoveProduct(product);  
+  };
+
+  const visibleAmount = (product)=>{
+    let condicion
+    const indexProduct =arrayProducts&&arrayProducts.findIndex(
+      (item) => item.id === product.id
+      );
+      if (indexProduct === -1) {
+        condicion = false
+      }else{
+        condicion = true
+      }
+      return condicion
+  }
+        console.log(visibleAmount(product));    
   return (
+    <>
+     {visibleModal ? (
+          <ModalScreen
+            visibleModal={visibleModal}
+            setVisibleModal={setVisibleModal} 
+            setQuantity={setQuantity}
+            handleAddProduct={handleAddProduct}
+            product={product}            
+          />
+        ) : null}
+    <h5>{product.category}</h5>
     <ContainerProductsRestaurant>
       <DivImg>
-        <img src={imgProduct} alt="Produto" className="ImgProduct" />
+        <img src={photoUrl} alt="Produto" className="ImgProduct" />
       </DivImg>
       <DivDetails>
-        {addAmount}
-        <h4 className="TitleProduct">{nameProduct}</h4>
+      {visibleAmount(product) ? <PAmount>{quantity}</PAmount> : null}
+        <h4 className="TitleProduct">{name}</h4>
         <DivSpan>
-          <span>{ingredients}</span>
+          <span>{description}</span>
         </DivSpan>
         <div className="divButton">
-          <span>{cost}</span>
+          <span>{price}</span>
         </div>
-        {data.button}
+        {visibleAmount(product)?<ButtonRemove onClick={()=>{handleRemove(product)}}>remover</ButtonRemove>:<ButtonAdd onClick={()=>{handleAdd(product)}}>adicionar</ButtonAdd>}
+       {/*  {data.button} */}
       </DivDetails>
     </ContainerProductsRestaurant>
+    </>
   );
 }
 
