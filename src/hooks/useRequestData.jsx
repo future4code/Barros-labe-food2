@@ -22,7 +22,7 @@ const useRequestData = (url) => {
         .catch((er)=>{
             setIsLoading(false)
             setError(er.response.data)
-           // console.log(er.response.data)
+            console.log(er.response.data)
         })
     }, [reload])
 

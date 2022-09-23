@@ -15,8 +15,6 @@ const ProfilePage = () => {
 
     const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`)
 
-    const [emptyHistory, setEmptyHistory] = useState(false)
-
     const Profile = data && data.user.map((item, id) => {
         return (
             <ProfileStyle key={id}>
@@ -36,9 +34,9 @@ const ProfilePage = () => {
                 <span>{item.address}</span>
             </AdressStyle>
         )
-       // console.log(Profile)
     })
-
+    console.log(`Endereço ${[Address]}`)
+    
     return (
         <>
             <Header showArrow={'false'} showTitle={'true'} title={"Meu Perfil"} />
@@ -57,11 +55,7 @@ const ProfilePage = () => {
             </>
             <StyleHistory>
             <span>Histórico de pedidos</span>
-                {emptyHistory && <p>Carrinho vazio</p>}
-
-                {!emptyHistory && (
-                    <CardHistory/>
-                )}
+                <CardHistory/>
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>
         </>
