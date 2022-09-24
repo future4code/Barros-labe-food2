@@ -3,10 +3,10 @@ import { DivContainer, DivModal } from "./styled";
 import { useForm } from "../../hooks/useForm";
 
 const ModalScreen = ({
-  setQuantity,
   setVisibleModal,
   handleAddProduct,
   product,
+  arrayProducts,
 }) => {
   const [form, onChange, clear] = useForm({
     quantity: "",
@@ -14,11 +14,10 @@ const ModalScreen = ({
 
   const handleQuantity = (event) => {
     event.preventDefault();
-    setQuantity(form.quantity);
     setVisibleModal(false);
     handleAddProduct(product, form.quantity);
-  };
-
+    };
+    
   return (
     <DivModal className="modal">
       <DivContainer className="container">
