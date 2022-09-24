@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Header";
 import CardProductsRestaurantes from "../../components/CardProductsRestaurantes/CardProductsRestaurantes";
 import {
@@ -6,11 +6,11 @@ import {
   DivDetailsRestaurants,
   SpanDetailsRestaurants,
 } from "./style";
-import { useState } from "react";
 import { BASE_URL } from "../../constants/constants";
 import useRequestData from "../../hooks/useRequestData";
 import { useParams } from "react-router-dom";
 import { Loading } from "../../components/Loading/Loading";
+
 
 const RestaurantPage = () => {
   const { restauranteId } = useParams();
@@ -18,10 +18,10 @@ const RestaurantPage = () => {
   const [data, error, isLoading, reload, setReload] = useRequestData(
     `${BASE_URL}/restaurants/${restauranteId}`
   );
-
+  
   const handleAddProduct = (product, quantity) => {
     const newCart = [...arrayProducts];
-    newCart.push({ ...product, quantity: quantity });
+    newCart.push({ ...product, quantity: quantity, restaurantId: restauranteId, restaurant: data.restaurant.name, address: data.restaurant.address, time: data.restaurant.deliveryTime, shipping: data.restaurant.shipping });
     setArrayProducts(newCart);
   };
   

@@ -15,6 +15,9 @@ const ProfilePage = () => {
 
     const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`)
 
+    data && localStorage.setItem("address", JSON.stringify(data.user.address))
+    
+
     const Profile = data &&
             <ProfileStyle>
                 <img onClick={() => MyRoutes.goToEditNamePage(navigate)} src={icon_edit} alt="Icone de edição"></img>

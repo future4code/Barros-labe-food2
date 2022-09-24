@@ -7,13 +7,19 @@ export const Container = styled.section `
 `
 
 export const Address = styled.div `
-    height: 76px;
+    height: 80px;
     width: 100vw;
     margin-top: 2px;
     padding: 16px 25px;
     background-color: #eee;
     p {
-        color: var(--greyish);
+        line-height: 25px;
+        :nth-child(1) {
+            color: var(--greyish);
+        }
+        :nth-child(2) {
+            color: black;
+        }
     }
 `
 

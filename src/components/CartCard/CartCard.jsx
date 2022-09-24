@@ -1,22 +1,31 @@
-import React from "react";
-import imgProduct from "../../images/image.jpg";
+import React, {useContext, useState} from "react";
+import GlobalContext from "../../context/GlobalContext";
 import {Container} from './style'
 
-export function CartCard() {
+export function CartCard({img, name, units, description, price}) {
+    const [products, setProducts] = useState(JSON.parse(localStorage.getItem("ProductCart")))
+    const {reload, setReload} = useContext(GlobalContext)
+
+    const handleRemoveItem = () => {
+        const filter = products.filter(product => product.name !== name)
+        localStorage.setItem("ProductCart", JSON.stringify(filter))
+        setReload(!reload)
+    }
+    
     return (
         <Container>
-            <img src={imgProduct} alt={'Imagem do produto'}/>
+            <img src={img} alt={`Imagem do ${name}`}/>
             <section>
                 <div>
-                    <p>Nome produto</p>
-                    <p>2</p>
+                    <p>{name}</p>
+                    <p>{units}</p>
                 </div>
 
-                <span>Descrição do produto, com mais detalhes. Descrição do produto, com mais detalhes.</span>
+                <span>{description}</span>
                 
                 <div>
-                    <strong>R$49,90</strong>
-                    <button>remover</button>
+                    <strong>R${price.toFixed(2)}</strong>
+                    <button onClick={handleRemoveItem}>remover</button>
                 </div>
             </section>
         </Container>

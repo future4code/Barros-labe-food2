@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ModalScreen from "../ModalAmout/ModalAmout";
 import {
   ButtonAdd,
@@ -19,7 +19,7 @@ function CardProductsRestaurantes({
   const { photoUrl, name, description, price } = product;
   const [visibleModal, setVisibleModal] = useState(false);
  
-  const handleAdd = (product) => {
+  const handleAdd = () => {
     setVisibleModal(true);
   };
   const handleRemove = (product) => {

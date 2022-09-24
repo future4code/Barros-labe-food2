@@ -8,8 +8,8 @@ export function Order() {
             <AiOutlineClockCircle/>
             <div>
                 <p>Pedido em andamento</p>
-                <p>Bullguer Vila Madalena</p>
-                <strong>SUBTOTAL R$67,90</strong>
+                <p>{localStorage.getItem("restaurantName")}</p>
+                <strong>SUBTOTAL {localStorage.getItem("price")}</strong>
             </div>
         </OrderStyle>
     )
