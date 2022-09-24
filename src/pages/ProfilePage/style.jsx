@@ -32,6 +32,7 @@ img{
   height: 24px;
   margin: 16px 16px 2px 320px;
   object-fit: contain;
+  position: absolute;
 }
 `
 export const AdressStyle = styled.div`
@@ -43,7 +44,7 @@ export const AdressStyle = styled.div`
   padding: 16px;
   background-color: #eee;
     
-  span:nth-child(1){
+  span:nth-child(2){
   width: 328px;
   height: 18px;
   margin: 0 0 8px;
@@ -62,6 +63,7 @@ img{
   height: 24px;
   margin: 10px 0 10px 304px;
   object-fit: contain;
+  position:absolute;
 }
 `
 export const StyleHistory = styled.div`
@@ -83,5 +85,31 @@ span{
   letter-spacing: -0.39px;
   color: var(--black);
   border-bottom: solid 1px var(--black);
+}
+h4 {
+  width: 328px;
+  margin: 0 0 7px;
+  font-family: Roboto;
+  font-size: 16px;
+  padding-bottom: 8px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  border-bottom: solid 1px var(--black);
+}
+p{
+  text-align: center;
+  margin: 2% 0;
+  width: 328px;
+  margin: 28px 0px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
 }
 `
