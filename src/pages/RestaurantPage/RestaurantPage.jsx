@@ -24,9 +24,7 @@ const RestaurantPage = () => {
     newCart.push({ ...product, quantity: quantity });
     setArrayProducts(newCart);
   };
-
-  console.log(arrayProducts);
-
+  
   const handleRemoveProduct = (product) => {
     const indexProduct = arrayProducts.findIndex(
       (item) => item.id === product.id
