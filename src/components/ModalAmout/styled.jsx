@@ -1,14 +1,27 @@
 import styled from "styled-components";
 
-export const DivModal = styled.div`
+export const DivModalposition = styled.div`
  width: 100vw;
-  /* height: 100vh; */
-  position: absolute; 
+  height: 100vh;
+  position: fixed; 
   padding: 30%;
-  /* top: 0; */
+  top: 0; 
   left: 0;
+  bottom: 0;
   z-index: 20000;
   background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const DivModal = styled.div`
+ width: 100vw;
+  height: 100vh;
+  position: absolute; 
+  padding: 30%;
+  left: 0;
+  bottom: 0;
+  z-index: 20000;
   display: flex;
   justify-content: center;
   align-items: center;
