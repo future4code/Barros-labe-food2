@@ -44,6 +44,47 @@ const RestaurantPage = () => {
     }
   }, []);
 
+  //Fazer um array com todas as categorias sem repetição
+  let categories = []
+  if (data) {
+    let equal
+    for (let i = 0; i < data.restaurant.products.length; i++) {
+      if (i === 0) {
+        categories.push(data.restaurant.products[0].category)
+      } else {
+        for(let c = 0; c < categories.length; c++) {
+          if(data.restaurant.products[i].category !== categories[c]) {
+            equal = false
+          } else {
+            equal = true
+            break
+          }
+        }
+        !equal && categories.push(data.restaurant.products[i].category)
+      }
+    }
+  }
+
+  //Renderizar produtos por categoria
+  const renderData = () => {
+    let result = []
+    for (let i = 0; i < categories.length; i++) {
+      let productsByCategory = data.restaurant.products.filter(product => product.category === categories[i])
+      
+      result.push(<>
+        <h5>{categories[i]}</h5>
+        {productsByCategory.map(item => {
+        return <CardProductsRestaurantes
+          key={item.id}
+          product={item}
+          handleAddProduct={handleAddProduct}
+          handleRemoveProduct={handleRemoveProduct}
+        />})}
+      </>)
+    }
+    return result
+  }
+
   return (
     <>
       <Header showArrow={"true"} showTitle={"true"} title={"Restaurante"} />
@@ -77,23 +118,7 @@ const RestaurantPage = () => {
             <SpanDetailsRestaurants>
               {data.restaurant.address}
             </SpanDetailsRestaurants>
-            {data &&
-              data.restaurant.products.filter((category)=>{
-                return category.category
-              })
-              .map((product) => {
-                return (
-                  <div key={product.id}>
-                    <h5>{product.category}</h5>
-                    <CardProductsRestaurantes
-                      key={product.id}
-                      product={product}
-                      handleAddProduct={handleAddProduct}
-                      handleRemoveProduct={handleRemoveProduct}
-                    />
-                  </div>
-                );
-              })}
+            {data && renderData()}
             </DivDetailsRestaurants>
         </ContainerDetailsRestaurants>
       )}
