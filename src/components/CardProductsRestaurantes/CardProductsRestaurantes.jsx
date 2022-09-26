@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import GlobalContext from "../../context/GlobalContext";
 import ModalScreen from "../ModalAmout/ModalAmout";
 import {
   ButtonAdd,
@@ -14,12 +15,12 @@ function CardProductsRestaurantes({
   product,
   handleAddProduct,
   handleRemoveProduct,
-  arrayProducts,
-}) {
+  }) {
+  const {arrayProducts, setArrayProducts}=useContext(GlobalContext)
   const { photoUrl, name, description, price } = product;
   const [visibleModal, setVisibleModal] = useState(false);
  
-  const handleAdd = () => {
+  const handleAdd = (product) => {
     setVisibleModal(true);
   };
   const handleRemove = (product) => {
