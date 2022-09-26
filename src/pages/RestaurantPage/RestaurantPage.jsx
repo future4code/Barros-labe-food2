@@ -71,7 +71,7 @@ const RestaurantPage = () => {
     for (let i = 0; i < categories.length; i++) {
       let productsByCategory = data.restaurant.products.filter(product => product.category === categories[i])
       
-      result.push(<>
+      result.push(<div key={categories[i]}>
         <h5>{categories[i]}</h5>
         {productsByCategory.map(item => {
         return <CardProductsRestaurantes
@@ -80,7 +80,7 @@ const RestaurantPage = () => {
           handleAddProduct={handleAddProduct}
           handleRemoveProduct={handleRemoveProduct}
         />})}
-      </>)
+      </div>)
     }
     return result
   }
