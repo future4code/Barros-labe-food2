@@ -1,9 +1,9 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import GlobalContext from "../../context/GlobalContext";
 import {Container} from './style'
 
 export function CartCard({img, name, units, description, price}) {
-    const [products, setProducts] = useState(JSON.parse(localStorage.getItem("ProductCart")))
+    const products = JSON.parse(localStorage.getItem("ProductCart"))
     const {reload, setReload} = useContext(GlobalContext)
 
     const handleRemoveItem = () => {
@@ -24,7 +24,7 @@ export function CartCard({img, name, units, description, price}) {
                 <span>{description}</span>
                 
                 <div>
-                    <strong>R${price.toFixed(2)}</strong>
+                    <strong>R${price.toFixed(2).toString().replace(".", ",")}</strong>
                     <button onClick={handleRemoveItem}>remover</button>
                 </div>
             </section>

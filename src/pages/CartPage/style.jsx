@@ -4,21 +4,24 @@ export const Container = styled.section `
     display: flex;
     flex-direction: column;
     align-items: center;
-`
-
-export const Address = styled.div `
-    height: 80px;
+    height: 82vh;
     width: 100vw;
-    margin-top: 2px;
-    padding: 16px 25px;
-    background-color: #eee;
-    p {
-        line-height: 25px;
-        :nth-child(1) {
-            color: var(--greyish);
-        }
-        :nth-child(2) {
-            color: black;
+    overflow-y: auto;
+    overflow-x: hidden;
+    address {
+        height: 80px;
+        width: 100vw;
+        margin-top: 2px;
+        padding: 16px 25px;
+        background-color: #eee;
+        p {
+            line-height: 25px;
+            :nth-child(1) {
+                color: var(--greyish);
+            }
+            :nth-child(2) {
+                color: black;
+            }
         }
     }
 `
@@ -84,5 +87,6 @@ export const Restaurant = styled.section `
 
 export const ButtonSection = styled.div `
     position: absolute;
-    bottom: 65px;
+    bottom: 60px;
+    margin-left: 8px;
 `
