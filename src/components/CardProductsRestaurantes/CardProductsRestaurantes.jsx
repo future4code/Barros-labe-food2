@@ -19,7 +19,7 @@ function CardProductsRestaurantes({
   const {arrayProducts, setArrayProducts}=useContext(GlobalContext)
   const { photoUrl, name, description, price } = product;
   const [visibleModal, setVisibleModal] = useState(false);
-  console.log(product)
+  
   const handleAdd = (product) => {
     setVisibleModal(true);
   };
