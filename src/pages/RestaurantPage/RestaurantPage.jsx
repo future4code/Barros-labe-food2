@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Header } from "../../components/Header/Header";
 import CardProductsRestaurantes from "../../components/CardProductsRestaurantes/CardProductsRestaurantes";
 import {
@@ -14,16 +14,17 @@ import { useParams } from "react-router-dom";
 import { Loading } from "../../components/Loading/Loading";
 import GlobalContext from "../../context/GlobalContext";
 
+
 const RestaurantPage = () => {
   const { restauranteId } = useParams();
   const {arrayProducts, setArrayProducts} = useContext(GlobalContext);
   const [data, error, isLoading, reload, setReload] = useRequestData(
     `${BASE_URL}/restaurants/${restauranteId}`
   );
-
+  
   const handleAddProduct = (product, quantity) => {
     const newCart = [...arrayProducts];
-    newCart.push({ ...product, quantity: quantity });
+    newCart.push({ ...product, quantity: quantity, restaurantId: restauranteId, restaurant: data.restaurant.name, address: data.restaurant.address, time: data.restaurant.deliveryTime, shipping: data.restaurant.shipping });
     setArrayProducts(newCart);
   };
 
