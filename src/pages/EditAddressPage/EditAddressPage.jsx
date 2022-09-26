@@ -55,6 +55,7 @@ const EditAddressPage = () => {
     }
 
     const onSubmit = (e) => {
+        console.log(token)
         e.preventDefault();
         setIsStreetValid(validateStreet(form.street))
         setIsNumberValid(validateNumber(form.number))
