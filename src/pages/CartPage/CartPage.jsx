@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Header } from "../../components/Header/Header";
-import { Footer } from "../../components/Footer/Footer";
-import { Button } from "../../components/Button/Button";
+import React, { useContext, useEffect, useState } from "react"
+import { Header } from "../../components/Header/Header"
+import { Footer } from "../../components/Footer/Footer"
+import { Button } from "../../components/Button/Button"
 import {Container, Payment, Restaurant, Paragraph, ButtonSection} from './style'
-import { CartCard } from "../../components/CartCard/CartCard";
-import GlobalContext from "../../context/GlobalContext";
-import axios from "axios";
-import { BASE_URL } from "../../constants/constants";
-import { token } from "../../constants/constants";
+import { CartCard } from "../../components/CartCard/CartCard"
+import GlobalContext from "../../context/GlobalContext"
+import axios from "axios"
+import { BASE_URL } from "../../constants/constants"
+import { token } from "../../constants/constants"
 
 
 const CartPage = () => {
     const [paymentType, setPaymentType] = useState("")
-    const [productsInCart, setProductsInCart] = useState(JSON.parse(localStorage.getItem("ProductCart")) || [])
+    const [productsInCart, setProductsInCart] = useState(JSON.parse(localStorage.getItem("ProductCart")))
     const {reload, setReload} = useContext(GlobalContext)
     
     useEffect(() => {
@@ -20,11 +20,11 @@ const CartPage = () => {
     }, [reload])
 
     //Soma dos produtos adicionados ao carrinho
-    const sum = productsInCart.length > 0 || productsInCart !== null && productsInCart.reduce((prev, num) => prev + (num.price * num.quantity), 0)
+    const sum = productsInCart.length === 0? '0,00' : productsInCart.reduce((prev, num) => prev + (num.price * num.quantity), 0)
 
     //Valor do frete e do pedido
-    const shipping = productsInCart.length === 0 || productsInCart === null? '0,00' : productsInCart[0].shipping.toFixed(2).toString().replace(".", ",")
-    const orderPrice = productsInCart.length === 0 || productsInCart === null? '0,00' : (sum + productsInCart[0].shipping).toFixed(2).toString().replace(".", ",")
+    const shippingPrice = productsInCart.length === 0? '0,00' : productsInCart[0].shipping.toFixed(2).toString().replace(".", ",")
+    const orderPrice = productsInCart.length === 0? '0,00' : (sum + productsInCart[0].shipping).toFixed(2).toString().replace(".", ",")
 
     //Quando o tempo de entrega se esgota
     const finishOrder = () => {
@@ -56,7 +56,7 @@ const CartPage = () => {
             localStorage.setItem("orderInProgress", "true")
             localStorage.setItem("restaurantName", response.data.order.restaurantName)
             localStorage.setItem("price", response.data.order.totalPrice)
-            localStorage.removeItem("ProductCart")
+            localStorage.setItem("ProductCart", JSON.stringify([]))
             setReload(!reload)
             const time = productsInCart[0].time * 60 * 1000
             setTimeout(() => finishOrder(), time)
@@ -72,9 +72,8 @@ const CartPage = () => {
                 <p>{JSON.parse(localStorage.getItem("address"))}</p>
             </address>
 
-            {productsInCart.length === 0 || productsInCart === null? <Paragraph>Carrinho vazio</Paragraph> 
-            :
-            <>
+            {productsInCart.length === 0? <Paragraph>Carrinho vazio</Paragraph> :
+            (<>
                 <Restaurant>
                     <p>{productsInCart[0].restaurant}</p>
                     <p>{productsInCart[0].address}</p>
@@ -91,11 +90,11 @@ const CartPage = () => {
                             price={product.price}
                         />
                 })}
-            </>
+            </>)
             }
 
             <Payment>
-                <span>Frete R${shipping}</span>
+                <span>Frete R${shippingPrice}</span>
                 <section>
                     <p>SUBTOTAL</p>
                     <p>R${orderPrice}</p>
@@ -115,12 +114,11 @@ const CartPage = () => {
         </Container>
 
         <ButtonSection>
-            {productsInCart.length === 0 || productsInCart === null?
-            <Button color={'rgba(92, 182, 70, 0.5)'} buttonTitle={'Confirmar'}/>
-            :
-            <div onClick={handleOrder}>
+            {productsInCart.length === 0?
+            <Button color={'rgba(92, 182, 70, 0.5)'} buttonTitle={'Confirmar'}/> :
+            (<div onClick={handleOrder}>
                 <Button color={'#5CB646'} buttonTitle={'Confirmar'}/>
-            </div>
+            </div>)
             }
 
         </ButtonSection>
