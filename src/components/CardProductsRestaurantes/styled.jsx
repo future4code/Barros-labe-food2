@@ -21,6 +21,7 @@ export const DivImg = styled.div`
   }
 `;
 export const DivSpan = styled.div`
+  margin-top: 3%;
   margin-bottom: 2%;
   width: 100%;
   height: 30px;
@@ -48,7 +49,7 @@ export const DivDetails = styled.div`
   .divButton {
     position: relative;
     bottom: 0%;
-   
+    color: var(--black); 
   }
 `;
 

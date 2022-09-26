@@ -6,12 +6,12 @@ import { BASE_URL } from "../constants/constants"
 const GlobalState = ({children}) => {
 
     const [dataRestaurants, errorRestaurants, isLoadingRestaurants, reload, setReload] = useRequestData(`${BASE_URL}/restaurants`)
-    const [productCart, setProductCart]=useState([]);
+    const [arrayProducts, setArrayProducts] = useState([]);
 
 
 
     return (
-        <GlobalContext.Provider value={{dataRestaurants, errorRestaurants, isLoadingRestaurants}}>
+        <GlobalContext.Provider value={{dataRestaurants, errorRestaurants, isLoadingRestaurants, arrayProducts, setArrayProducts}}>
             {children}
         </GlobalContext.Provider>
     )
