@@ -100,7 +100,7 @@ h4 {
   border-bottom: solid 1px var(--black);
 }
 p{
-  text-align: center;
+  /* text-align: center; */
   margin: 2% 0;
   width: 328px;
   margin: 28px 0px;

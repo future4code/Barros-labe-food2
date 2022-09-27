@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Header } from "../../components/Header/Header";
 import icon_edit from "../../images/edit.png"
 import { ProfileStyle, AdressStyle, StyleHistory } from "./style";
