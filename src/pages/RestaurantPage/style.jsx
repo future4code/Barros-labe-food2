@@ -45,10 +45,12 @@ export const DivDetailsRestaurants = styled.div`
 
   h4 {
     color: var(--mid-green);
-    font-family: Roboto;
+    font-size: 16px;
   }
   h5 {
     margin: 2% 0;
     border-bottom: 1px solid black;
+    font-size: 16px;
+    line-height: 30px;
   }
 `;

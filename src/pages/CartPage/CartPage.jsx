@@ -19,20 +19,16 @@ const CartPage = () => {
         setProductsInCart(JSON.parse(localStorage.getItem("ProductCart")))
     }, [reload])
 
-    //Soma dos produtos adicionados ao carrinho
     const sum = productsInCart.length === 0? '0,00' : productsInCart.reduce((prev, num) => prev + (num.price * num.quantity), 0)
 
-    //Valor do frete e do pedido
     const shippingPrice = productsInCart.length === 0? '0,00' : productsInCart[0].shipping.toFixed(2).toString().replace(".", ",")
     const orderPrice = productsInCart.length === 0? '0,00' : (sum + productsInCart[0].shipping).toFixed(2).toString().replace(".", ",")
 
-    //Quando o tempo de entrega se esgota
     const finishOrder = () => {
         localStorage.setItem("orderInProgress", "false")
         location.reload()
     }
 
-    //Quando usuário clica no botão confirmar
     const handleOrder = () => {
         const products = productsInCart.map(product => {
             return (
