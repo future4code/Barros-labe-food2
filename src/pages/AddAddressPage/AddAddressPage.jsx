@@ -6,7 +6,7 @@ import { Neighbourhood } from "../../components/Inputs/Neighbourhood";
 import { Number } from "../../components/Inputs/Number";
 import { State } from "../../components/Inputs/State";
 import { Street } from "../../components/Inputs/Street";
-import { AddressPageStyle } from "./style";
+import { AddressPageStyle, TextContainer } from "./style";
 import { Button } from "../../components/Button/Button";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
@@ -14,9 +14,9 @@ import { BASE_URL } from "../../constants/constants";
 import { useNavigate } from "react-router-dom";
 import { validateStreet, validateNumber, validateComplement, 
         validateNeighbourhood, validateCity, validateState } from "../../constants/constants";
-import { goToProfilePage } from "../../routes/coordinator";
+import { goToFeedPage } from "../../routes/coordinator";
 
-const EditAddressPage = () => {
+const AddAddressPage = () => {
 
     const navigate = useNavigate()
 
@@ -48,7 +48,7 @@ const EditAddressPage = () => {
         .then((response) => {
             setIsValid(true)
             localStorage.setItem("token", response.data.token)
-            goToProfilePage(navigate)
+            goToFeedPage(navigate)
         })
         .catch((error) => {
             setErrorText(error.response.data.message)
@@ -70,8 +70,9 @@ const EditAddressPage = () => {
 
     return(
         <>
-        <Header showArrow={'true'} showTitle={'true'} title={'Endereço'}/>
+        <Header showArrow={'true'} showTitle={'false'}/>
         <AddressPageStyle>
+            <TextContainer><p>Meu endereço</p></TextContainer>
 
             {isValid ?
 
@@ -102,4 +103,4 @@ const EditAddressPage = () => {
     )
 }
 
-export default EditAddressPage;
+export default AddAddressPage;
