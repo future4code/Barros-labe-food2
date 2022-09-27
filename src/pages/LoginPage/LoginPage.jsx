@@ -8,7 +8,7 @@ import { LoginPageLoading, LoginPageStyle, TextContainer } from "./style";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { goToFeedPage, goToEditAddressPage } from "../../routes/coordinator";
+import { goToFeedPage, goToAddAddressPage } from "../../routes/coordinator";
 import axios from "axios";
 import { BASE_URL } from "../../constants/constants";
 import { validateEmail, validatePassword } from "../../constants/constants";
@@ -38,7 +38,7 @@ const LoginPage = () => {
         .then((response) => {
             setIsValid(true)
             localStorage.setItem("token", response.data.token)
-            response.data.user.hasAddress ? goToFeedPage(navigate) : goToEditAddressPage(navigate)
+            response.data.user.hasAddress ? goToFeedPage(navigate) : goToAddAddressPage(navigate)
         })
         .catch((error) => {
             setIsValid(false)

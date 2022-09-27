@@ -8,8 +8,11 @@ import * as MyRoutes from "../../routes/coordinator"
 import { useNavigate } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/constants";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 const ProfilePage = () => {
+
+    useProtectedPage()
 
     const navigate = useNavigate()
 
