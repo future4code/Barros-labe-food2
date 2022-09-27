@@ -6,6 +6,10 @@ export const goToEditAddressPage = (navigate) =>{
     navigate("/editar-endereco")
 }
 
+export const goToAddAddressPage = (navigate) =>{
+    navigate("/cadastrar-endereco")
+}
+
 export const goToEditNamePage = (navigate) =>{
     navigate("/editar-nome")
 }

@@ -10,7 +10,7 @@ import { Button } from "../../components/Button/Button";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
 import { BASE_URL } from "../../constants/constants";
-import { goToEditAddressPage } from "../../routes/coordinator";
+import { goToAddAddressPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import { validateCPF, validateEmail, validatePassword, validateName } from "../../constants/constants";
 
@@ -38,7 +38,7 @@ const SignupPage = () => {
         axios.post(`${BASE_URL}/signup`, form)
         .then((response) => {
             localStorage.setItem("token", response.data.token)
-            goToEditAddressPage(navigate)
+            goToAddAddressPage(navigate)
         })
         .catch((error) => {
             setErrorText(error.response.data.message)
