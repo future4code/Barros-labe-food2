@@ -14,6 +14,7 @@ export const Container = styled.section `
         margin-top: 2px;
         padding: 16px 25px;
         background-color: #eee;
+        font-style: normal;
         p {
             line-height: 25px;
             :nth-child(1) {

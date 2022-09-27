@@ -3,7 +3,8 @@ import {OrderStyle} from './style'
 import {AiOutlineClockCircle} from 'react-icons/ai'
 
 export function Order() {
-    const price = localStorage.getItem("price").toString().replace(".", ",")
+    const price = Number(localStorage.getItem("price")).toFixed(2).toString().replace(".", ",")
+    
     return (
         <OrderStyle>
             <AiOutlineClockCircle/>
