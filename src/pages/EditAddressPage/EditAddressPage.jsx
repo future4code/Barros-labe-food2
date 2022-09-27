@@ -15,8 +15,11 @@ import { useNavigate } from "react-router-dom";
 import { validateStreet, validateNumber, validateComplement, 
         validateNeighbourhood, validateCity, validateState } from "../../constants/constants";
 import { goToProfilePage } from "../../routes/coordinator";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 const EditAddressPage = () => {
+
+    useProtectedPage()
 
     const navigate = useNavigate()
 

@@ -7,9 +7,12 @@ import GlobalContext from '../../context/GlobalContext'
 import { useForm } from "../../hooks/useForm"
 import RestaurantButtonCard from "../../components/RestaurantButtonCard/RestaurantButtonCard";
 import { Loading } from "../../components/Loading/Loading";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 
 const SearchPage = () => {
+
+    useProtectedPage()
 
     const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
     const [form, onChange] = useForm({restaurant: ""})

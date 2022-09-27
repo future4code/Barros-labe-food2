@@ -13,9 +13,13 @@ import useRequestData from "../../hooks/useRequestData";
 import { useParams } from "react-router-dom";
 import { Loading } from "../../components/Loading/Loading";
 import GlobalContext from "../../context/GlobalContext";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 
 const RestaurantPage = () => {
+
+  useProtectedPage()
+
   const { restauranteId } = useParams();
   const {arrayProducts, setArrayProducts} = useContext(GlobalContext);
   const [data, error, isLoading, reload, setReload] = useRequestData(
