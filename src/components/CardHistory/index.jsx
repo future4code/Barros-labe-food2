@@ -9,14 +9,17 @@ export function CardHistory() {
 
     const ListHistory = data && data.orders.map((item, index) => {
 
-      return (
+    let subtotal = item.totalPrice.toFixed(2)
+    
+    return (
+
             <StyleCardHistory key={index}>
               <p>{item.restaurantName}</p>
               <p>{item.createdAt}</p>
-              <p>{item.totalPrice}</p>
+              <p>SUBTOTAL R${subtotal}</p>
             </StyleCardHistory> )
       })
-
+      console.log(data)
   return (
     <>
         {isLoading && "Carregando..."}
@@ -26,6 +29,7 @@ export function CardHistory() {
     </>
      
   )
+
 }
 
    

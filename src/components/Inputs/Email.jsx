@@ -1,6 +1,12 @@
 import { InputStyle } from "./styled"
+import useRequestData from "../../hooks/useRequestData"
+import { BASE_URL } from "../../constants/constants"
 
 export const Email = ( { value, onChange, color, isValid } ) => {
+
+    const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`)
+
+    data && localStorage.setItem("email", JSON.stringify(data.user.email))
 
     return (
         <>
