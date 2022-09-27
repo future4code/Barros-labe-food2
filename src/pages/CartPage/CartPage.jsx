@@ -8,9 +8,13 @@ import GlobalContext from "../../context/GlobalContext"
 import axios from "axios"
 import { BASE_URL } from "../../constants/constants"
 import { token } from "../../constants/constants"
+import useProtectedPage from "../../hooks/useProtectedPage"
 
 
 const CartPage = () => {
+
+    useProtectedPage()
+
     const [paymentType, setPaymentType] = useState("")
     const [productsInCart, setProductsInCart] = useState(JSON.parse(localStorage.getItem("ProductCart")))
     const {reload, setReload} = useContext(GlobalContext)
