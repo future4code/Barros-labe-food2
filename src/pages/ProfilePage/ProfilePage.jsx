@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/constants";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import {Loading} from '../../components/Loading/Loading'
+import { Loading } from '../../components/Loading/Loading'
 
 const ProfilePage = () => {
 
@@ -17,7 +17,7 @@ const ProfilePage = () => {
 
     const navigate = useNavigate()
 
-    const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`)
+    const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`, localStorage.getItem("token"))
 
     data && localStorage.setItem("address", JSON.stringify(data.user.address))
     

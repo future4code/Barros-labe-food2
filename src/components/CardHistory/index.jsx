@@ -1,10 +1,10 @@
 import { StyleCardHistory } from "./style"
-import { BASE_URL, token } from "../../constants/constants"
+import { BASE_URL } from "../../constants/constants"
 import useRequestData from "../../hooks/useRequestData"
 
 export function CardHistory() {
 
-  const [data, error, isLoading] = useRequestData(`${BASE_URL}/orders/history`)
+  const [data, error, isLoading] = useRequestData(`${BASE_URL}/orders/history`, localStorage.getItem("token"))
 
   const ListHistory = data && data.orders.map((item, index) => {
 

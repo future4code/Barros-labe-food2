@@ -1,16 +1,16 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { token } from "../constants/constants"
+/* import { token } from "../constants/constants" */
 
-const useRequestData = (url) => {
+const useRequestData = (url, token) => {
     const [data, setData] = useState(undefined)
     const [error, setError] = useState(undefined)
     const [isLoading, setIsLoading] = useState(undefined)
     const [reload, setReload] = useState(undefined)
 
-    useEffect(()=>{ 
+    useEffect(()=>{
         setIsLoading(true)
-        axios.get(url, { 
+        axios.get(url, {     
             headers: {
                 auth: token
             }})
