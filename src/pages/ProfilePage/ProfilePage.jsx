@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "../../components/Header/Header";
 import icon_edit from "../../images/edit.png"
-import { ProfileStyle, AdressStyle, StyleHistory } from "./style";
+import { ProfileStyle, AdressStyle, StyleHistory, ProfilePageStyle } from "./style";
 import { CardHistory } from "../../components/CardHistory";
 import { Footer } from "../../components/Footer/Footer";
 import * as MyRoutes from "../../routes/coordinator"
@@ -23,22 +23,26 @@ const ProfilePage = () => {
 
     const Profile = data &&
             <ProfileStyle>
+                <div>
+                    <span>{data.user.name}</span>
+                    <span>{data.user.email}</span>
+                    <span>{data.user.cpf}</span>
+                </div>
                 <img onClick={() => MyRoutes.goToEditNamePage(navigate)} src={icon_edit} alt="Icone de edição"></img>
-                <span>{data.user.name}</span>
-                <span>{data.user.email}</span>
-                <span>{data.user.cpf}</span>
             </ProfileStyle>
 
      const Address = data &&
             <AdressStyle>
+                <div>
+                    <span>Endereço cadastrado</span>
+                    <span>{data.user.address}</span>
+                </div>
                 <img onClick={() => MyRoutes.goToEditAddressPage(navigate)} src={icon_edit} alt="Icone de edição"></img>
-                <span>Endereço cadastrado</span>
-                <span>{data.user.address}</span>
             </AdressStyle>
     
     
     return (
-        <>
+        <ProfilePageStyle>
             <Header showArrow={'false'} showTitle={'true'} title={"Meu perfil"} />
             <>
                 {isLoading && "Carregando..."}
@@ -56,7 +60,7 @@ const ProfilePage = () => {
                 <CardHistory/>
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>  
-        </>
+        </ProfilePageStyle>
     )
 }
 
