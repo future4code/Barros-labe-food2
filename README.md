@@ -20,7 +20,7 @@
 # Fluxo do App
 ![Fluxo](./src/images/flow.jpg)
 
-# Documentação da API (ℹ️)
+# Documentação da API
 https://documenter.getpostman.com/view/7549981/SWTEdGtT
 
 
