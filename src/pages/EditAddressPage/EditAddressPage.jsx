@@ -19,6 +19,7 @@ import {
 import { goToProfilePage } from "../../routes/coordinator";
 import useRequestData from "../../hooks/useRequestData"
 
+
 const EditAddressPage = () => {
 
     const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile/address`)

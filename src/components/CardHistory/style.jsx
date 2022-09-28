@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyleCardHistory = styled.div`
-    width: 88vw;
+    width: 328px;
     height: 102px;
     margin: 7px 0 0;
     padding: 16px;
@@ -9,7 +9,7 @@ export const StyleCardHistory = styled.div`
     border: solid 1px var(--greyish);
 
     p:nth-child(1){
-    width: 88vw;
+    width: 296px;
     height: 18px;
     margin: 0 0 9px;
     font-family: Roboto;
@@ -23,7 +23,7 @@ export const StyleCardHistory = styled.div`
     }
 
     p:nth-child(2){
-    width: 88vw;
+    width: 296px;
     height: 18px;
     margin: 9px 0 7px;
     font-family: Roboto;
@@ -36,7 +36,7 @@ export const StyleCardHistory = styled.div`
     color: var(--black);
     }
     p:nth-child(3){
-    width: 88vw;
+    width: 296px;
     height: 18px;
     margin: 7px 0 0;
     font-family: Roboto;

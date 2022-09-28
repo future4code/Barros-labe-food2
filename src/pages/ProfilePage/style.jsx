@@ -4,7 +4,7 @@ export const ProfileStyle = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0px 8px 0px;
-  width: 100vw;
+  
 
 span{
   width: 88vw;
@@ -32,7 +32,7 @@ span{
 img{
   width: 24px;
   height: 24px;
-  margin: 16px 16px 2px 320px;
+  margin: 16px 16px 2px 336px;
   object-fit: contain;
   position:absolute;
 }
@@ -73,7 +73,7 @@ export const StyleHistory = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
   margin-bottom: 60px;
 
 span{

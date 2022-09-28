@@ -1,7 +1,7 @@
 import { InputStyle } from "./styled"
 
 export const Complement = ({ value, onChange, color }) => {
-
+      
     return (
         <InputStyle color={color}>
             <label>Complemento</label>

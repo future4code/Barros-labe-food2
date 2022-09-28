@@ -5,6 +5,7 @@ export const FeedPageStyle = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15vh;
 `
 
 export const CardsContainer = styled.main`
@@ -32,8 +33,7 @@ export const ButtonSearch = styled.button`
     img{
         width: 24px;
         height: 24px;
-        margin-right: 10px;
-        
+        margin-right: 10px;        
     }
 
     p{
