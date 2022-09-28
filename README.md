@@ -18,7 +18,8 @@
 - App mobile destinado a venda de fast food, seguindo design pré-definido via Zeplin e com integração com API.
 
 # Fluxo do App
-![Fluxo](./src/images/flow.jpg)
+![Flow](https://user-images.githubusercontent.com/102331990/192883038-9e418540-23cb-4983-96a2-122cce649e6d.jpg)
+
 
 # Documentação da API
 https://documenter.getpostman.com/view/7549981/SWTEdGtT
