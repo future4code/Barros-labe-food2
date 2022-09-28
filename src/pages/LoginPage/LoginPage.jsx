@@ -37,6 +37,7 @@ const LoginPage = () => {
         axios.post(`${BASE_URL}/login`, form)
         .then((response) => {
             setIsValid(true)
+            localStorage.getItem("ProductCart")===null && localStorage.setItem("ProductCart", JSON.stringify([]))
             localStorage.setItem("token", response.data.token)
             response.data.user.hasAddress ? goToFeedPage(navigate) : goToAddAddressPage(navigate)
         })
