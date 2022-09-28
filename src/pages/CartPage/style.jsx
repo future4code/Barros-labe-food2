@@ -36,7 +36,7 @@ export const Payment = styled.section `
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 0 20px;
+    margin: 0 20px 15px 20px;
     span {
         text-align: right;
         margin: 5px 20px 0 0;
@@ -67,6 +67,11 @@ export const Payment = styled.section `
         div {
             display: flex;
             gap: 10px;
+        }
+        span {
+            font-size: 14px;
+            text-align: left;
+            color: var(--red);
         }
     }
 `

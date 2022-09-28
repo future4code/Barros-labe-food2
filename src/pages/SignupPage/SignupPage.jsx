@@ -38,6 +38,7 @@ const SignupPage = () => {
         axios.post(`${BASE_URL}/signup`, form)
         .then((response) => {
             localStorage.setItem("token", response.data.token)
+            localStorage.setItem("ProductCart", JSON.stringify([]))
             goToAddAddressPage(navigate)
         })
         .catch((error) => {
