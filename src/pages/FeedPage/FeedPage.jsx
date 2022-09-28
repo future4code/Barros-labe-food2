@@ -16,7 +16,6 @@ const FeedPage = () => {
     useProtectedPage()
 
     const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
-    const {showOrder, setShowOrder} = useContext(GlobalContext)
     const [category, setCategory] = useState("")
 
     const navigate = useNavigate()    
@@ -54,9 +53,7 @@ const FeedPage = () => {
                 
                 {isLoadingRestaurants && <Loading/>}
 
-                {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
-
-                {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}
+                {!isLoadingRestaurants&&dataRestaurants ? restaurantsList : <p>{errorRestaurants}</p>}
 
                 {localStorage.getItem("orderInProgress")==="true" && <Order/>}
                 

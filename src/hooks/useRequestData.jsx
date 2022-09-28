@@ -8,19 +8,19 @@ const useRequestData = (url) => {
     const [isLoading, setIsLoading] = useState(undefined)
     const [reload, setReload] = useState(undefined)
 
-    useEffect(()=>{        
+    useEffect(()=>{ 
         setIsLoading(true)
         axios.get(url, { 
-        headers: {
-            auth: token
-        }})
+            headers: {
+                auth: token
+            }})
         .then((response)=>{
             setIsLoading(false)
             setData(response.data)
         })
         .catch((er)=>{
             setIsLoading(false)
-            setError(er.response.data)
+            setError(er.response.data.message)
         })
     }, [reload])
 
