@@ -3,9 +3,7 @@ import styled from "styled-components";
 export const ProfileStyle = styled.div`
   display: flex;
   flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0px 8px 0px;
   width: 100vw;
 
 span{
@@ -27,7 +25,7 @@ span{
     margin: 2px 16px 8px;
   }
   :nth-child(4){
-    margin: 8px 16px 16px;
+    margin: 8px 16px 8px;
   }
 }
 
@@ -36,7 +34,7 @@ img{
   height: 24px;
   margin: 16px 16px 2px 320px;
   object-fit: contain;
-  position: absolute;
+  position:absolute;
 }
 `
 export const AdressStyle = styled.div`
@@ -45,7 +43,6 @@ export const AdressStyle = styled.div`
   height: 76px;
   margin: 16px 0 16px;
   padding: 16px 26px;
-  justify-content: center;
   width: 100vw;
   background-color: #eee;
     
@@ -66,7 +63,7 @@ export const AdressStyle = styled.div`
 img{
   width: 24px;
   height: 24px;
-  margin: 10px 0 10px 304px;
+  margin: 10px 0 10px 320px;
   object-fit: contain;
   position:absolute;
 }
