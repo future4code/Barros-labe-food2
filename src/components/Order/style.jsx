@@ -7,7 +7,7 @@ export const OrderStyle = styled.div `
     align-items: center;
     width: 100vw;
     height: 118px;
-    position: absolute;
+    position: fixed;
     bottom: 50px;
     svg {
         width: 40px;

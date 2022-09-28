@@ -3,9 +3,13 @@ import styled from "styled-components";
 export const ProfileStyle = styled.div`
   display: flex;
   flex-direction: column;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+
 span{
-  width: 328px;
+  width: 88vw;
   height: 18px;
   font-family: Roboto;
   font-size: 16px;
@@ -38,14 +42,15 @@ img{
 export const AdressStyle = styled.div`
   display: flex;
   flex-direction: column;
-  width: 360px;
   height: 76px;
-  margin: 16px 0;
-  padding: 16px;
+  margin: 16px 0 16px;
+  padding: 16px 26px;
+  justify-content: center;
+  width: 100vw;
   background-color: #eee;
     
   span:nth-child(2){
-  width: 328px;
+  width: 88vw;
   height: 18px;
   margin: 0 0 8px;
   font-family: Roboto;
@@ -67,14 +72,15 @@ img{
 }
 `
 export const StyleHistory = styled.div`
-  width: 328px;
-  height: 18px;
-  padding: 0 16px; 
-  width: 328px;
-  height: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 60px;
 
 span{
-  width: 328px;
+  width: 88vw;
   height: 18px;
   font-family: Roboto;
   font-size: 16px;
@@ -87,7 +93,7 @@ span{
   border-bottom: solid 1px var(--black);
 }
 h4 {
-  width: 328px;
+  width: 88vw;
   margin: 0 0 7px;
   font-family: Roboto;
   font-size: 16px;
@@ -100,9 +106,8 @@ h4 {
   border-bottom: solid 1px var(--black);
 }
 p{
-  text-align: center;
   margin: 2% 0;
-  width: 328px;
+  width: 88vw;
   margin: 28px 0px;
   font-family: Roboto;
   font-size: 16px;

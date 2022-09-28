@@ -10,7 +10,7 @@ import { Button } from "../../components/Button/Button";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
 import { BASE_URL } from "../../constants/constants";
-import { goToEditAddressPage } from "../../routes/coordinator";
+import { goToAddAddressPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import { validateCPF, validateEmail, validatePassword, validateName } from "../../constants/constants";
 
@@ -37,26 +37,22 @@ const SignupPage = () => {
     const SignUp = () => {
         axios.post(`${BASE_URL}/signup`, form)
         .then((response) => {
-            localStorage.setItem("token", response.token)
-            goToEditAddressPage(navigate)
+            localStorage.setItem("token", response.data.token)
+            goToAddAddressPage(navigate)
         })
         .catch((error) => {
             setErrorText(error.response.data.message)
             setIsValid(false)
         })
     }
-    
-    const testPassword = () => {
-        if(form.password === confirmPassword) {
+
+    useEffect(() => {
+        if (form.password === confirmPassword) {
             setIsConfirmPasswordValid(true)
         } else {
             setIsConfirmPasswordValid(false)
         }
-    }
-
-    useEffect(() => {
-        testPassword()
-    }, [form.password])
+    }, [confirmPassword, form.password])
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -83,7 +79,7 @@ const SignupPage = () => {
                     <Email name="email" value={form.email} onChange={onChange} color="#B8B8B8" isValid={isEmailValid}/>
                     <CPF name="cpf" value={form.cpf} onChange={onChange} color="#B8B8B8" isValid={isCPFValid}/>
                     <Password name="password" value={form.password} onChange={onChange} label="Senha*" placeholder="Mínimo 6 caracteres" color="#B8B8B8" isValid={isPasswordValid} errorMessage="A senha deve possuir no mínimo 6 caracteres"/>
-                    <Password name="password-check" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value)}}label="Confirmar*" placeholder="Confirme a senha anterior" color="#B8B8B8" isValid={isConfirmPasswordValid} errorMessage="Deve ser a mesma que a anterior."/>
+                    <Password name="password-check" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value)}} label="Confirmar*" placeholder="Confirme a senha anterior" color="#B8B8B8" isValid={isConfirmPasswordValid} errorMessage="Deve ser a mesma que a anterior."/>
                     <Button type="submit" color={'#5cb646'} buttonTitle="Criar"/>
                 </form>
                 

@@ -8,6 +8,7 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage"
 import RestaurantPage from "../pages/RestaurantPage/RestaurantPage"
 import SearchPage from "../pages/SearchPage/SearchPage"
 import SignupPage from "../pages/SignupPage/SignupPage"
+import AddAddressPage from "../pages/AddAddressPage/AddAddressPage"
 
 
 const Router = () => {
@@ -15,6 +16,7 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route index element= {<LoginPage/>}/>
+                <Route path={"/cadastrar-endereco"} element= { <AddAddressPage/> }/>
                 <Route path={"/editar-endereco"} element= {<EditAddressPage/>}/>
                 <Route path={"/editar-nome"} element= {<EditNamePage/>}/>
                 <Route path={"/home"} element= {<FeedPage/>}/>

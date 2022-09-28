@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Header } from "../../components/Header/Header";
 import icon_edit from "../../images/edit.png"
 import { ProfileStyle, AdressStyle, StyleHistory } from "./style";
@@ -8,8 +8,11 @@ import * as MyRoutes from "../../routes/coordinator"
 import { useNavigate } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/constants";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 const ProfilePage = () => {
+
+    useProtectedPage()
 
     const navigate = useNavigate()
 
@@ -35,6 +38,7 @@ const ProfilePage = () => {
     
     
     return (
+      
         <>
             <Header showArrow={'false'} showTitle={'true'} title={"Meu perfil"} />
             <>
@@ -47,13 +51,13 @@ const ProfilePage = () => {
                 {!isLoading && data && Address}
                 {!isLoading && !data && error}
             </>
-
             <StyleHistory>
             <h4>Histórico de pedidos</h4>
                 <CardHistory/>
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>  
         </>
+        
     )
 }
 

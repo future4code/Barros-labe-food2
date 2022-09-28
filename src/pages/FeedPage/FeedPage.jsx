@@ -9,8 +9,11 @@ import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer"
 import RestaurantButtonCard from "../../components/RestaurantButtonCard/RestaurantButtonCard";
 import { Order } from "../../components/Order/Order";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 const FeedPage = () => {
+
+    useProtectedPage()
 
     const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
     const {showOrder, setShowOrder} = useContext(GlobalContext)

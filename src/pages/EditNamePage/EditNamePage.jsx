@@ -11,8 +11,11 @@ import { BASE_URL, token } from "../../constants/constants";
 import * as MyRoutes from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import { validateCPF, validateEmail, validateName } from "../../constants/constants";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 const EditNamePage = () => {
+
+    useProtectedPage()
 
     const navigate = useNavigate()
 
