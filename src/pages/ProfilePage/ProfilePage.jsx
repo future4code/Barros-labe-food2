@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/constants";
 import useProtectedPage from "../../hooks/useProtectedPage";
+import {Loading} from '../../components/Loading/Loading'
 
 const ProfilePage = () => {
 
@@ -45,12 +46,12 @@ const ProfilePage = () => {
         <ProfilePageStyle>
             <Header showArrow={'false'} showTitle={'true'} title={"Meu perfil"} />
             <>
-                {isLoading && "Carregando..."}
+                {isLoading && <Loading/>}
                 {!isLoading && data && Profile}
                 {!isLoading && !data && error}
             </>
             <>
-                {isLoading && "Carregando..."}
+                {isLoading && <Loading/>}
                 {!isLoading && data && Address}
                 {!isLoading && !data && error}
             </>

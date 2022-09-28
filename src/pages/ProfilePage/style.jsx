@@ -59,7 +59,7 @@ export const AdressStyle = styled.div`
       :nth-child(2){
         width: 328px;
         height: 18px;
-        margin: 5px 0 0;
+        margin: 5px 0 5px 0;
         font-size: 16px;
       }
     }
