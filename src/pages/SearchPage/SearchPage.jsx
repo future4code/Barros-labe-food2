@@ -2,8 +2,8 @@ import React from "react";
 import { Header } from "../../components/Header/Header";
 import { SearchDiv, SearchPageStyle } from "./style"
 import search from '../../images/search.png'
-import { useContext } from "react";
-import GlobalContext from '../../context/GlobalContext'
+import useRequestData from "../../hooks/useRequestData";
+import { BASE_URL } from "../../constants/constants";
 import { useForm } from "../../hooks/useForm"
 import RestaurantButtonCard from "../../components/RestaurantButtonCard/RestaurantButtonCard";
 import { Loading } from "../../components/Loading/Loading";
@@ -14,7 +14,7 @@ const SearchPage = () => {
 
     useProtectedPage()
 
-    const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
+    const [dataRestaurants, errorRestaurants, isLoadingRestaurants] = useRequestData(`${BASE_URL}/restaurants`, localStorage.getItem("token"))
     const [form, onChange] = useForm({restaurant: ""})
 
     const filteredRestaurants = dataRestaurants && dataRestaurants.restaurants.map((restaurantSearch)=>{
