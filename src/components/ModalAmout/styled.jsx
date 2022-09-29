@@ -56,6 +56,9 @@ export const DivContainer = styled.div`
       width: 78vw;
       height: 7vh;
       border-radius: 5px;
+      :focus {
+        background-color: white;
+      }
     }
   }
 `;

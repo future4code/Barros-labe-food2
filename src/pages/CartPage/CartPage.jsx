@@ -18,6 +18,11 @@ const CartPage = () => {
     const [paymentIsSelected, setPaymentIsSelected] = useState(undefined)
     const [productsInCart, setProductsInCart] = useState(JSON.parse(localStorage.getItem("ProductCart")))
     const {reload, setReload} = useContext(GlobalContext)
+    const [address, setAddress] = useState(JSON.parse(localStorage.getItem("address")))
+
+    useEffect(() => {
+        setAddress(JSON.parse(localStorage.getItem("address")))
+    }, [])
 
     useEffect(() => {
         setProductsInCart(JSON.parse(localStorage.getItem("ProductCart")))
@@ -88,7 +93,7 @@ const CartPage = () => {
             <Header showArrow={'false'} showTitle={'true'} title={'Meu carrinho'}/>
             <address>
                 <p>Endereço de entrega</p>
-                <p>{JSON.parse(localStorage.getItem("address"))}</p>
+                <p>{address}</p>
             </address>
 
             {productsInCart.length === 0? <Paragraph>Carrinho vazio</Paragraph> :

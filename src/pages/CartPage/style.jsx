@@ -4,7 +4,7 @@ export const Container = styled.section `
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 82vh;
+    height: 85vh;
     width: 100vw;
     overflow-y: auto;
     overflow-x: hidden;
