@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "../../components/Header/Header";
 import icon_edit from "../../images/edit.png"
-import { ProfileStyle, AdressStyle, StyleHistory, ProfilePageStyle } from "./style";
+import { ProfileStyle, AdressStyle, StyleHistory, ProfilePageStyle} from "./style";
 import { CardHistory } from "../../components/CardHistory";
 import { Footer } from "../../components/Footer/Footer";
 import * as MyRoutes from "../../routes/coordinator"
@@ -72,6 +72,7 @@ const ProfilePage = () => {
                 <CardHistory/>
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>  
+
 
         </ProfilePageStyle>
     )

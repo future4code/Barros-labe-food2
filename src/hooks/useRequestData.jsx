@@ -1,6 +1,5 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-// import { token } from "../constants/constants" 
 
 const useRequestData = (url, token) => {
     const [data, setData] = useState(undefined)
@@ -14,17 +13,17 @@ const useRequestData = (url, token) => {
 
     useEffect(()=>{
         setIsLoading(true)
-        axios.get(url, {     
-            headers: {
-                auth: token
-            }})
+        axios.get(url, {         
+                headers: {
+                    auth: token
+                }})
         .then((response)=>{
             setIsLoading(false)
             setData(response.data)
         })
         .catch((er)=>{
             setIsLoading(false)
-            setError(er.response.data.message)
+            setError(er.response.data.message.message)
         })
     }, [reload1])
 
