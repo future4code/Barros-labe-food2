@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Header } from "../../components/Header/Header";
 import CardProductsRestaurantes from "../../components/CardProductsRestaurantes/CardProductsRestaurantes";
 import {
@@ -15,7 +15,6 @@ import { Loading } from "../../components/Loading/Loading";
 import GlobalContext from "../../context/GlobalContext";
 import useProtectedPage from "../../hooks/useProtectedPage";
 
-
 const RestaurantPage = () => {
 
   useProtectedPage()
@@ -23,7 +22,7 @@ const RestaurantPage = () => {
   const { restauranteId } = useParams();
   const {arrayProducts, setArrayProducts} = useContext(GlobalContext);
   const [data, error, isLoading, reload, setReload] = useRequestData(
-    `${BASE_URL}/restaurants/${restauranteId}`
+    `${BASE_URL}/restaurants/${restauranteId}`, localStorage.getItem("token")
   );
   
   const handleAddProduct = (product, quantity) => {

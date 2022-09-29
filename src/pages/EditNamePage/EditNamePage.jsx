@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Header} from '../../components/Header/Header'
+import { Header } from '../../components/Header/Header'
 import { Email } from "../../components/Inputs/Email";
 import { Name } from "../../components/Inputs/Name";
 import { CPF } from "../../components/Inputs/CPF";
@@ -20,9 +20,9 @@ const EditNamePage = () => {
     const navigate = useNavigate()
 
     const [form, onChange] = useForm({
-        name: "",
-        email: "",
-        cpf: ""
+        name: JSON.parse(localStorage.getItem("name")),
+        email: JSON.parse(localStorage.getItem("email")),
+        cpf: JSON.parse(localStorage.getItem("cpf"))
     })
 
     const [isValid, setIsValid] = useState(true)
@@ -37,14 +37,14 @@ const EditNamePage = () => {
                 auth: token
             }
         })
-        .then((response) => {
-            localStorage.setItem("token", response.token)
-            MyRoutes.goToProfilePage(navigate)
-        })
-        .catch((error) => {
-            setErrorText(error.response.data.message)
-            setIsValid(false)
-        })
+            .then((response) => {
+                localStorage.setItem("token", response.token)
+                MyRoutes.goToProfilePage(navigate)
+            })
+            .catch((error) => {
+                setErrorText(error.response.data.message)
+                setIsValid(false)
+            })
     }
 
     const onSubmit = (e) => {
@@ -54,29 +54,29 @@ const EditNamePage = () => {
         setIsNameValid(validateName(form.name))
         isEmailValid && isCPFValid && isNameValid && EditProfile()
     }
-    return(
+    return (
         <>
-        <Header showArrow={'true'} showTitle={'true'} title={'Editar'}/>
-        <EditNameStyle>
-            {isValid ?
+            <Header showArrow={'true'} showTitle={'true'} title={'Editar'} />
+            <EditNameStyle>
+                {isValid ?
 
-                <form onSubmit={onSubmit}>
-                <Name name="name" value={form.name} onChange={onChange} color="#B8B8B8" isValid={isNameValid}/>
-                <Email name="email" value={form.email} onChange={onChange} color="#B8B8B8" isValid={isEmailValid}/>
-                <CPF name="cpf" value={form.cpf} onChange={onChange} color="#B8B8B8" isValid={isCPFValid}/>
-                <Button type="submit" color="#5CB646" buttonTitle="SALVAR"/>
-                </form>
-                
-                : 
-                
-                <form onSubmit={onSubmit}>
-                <Name name="name" value={form.name} onChange={onChange} color="#e02020" isValid={isNameValid}/>
-                <Email name="email" value={form.email} onChange={onChange} color="#e02020" isValid={isEmailValid}/>
-                <CPF name="cpf" value={form.cpf} onChange={onChange} color="#e02020" isValid={isCPFValid}/>
-                {isEmailValid && isCPFValid && isNameValid ? <p>{errorText}.</p> : undefined}
-                <Button type="submit" color="#5CB646" buttonTitle="SALVAR"/>
-                </form>}
-        </EditNameStyle>
+                    <form onSubmit={onSubmit}>
+                        <Name name="name" value={form.name} onChange={onChange} color="#B8B8B8" isValid={isNameValid} />
+                        <Email name="email" value={form.email} onChange={onChange} color="#B8B8B8" isValid={isEmailValid} />
+                        <CPF name="cpf" value={form.cpf} onChange={onChange} color="#B8B8B8" isValid={isCPFValid} />
+                        <Button type="submit" color="#5CB646" buttonTitle="SALVAR" />
+                    </form>
+
+                    :
+
+                    <form onSubmit={onSubmit}>
+                        <Name name="name" value={form.name} onChange={onChange} color="#e02020" isValid={isNameValid} />
+                        <Email name="email" value={form.email} onChange={onChange} color="#e02020" isValid={isEmailValid} />
+                        <CPF name="cpf" value={form.cpf} onChange={onChange} color="#e02020" isValid={isCPFValid} />
+                        {isEmailValid && isCPFValid && isNameValid ? <p>{errorText}.</p> : undefined}
+                        <Button type="submit" color="#5CB646" buttonTitle="SALVAR" />
+                    </form>}
+            </EditNameStyle>
         </>
     )
 }

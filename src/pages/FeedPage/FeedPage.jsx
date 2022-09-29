@@ -1,22 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import {Header} from '../../components/Header/Header'
 import {ButtonSearch, FeedPageStyle, FiltersContainer, CardsContainer} from './style'
 import search from '../../images/search.png'
 import {Loading} from '../../components/Loading/Loading'
-import GlobalContext from '../../context/GlobalContext'
 import { goToSearchPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer"
 import RestaurantButtonCard from "../../components/RestaurantButtonCard/RestaurantButtonCard";
 import { Order } from "../../components/Order/Order";
 import useProtectedPage from "../../hooks/useProtectedPage";
+import useRequestData from "../../hooks/useRequestData";
+import { BASE_URL } from "../../constants/constants";
 
 const FeedPage = () => {
 
     useProtectedPage()
 
-    const {dataRestaurants, errorRestaurants, isLoadingRestaurants} = useContext(GlobalContext)
-    const {showOrder, setShowOrder} = useContext(GlobalContext)
+    const [dataRestaurants, errorRestaurants, isLoadingRestaurants] = useRequestData(`${BASE_URL}/restaurants`, localStorage.getItem("token"))
     const [category, setCategory] = useState("")
 
     const navigate = useNavigate()    
@@ -34,7 +34,7 @@ const FeedPage = () => {
 
             <Header showArrow={'false'} showTitle={'true'} title={'FutureEats'}/>
 
-            <ButtonSearch onClick={()=>{goToSearchPage(navigate)}}><img src={search}/><p>Restaurante</p></ButtonSearch>
+            <ButtonSearch onClick={()=>{goToSearchPage(navigate)}}><img src={search} alt={'Ícone de um lupa'}/><p>Restaurante</p></ButtonSearch>
 
             <FiltersContainer>
                 
@@ -54,9 +54,7 @@ const FeedPage = () => {
                 
                 {isLoadingRestaurants && <Loading/>}
 
-                {!isLoadingRestaurants&&errorRestaurants&&<p>{errorRestaurants}</p>}
-
-                {!isLoadingRestaurants&&dataRestaurants&&restaurantsList}
+                {!isLoadingRestaurants&&dataRestaurants ? restaurantsList : <p>{errorRestaurants}</p>}
 
                 {localStorage.getItem("orderInProgress")==="true" && <Order/>}
                 
