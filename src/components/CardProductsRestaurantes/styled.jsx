@@ -57,13 +57,13 @@ export const PAmount = styled.p`
   position: absolute;
   text-align: center;
   margin-left: 85%;
+  padding-top: 2px;
   height: 25%;
   width: 15%;
   border: 0.3px solid;
   border-radius: 0px 5px 0px 5px;
   color: var(--mid-green);
   background: transparent;
-  font-family: Roboto;
 `;
 export const ButtonAdd = styled.button`
   position: absolute;
@@ -76,7 +76,6 @@ export const ButtonAdd = styled.button`
   border-radius: 5px 0px 8px 0px;
   color: var(--mid-green);
   background: transparent;
-  font-family: Roboto;
   font-size: 12px;
 `;
 export const ButtonRemove = styled.button`
@@ -88,8 +87,7 @@ export const ButtonRemove = styled.button`
   width: 35%;
   border: 0.3px solid;
   border-radius: 5px 0px 8px 0px;
-  color: red;
+  color: var(--red);
   background: transparent;
-  font-family: Roboto;
   font-size: 12px;
 `;
