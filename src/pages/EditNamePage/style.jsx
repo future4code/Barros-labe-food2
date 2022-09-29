@@ -3,8 +3,12 @@ import styled from "styled-components";
 export const EditNameStyle = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 0 0 12px;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+    display: flex;
+    padding: 0 0 12px;
+    
     img {
         width: 104px;
         height: 58px;

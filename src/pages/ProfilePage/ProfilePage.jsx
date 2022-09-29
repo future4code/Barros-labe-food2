@@ -43,7 +43,9 @@ const ProfilePage = () => {
     
     
     return (
+        <>
         <ProfilePageStyle>
+
             <Header showArrow={'false'} showTitle={'true'} title={"Meu perfil"} />
             <>
                 {isLoading && <Loading/>}
@@ -55,12 +57,14 @@ const ProfilePage = () => {
                 {!isLoading && data && Address}
                 {!isLoading && !data && error}
             </>
-
             <StyleHistory>
             <h4>Histórico de pedidos</h4>
                 <CardHistory/>
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>  
+
+        </>
+
         </ProfilePageStyle>
     )
 }

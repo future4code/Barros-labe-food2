@@ -18,8 +18,7 @@
 - App mobile destinado a venda de fast food, seguindo design pré-definido via Zeplin e com integração com API.
 
 # Fluxo do App
-![Flow](https://user-images.githubusercontent.com/102331990/192883038-9e418540-23cb-4983-96a2-122cce649e6d.jpg)
-
+![Fluxo](./src/images/flow.jpg)
 
 # Documentação da API
 https://documenter.getpostman.com/view/7549981/SWTEdGtT
@@ -71,3 +70,4 @@ https://documenter.getpostman.com/view/7549981/SWTEdGtT
 
 Projeto de conclusão do módulo Front End, desenvolvido em grupo, envolvendo trabalho colaborativo, organização de processos ágeis e aplicação de várias metodologias envolvendo
 React, integração com API, Rotas, LocalStorage, Styled-Components entre outras.
+

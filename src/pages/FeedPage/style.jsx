@@ -33,7 +33,7 @@ export const ButtonSearch = styled.button`
     img{
         width: 24px;
         height: 24px;
-        margin-right: 10px;
+        margin-right: 10px;        
     }
 
     p{

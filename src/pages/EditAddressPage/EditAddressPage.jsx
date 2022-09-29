@@ -17,19 +17,29 @@ import {
     validateNeighbourhood, validateCity, validateState
 } from "../../constants/constants";
 import { goToProfilePage } from "../../routes/coordinator";
+import useRequestData from "../../hooks/useRequestData"
 
 
 const EditAddressPage = () => {
 
+    const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile/address`)
+
+    data && localStorage.setItem("street", JSON.stringify(data.address.street))
+    data && localStorage.setItem("number", JSON.stringify(data.address.number))
+    data && localStorage.setItem("neighbourhood", JSON.stringify(data.address.neighbourhood))
+    data && localStorage.setItem("city", JSON.stringify(data.address.city))
+    data && localStorage.setItem("state", JSON.stringify(data.address.state))
+    data && localStorage.setItem("complement", JSON.stringify(data.address.complement))
+
     const navigate = useNavigate()
 
     const [form, onChange] = useForm({
-        street: "",
-        number: "",
-        neighbourhood: "",
-        city: "",
-        state: "",
-        complement: ""
+        street: JSON.parse(localStorage.getItem("street")),
+        number: JSON.parse(localStorage.getItem("number")),
+        neighbourhood: JSON.parse(localStorage.getItem("neighbourhood")),
+        city: JSON.parse(localStorage.getItem("city")),
+        state: JSON.parse(localStorage.getItem("state")),
+        complement: JSON.parse(localStorage.getItem("complement")),
     })
 
     const [isValid, setIsValid] = useState(true)
