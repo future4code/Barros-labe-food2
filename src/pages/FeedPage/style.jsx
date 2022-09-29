@@ -5,7 +5,7 @@ export const FeedPageStyle = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 15vh;
+    margin-bottom: 20vh;
 `
 
 export const CardsContainer = styled.main`
