@@ -25,7 +25,7 @@ const ModalScreen = ({
   return (
     <DivModalposition>
       <DivModal id="modal" className="modal" onClick={handleClose}>
-        <DivContainer className="container">
+        <DivContainer>
           <span>Selecione a quantidade desejada </span>
           <form onSubmit={handleQuantity}>
             <select

@@ -16,7 +16,7 @@ export const RestaurantButtonCardStyle = styled.button`
     img{
         width: 326px;
         height: 120px;
-        border-radius: 8px;
+        border-radius: 8px 8px 0 0;
     }
 
     div{
@@ -38,19 +38,12 @@ export const RestaurantButtonCardStyle = styled.button`
 
             span{
                 margin-left: 17px;
-<<<<<<< HEAD
-                margin-right: 140px;
+                margin-right: 10px;
                 margin-bottom: 15px;
                 font-size: 16px;
-
-=======
-                margin-bottom: 15px;
-                font-size: 16px;
-
                 :nth-child(2){
                     margin-left: 155px;
                 }
->>>>>>> ea3ffe7a2f2be707948029e837c0962eac56304e
             }
         }
     }    

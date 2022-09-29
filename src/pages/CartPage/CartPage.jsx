@@ -7,7 +7,6 @@ import { CartCard } from "../../components/CartCard/CartCard"
 import GlobalContext from "../../context/GlobalContext"
 import axios from "axios"
 import { BASE_URL } from "../../constants/constants"
-import { token } from "../../constants/constants"
 import useProtectedPage from "../../hooks/useProtectedPage"
 
 
@@ -19,7 +18,7 @@ const CartPage = () => {
     const [paymentIsSelected, setPaymentIsSelected] = useState(undefined)
     const [productsInCart, setProductsInCart] = useState(JSON.parse(localStorage.getItem("ProductCart")))
     const {reload, setReload} = useContext(GlobalContext)
-    
+
     useEffect(() => {
         setProductsInCart(JSON.parse(localStorage.getItem("ProductCart")))
     }, [reload])
@@ -35,8 +34,11 @@ const CartPage = () => {
     }
     
     const finishOrder = () => {
-        localStorage.setItem("orderInProgress", "false")
-        location.reload()
+        const time = productsInCart[0].time * 60 * 1000
+        setTimeout(() => {
+            localStorage.setItem("orderInProgress", "false")
+            location.reload()
+        }, time)
     }
 
     const handleOrder = () => {
@@ -62,7 +64,7 @@ const CartPage = () => {
         
         axios.post(`${BASE_URL}/restaurants/${productsInCart[0].restaurantId}/order`, body, {
             headers: {
-                auth: token
+                auth: localStorage.getItem("token")
             }
         }).then((response) => {
             localStorage.setItem("orderInProgress", "true")
@@ -70,9 +72,14 @@ const CartPage = () => {
             localStorage.setItem("price", response.data.order.totalPrice)
             localStorage.setItem("ProductCart", JSON.stringify([]))
             setReload(!reload)
-            const time = productsInCart[0].time * 60 * 1000
-            setTimeout(() => finishOrder(), time)
-        }).catch(alert("Você já tem um pedido em andamento. Aguarde a finalização deste para concluir uma nova compra."))
+            finishOrder()
+        }).catch((err) => {
+            if (err.message === 'Request failed with status code 409') {
+                alert("Você já tem um pedido em andamento. Aguarde a finalização deste para concluir uma nova compra.")
+            } else {
+                alert(err)
+            }
+        })
     }
     
     return(

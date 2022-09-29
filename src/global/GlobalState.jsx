@@ -5,7 +5,7 @@ import { BASE_URL } from "../constants/constants"
 
 const GlobalState = ({children}) => {
 
-    const [dataRestaurants, errorRestaurants, isLoadingRestaurants] = useRequestData(`${BASE_URL}/restaurants`)
+    const [dataRestaurants, errorRestaurants, isLoadingRestaurants] = useRequestData(`${BASE_URL}/restaurants`, localStorage.getItem("token"))
     const [reload, setReload] = useState(false);
     const [arrayProducts, setArrayProducts] = useState([]);
 

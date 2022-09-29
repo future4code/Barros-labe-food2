@@ -5,7 +5,7 @@ export const ProfileStyle = styled.div`
   flex-direction: column;
   margin: 0px 8px 0px;
   
-
+  
 span{
   width: 88vw;
   height: 18px;
