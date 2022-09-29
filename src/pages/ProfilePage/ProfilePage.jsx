@@ -43,7 +43,7 @@ const ProfilePage = () => {
     
     
     return (
-        <>
+        
         <ProfilePageStyle>
 
             <Header showArrow={'false'} showTitle={'true'} title={"Meu perfil"} />
@@ -62,8 +62,6 @@ const ProfilePage = () => {
                 <CardHistory/>
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>  
-
-        </>
 
         </ProfilePageStyle>
     )
