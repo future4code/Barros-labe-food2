@@ -20,7 +20,7 @@
 # Fluxo do App
 ![Fluxo](./src/images/flow.jpg)
 
-# Documentação da API
+# Documentação da API (ℹ️)
 https://documenter.getpostman.com/view/7549981/SWTEdGtT
 
 
@@ -70,4 +70,3 @@ https://documenter.getpostman.com/view/7549981/SWTEdGtT
 
 Projeto de conclusão do módulo Front End, desenvolvido em grupo, envolvendo trabalho colaborativo, organização de processos ágeis e aplicação de várias metodologias envolvendo
 React, integração com API, Rotas, LocalStorage, Styled-Components entre outras.
-

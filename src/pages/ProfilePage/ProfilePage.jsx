@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "../../components/Header/Header";
 import icon_edit from "../../images/edit.png"
-import { ProfileStyle, AdressStyle, StyleHistory, ProfilePageStyle } from "./style";
+import { ProfileStyle, AdressStyle, StyleHistory, ProfilePageStyle} from "./style";
 import { CardHistory } from "../../components/CardHistory";
 import { Footer } from "../../components/Footer/Footer";
 import * as MyRoutes from "../../routes/coordinator"
@@ -18,9 +18,20 @@ const ProfilePage = () => {
     const navigate = useNavigate()
 
     const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`, localStorage.getItem("token"))
-
-    data && localStorage.setItem("address", JSON.stringify(data.user.address))
     
+    data && localStorage.setItem("address", JSON.stringify(data.user.address))
+    data && localStorage.setItem("name", JSON.stringify(data.user.name))
+    data && localStorage.setItem("email", JSON.stringify(data.user.email))
+    data && localStorage.setItem("cpf", JSON.stringify(data.user.cpf))
+
+    const [data1, error1, isLoading1, reload1] = useRequestData(`${BASE_URL}/profile/address`, localStorage.getItem("token"))
+    
+    data1 && localStorage.setItem("street", JSON.stringify(data1.address.street))
+    data1 && localStorage.setItem("number", JSON.stringify(data1.address.number))
+    data1 && localStorage.setItem("neighbourhood", JSON.stringify(data1.address.neighbourhood))
+    data1 && localStorage.setItem("city", JSON.stringify(data1.address.city))
+    data1 && localStorage.setItem("state", JSON.stringify(data1.address.state))
+    data1 && localStorage.setItem("complement", JSON.stringify(data1.address.complement))
 
     const Profile = data &&
             <ProfileStyle>
@@ -40,8 +51,7 @@ const ProfilePage = () => {
                 </div>
                 <img onClick={() => MyRoutes.goToEditAddressPage(navigate)} src={icon_edit} alt="Icone de edição"></img>
             </AdressStyle>
-    
-    
+        
     return (
         
         <ProfilePageStyle>
@@ -62,6 +72,7 @@ const ProfilePage = () => {
                 <CardHistory/>
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>  
+
 
         </ProfilePageStyle>
     )
