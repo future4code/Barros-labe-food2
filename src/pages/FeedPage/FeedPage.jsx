@@ -34,7 +34,7 @@ const FeedPage = () => {
 
             <Header showArrow={'false'} showTitle={'true'} title={'FutureEats'}/>
 
-            <ButtonSearch onClick={()=>{goToSearchPage(navigate)}}><img src={search}/><p>Restaurante</p></ButtonSearch>
+            <ButtonSearch onClick={()=>{goToSearchPage(navigate)}}><img src={search} alt={'Ícone de um lupa'}/><p>Restaurante</p></ButtonSearch>
 
             <FiltersContainer>
                 
