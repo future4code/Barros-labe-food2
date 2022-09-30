@@ -50,3 +50,23 @@ export const TextContainer = styled.div`
     text-decoration: none;
   }
 `
+
+export const LoadingButtonLogin = styled.div `
+    border-radius: 50%;
+    background-color: transparent;
+    border: 3px solid #000;
+    border-bottom: 3px solid transparent;
+    width: 25px;
+    height: 25px;
+    
+    @keyframes animationLoading {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    animation: animationLoading 1.5s ease-out infinite;
+`
