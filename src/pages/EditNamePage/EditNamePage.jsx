@@ -8,20 +8,12 @@ import { Button } from "../../components/Button/Button";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
 import { BASE_URL, token } from "../../constants/constants";
-import * as MyRoutes from "../../routes/coordinator";
+import { goToProfilePage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import { validateCPF, validateEmail, validateName } from "../../constants/constants";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import useRequestData from "../../hooks/useRequestData"
-
 
 const EditNamePage = () => {
-
-    const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`)
-
-    data && localStorage.setItem("name", JSON.stringify(data.user.name))
-    data && localStorage.setItem("email", JSON.stringify(data.user.email))
-    data && localStorage.setItem("cpf", JSON.stringify(data.user.cpf))
 
     useProtectedPage()
 
@@ -42,12 +34,12 @@ const EditNamePage = () => {
     const EditProfile = () => {
         axios.put(`${BASE_URL}/profile`, form, {
             headers: {
-                auth: token
+                auth: localStorage.getItem("token")
             }
         })
             .then((response) => {
-                localStorage.setItem("token", response.token)
-                MyRoutes.goToProfilePage(navigate)
+                // localStorage.setItem("token", response.data.token)
+                goToProfilePage(navigate)
             })
             .catch((error) => {
                 setErrorText(error.response.data.message)

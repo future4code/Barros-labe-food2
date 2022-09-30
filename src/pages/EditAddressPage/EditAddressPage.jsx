@@ -44,7 +44,7 @@ const EditAddressPage = () => {
     const EditAddress = () => {
         axios.put(`${BASE_URL}/address`, form, {
             headers: {
-                "auth": token
+                auth: localStorage.getItem("token")
             }
         })
             .then((response) => {
