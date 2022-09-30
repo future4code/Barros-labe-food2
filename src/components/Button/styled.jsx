@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const ButtonStyle = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;    
     width: 88vw;
     height: 42px;
     background-color: ${props => props.color};
