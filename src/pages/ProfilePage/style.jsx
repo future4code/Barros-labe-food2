@@ -4,7 +4,6 @@ export const ProfilePageStyle = styled.div`
     display: flex;
     flex-direction: column;
 `
-
 export const ProfileStyle = styled.div`
   display: flex;
   justify-content: space-between;

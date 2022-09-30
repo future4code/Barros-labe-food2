@@ -10,7 +10,7 @@ import { AddressPageStyle } from "./style";
 import { Button } from "../../components/Button/Button";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
-import { BASE_URL, token } from "../../constants/constants";
+import { BASE_URL } from "../../constants/constants";
 import { useNavigate } from "react-router-dom";
 import {
     validateStreet, validateNumber, validateComplement,

@@ -96,7 +96,6 @@ const SignupPage = () => {
                     <Button type="submit" color={'#5cb646'} buttonTitle="Criar"/>
                 </form>}
 
-
         </SignupPageStyle>
         </>
     )

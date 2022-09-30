@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const HeaderContainer = styled.header `
     display: flex;
     justify-content: flex-start;
@@ -19,7 +18,6 @@ export const HeaderContainer = styled.header `
         margin-top: 6px;
     }
 `
-
 export const DontShowArrow = styled.div `
     svg {
         opacity: 0;

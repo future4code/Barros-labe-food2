@@ -23,7 +23,6 @@ export const SignupPageStyle = styled.div`
 `
 
 export const TextContainer = styled.div`
-    
     width: 360px;
     height: 42px;
     padding: 12px 32px;

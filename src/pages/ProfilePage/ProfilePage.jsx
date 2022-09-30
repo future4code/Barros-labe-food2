@@ -73,7 +73,6 @@ const ProfilePage = () => {
             </StyleHistory>
             <Footer color1={'#B8B8B8'} color2={'#B8B8B8'} color3={'#5CB646'}/>  
 
-
         </ProfilePageStyle>
     )
 }

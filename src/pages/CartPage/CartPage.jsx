@@ -11,7 +11,6 @@ import useProtectedPage from "../../hooks/useProtectedPage"
 import { useNavigate } from "react-router-dom"
 import { goToFeedPage } from "../../routes/coordinator"
 
-
 const CartPage = () => {
 
     useProtectedPage()

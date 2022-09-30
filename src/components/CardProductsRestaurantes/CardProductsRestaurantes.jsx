@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import GlobalContext from "../../context/GlobalContext";
 import ModalScreen from "../ModalAmout/ModalAmout";
 import {
@@ -48,7 +48,6 @@ function CardProductsRestaurantes({
     localStorage.setItem("ProductCart", JSON.stringify(arrayProducts));
     return condition;
   };
-
  
   return (
     <>
