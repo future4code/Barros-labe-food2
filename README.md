@@ -52,7 +52,7 @@ https://documenter.getpostman.com/view/7549981/SWTEdGtT
 
 
 # Acesso ao App
-**https://**
+http://unable-badge.surge.sh/
 
 
 # Tecnologias utilizadas
