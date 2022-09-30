@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyleCardHistory = styled.div`
-    width: 328px;
+    width: 88vw;
     height: 102px;
     margin: 7px 0 0;
     padding: 16px;
