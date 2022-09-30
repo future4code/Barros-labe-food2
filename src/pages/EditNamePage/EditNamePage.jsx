@@ -7,7 +7,7 @@ import { EditNameStyle } from "./style";
 import { Button } from "../../components/Button/Button";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
-import { BASE_URL, token } from "../../constants/constants";
+import { BASE_URL } from "../../constants/constants";
 import { goToProfilePage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import { validateCPF, validateEmail, validateName } from "../../constants/constants";
@@ -38,7 +38,6 @@ const EditNamePage = () => {
             }
         })
             .then((response) => {
-                // localStorage.setItem("token", response.data.token)
                 goToProfilePage(navigate)
             })
             .catch((error) => {

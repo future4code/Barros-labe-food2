@@ -47,7 +47,6 @@ const RestaurantPage = () => {
     }
   }, []);
 
-  //Fazer um array com todas as categorias sem repetição
   let categories = []
   if (data) {
     let equal
@@ -68,7 +67,6 @@ const RestaurantPage = () => {
     }
   }
 
-  //Renderizar produtos por categoria
   const renderData = () => {
     let result = []
     for (let i = 0; i < categories.length; i++) {

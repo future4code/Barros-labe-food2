@@ -9,7 +9,6 @@ import axios from "axios"
 import { BASE_URL } from "../../constants/constants"
 import useProtectedPage from "../../hooks/useProtectedPage"
 
-
 const CartPage = () => {
 
     useProtectedPage()

@@ -2,7 +2,6 @@ import { RestaurantButtonCardStyle } from "./styled";
 import { goToRestaurantPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 
-
 const RestaurantButtonCard = ({restaurant}) => {
 
     const navigate = useNavigate()

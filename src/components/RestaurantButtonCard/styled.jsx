@@ -12,7 +12,6 @@ export const RestaurantButtonCardStyle = styled.button`
     white-space: nowrap;
     margin-bottom: 10px;
     
-
     img{
         width: 326px;
         height: 120px;

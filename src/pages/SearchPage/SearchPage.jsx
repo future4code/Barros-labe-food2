@@ -9,7 +9,6 @@ import RestaurantButtonCard from "../../components/RestaurantButtonCard/Restaura
 import { Loading } from "../../components/Loading/Loading";
 import useProtectedPage from "../../hooks/useProtectedPage";
 
-
 const SearchPage = () => {
 
     useProtectedPage()

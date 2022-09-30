@@ -10,7 +10,6 @@ import SearchPage from "../pages/SearchPage/SearchPage"
 import SignupPage from "../pages/SignupPage/SignupPage"
 import AddAddressPage from "../pages/AddAddressPage/AddAddressPage"
 
-
 const Router = () => {
     return(
         <BrowserRouter>

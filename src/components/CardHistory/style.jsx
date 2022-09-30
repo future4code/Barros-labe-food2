@@ -21,7 +21,6 @@ export const StyleCardHistory = styled.div`
     letter-spacing: -0.39px;
     color: var(--mid-green);
     }
-
     p:nth-child(2){
     width: 296px;
     height: 18px;

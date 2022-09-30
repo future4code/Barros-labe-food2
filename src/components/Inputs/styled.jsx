@@ -34,7 +34,6 @@ export const InputStyle = styled.div`
     }
 
 `
-
 export const InputPassword = styled(InputStyle)`
     div {
         display: flex;
