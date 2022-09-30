@@ -52,7 +52,7 @@ https://documenter.getpostman.com/view/7549981/SWTEdGtT
 
 
 # Acesso ao App
-http://unable-badge.surge.sh/
+http://psychotic-lift.surge.sh/
 
 
 # Tecnologias utilizadas
