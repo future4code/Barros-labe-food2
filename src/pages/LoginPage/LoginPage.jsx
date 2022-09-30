@@ -43,7 +43,7 @@ const LoginPage = () => {
             localStorage.setItem("token", response.data.token)
             response.data.user.hasAddress ? goToFeedPage(navigate) : goToAddAddressPage(navigate)
         })
-        .catch((error) => {
+        .catch(() => {
             setLoadingLogin(false)
             setIsValid(false)
         })
