@@ -8,10 +8,14 @@ import GlobalContext from "../../context/GlobalContext"
 import axios from "axios"
 import { BASE_URL } from "../../constants/constants"
 import useProtectedPage from "../../hooks/useProtectedPage"
+import { useNavigate } from "react-router-dom"
+import { goToFeedPage } from "../../routes/coordinator"
 
 const CartPage = () => {
 
     useProtectedPage()
+
+    const navigate = useNavigate()
 
     const [paymentType, setPaymentType] = useState("")
     const [paymentIsSelected, setPaymentIsSelected] = useState(undefined)
@@ -77,6 +81,7 @@ const CartPage = () => {
             localStorage.setItem("ProductCart", JSON.stringify([]))
             setReload(!reload)
             finishOrder()
+            goToFeedPage(navigate)
         }).catch((err) => {
             if (err.message === 'Request failed with status code 409') {
                 alert("Você já tem um pedido em andamento. Aguarde a finalização deste para concluir uma nova compra.")
