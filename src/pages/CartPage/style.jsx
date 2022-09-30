@@ -36,7 +36,7 @@ export const Payment = styled.section `
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 0 20px 60px 20px;
+    margin: 0 20px 15vh 20px;
     span {
         text-align: right;
         margin: 5px 20px 0 0;
