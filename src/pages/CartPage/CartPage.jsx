@@ -89,8 +89,8 @@ const CartPage = () => {
     
     return(
         <>
+        <Header showArrow={'false'} showTitle={'true'} title={'Meu carrinho'}/>
         <Container>
-            <Header showArrow={'false'} showTitle={'true'} title={'Meu carrinho'}/>
             <address>
                 <p>Endereço de entrega</p>
                 <p>{address}</p>
