@@ -10,6 +10,8 @@ import { BASE_URL } from "../../constants/constants"
 import useProtectedPage from "../../hooks/useProtectedPage"
 import { useNavigate } from "react-router-dom"
 import { goToFeedPage } from "../../routes/coordinator"
+import useRequestData from "../../hooks/useRequestData"
+import { Loading } from "../../components/Loading/Loading"
 
 const CartPage = () => {
 
@@ -21,11 +23,10 @@ const CartPage = () => {
     const [paymentIsSelected, setPaymentIsSelected] = useState(undefined)
     const [productsInCart, setProductsInCart] = useState(JSON.parse(localStorage.getItem("ProductCart")))
     const {reload, setReload} = useContext(GlobalContext)
-    const [address, setAddress] = useState(JSON.parse(localStorage.getItem("address")))
+    const [data, error, isLoading] = useRequestData(`${BASE_URL}/profile`, localStorage.getItem("token"))
 
-    useEffect(() => {
-        setAddress(JSON.parse(localStorage.getItem("address")))
-    }, [])
+    const address = data && JSON.stringify(data.user.address)
+    console.log(address)
 
     useEffect(() => {
         setProductsInCart(JSON.parse(localStorage.getItem("ProductCart")))
@@ -97,7 +98,9 @@ const CartPage = () => {
         <Container>
             <address>
                 <p>Endereço de entrega</p>
-                <p>{address}</p>
+                {isLoading && <Loading/>}
+                {!isLoading && error && <p>Ocorreu um erro ao carregar o endereço.</p>}
+                {!isLoading && data && <p>{address}</p>}
             </address>
 
             {productsInCart.length === 0? <Paragraph>Carrinho vazio</Paragraph> :
