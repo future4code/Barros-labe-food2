@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useState, useContext, useEffect, } from "react"
+import GlobalContext from "../../context/GlobalContext"
 import { Header } from "../../components/Header/Header"
 import { Footer } from "../../components/Footer/Footer"
 import { Button } from "../../components/Button/Button"
 import {Container, Payment, Restaurant, Paragraph, ButtonSection} from './style'
 import { CartCard } from "../../components/CartCard/CartCard"
-import GlobalContext from "../../context/GlobalContext"
 import axios from "axios"
 import { BASE_URL } from "../../constants/constants"
 import useProtectedPage from "../../hooks/useProtectedPage"
@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom"
 import { goToFeedPage } from "../../routes/coordinator"
 import useRequestData from "../../hooks/useRequestData"
 import { Loading } from "../../components/Loading/Loading"
+
 
 const CartPage = () => {
 
@@ -25,8 +26,7 @@ const CartPage = () => {
     const {reload, setReload} = useContext(GlobalContext)
     const [data, error, isLoading] = useRequestData(`${BASE_URL}/profile`, localStorage.getItem("token"))
 
-    const address = data && JSON.stringify(data.user.address)
-    console.log(address)
+    const address = data && data.user.address
 
     useEffect(() => {
         setProductsInCart(JSON.parse(localStorage.getItem("ProductCart")))
@@ -156,4 +156,4 @@ const CartPage = () => {
     )
 }
 
-export default CartPage;
+export default CartPage
