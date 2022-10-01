@@ -19,7 +19,6 @@ const ProfilePage = () => {
 
     const [data, error, isLoading, reload] = useRequestData(`${BASE_URL}/profile`, localStorage.getItem("token"))
     
-    data && localStorage.setItem("address", JSON.stringify(data.user.address))
     data && localStorage.setItem("name", JSON.stringify(data.user.name))
     data && localStorage.setItem("email", JSON.stringify(data.user.email))
     data && localStorage.setItem("cpf", JSON.stringify(data.user.cpf))
