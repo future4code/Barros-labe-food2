@@ -52,7 +52,7 @@ https://documenter.getpostman.com/view/7549981/SWTEdGtT
 
 
 # Acesso ao App
-http://psychotic-lift.surge.sh/
+[futureeats.com](http://numerous-secretary.surge.sh/)
 
 
 # Tecnologias utilizadas
